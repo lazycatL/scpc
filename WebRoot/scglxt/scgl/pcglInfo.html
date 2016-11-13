@@ -1,0 +1,132 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>设备排产管理详细信息</title>
+</head>
+<body>
+	<table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Extn.</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+ 
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Extn.</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
+	<!-- jQuery UI CSS -->
+	<link rel="stylesheet" href="../../js/datatablesExtends/jquery-ui.css" type="text/css"></link>
+	<!-- DataTables, TableTools and Editor CSS -->
+	<link rel="stylesheet" href="../../js/datatablesExtends/dataTables.jqueryui.css" type="text/css"></link>
+	<!-- Integration CSS (provides all the styles required by DataTables and TableTools -->
+	<link rel="stylesheet" href="../../js/datatablesExtends/dataTables.editor.min.css" type="text/css"></link>
+	<link rel="stylesheet" href="../../js/datatablesExtends/editor.jqueryui.css" type="text/css"></link>
+
+	<!-- jQuery and jQuery UI Javascript -->
+	<script type="text/javascript" src="../../js/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery_ui/jquery-ui.min.js"></script>
+	<!-- DataTables, TableTools and Editor Javascript -->
+	<script type="text/javascript" src="../../js/plugin/datatables/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="../../js/datatablesExtends/dataTables.tableTools.min.js"></script>
+	<script type="text/javascript" src="../../js/datatablesExtends/dataTables.jqueryui.js"></script>
+
+	<!-- Integration Javascript -->
+	<script type="text/javascript" src="../../js/datatablesExtends/dataTables.editor.js"></script>
+	<script type="text/javascript" src="../../js/datatablesExtends/editor.jqueryui.js"></script>
+
+	<script type="text/javascript">
+	    var editor; // use a global for the submit and return data rendering in the examples
+		 
+		$(document).ready(function() {
+		    editor = new $.fn.dataTable.Editor( {
+		        ajax: "../php/staff.php",
+		        table: "#example",
+		        fields: [ {
+		                label: "First name:",
+		                name: "ssbz"
+		            }, {
+		                label: "Last name:",
+		                name: "last_name"
+		            }, {
+		                label: "Position:",
+		                name: "position"
+		            }, {
+		                label: "Office:",
+		                name: "office"
+		            }, {
+		                label: "Extension:",
+		                name: "extn"
+		            }, {
+		                label: "Start date:",
+		                name: "start_date",
+		                type: "date"
+		            }, {
+		                label: "Salary:",
+		                name: "salary"
+		            }
+		        ]
+		    } );
+		 
+		    var table = $('#example').DataTable( {
+		        lengthChange: true,
+		         "aLengthMenu":[5,10,15],
+		        ajax: "scgl_getRyTableData.action",
+		        "oLanguage": {
+                    "sProcessing": "正在加载中......",
+                    "sLengthMenu": "每页显示 _MENU_ 条记录",
+                    "sZeroRecords": "对不起，查询不到相关数据！",
+                    "sEmptyTable": "表中无数据存在！",
+                    "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
+                    "sInfoFiltered": "数据表中共为 _MAX_ 条记录",
+                    "sSearch": "搜索",
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": "上一页",
+                        "sNext": "下一页",
+                        "sLast": "末页"
+                    }
+                },
+		        columns: [
+		            { data: null, render: function ( data, type, row ) {
+		                // Combine the first and last names into a single table field
+		                return data.ssbz+' ';
+		            } },
+		            { data: "ssbz" },
+		            { data: "office" },
+		            { data: "extn" },
+		            { data: "start_date" },
+		            { data: "salary", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) }
+		        ]
+		    } );
+		 
+		    var tableTools = new $.fn.dataTable.TableTools( table, {
+		        sRowSelect: "os",
+		        aButtons: [
+		            { sExtends: "editor_create", editor: editor },
+		            { sExtends: "editor_edit",   editor: editor },
+		            { sExtends: "editor_remove", editor: editor }
+		        ]
+		    } );
+		    $( tableTools.fnContainer() ).insertBefore( '#example_filter' );
+		} );
+    </script>
+</body>

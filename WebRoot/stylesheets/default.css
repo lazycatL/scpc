@@ -1,0 +1,118 @@
+body {
+	background-color: #F7FCFF;
+	text-align: left;
+	font-family: "宋体", arial;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	width:100%;
+	height:100%;
+}
+label {
+	display: inline-block;
+	max-width: 100%;
+	margin-bottom: 5px;
+	font-size:12px;
+	/* font-weight: bold; */
+}
+th{
+	font-size:12px;
+}
+
+table{
+	font-size:12px;
+}
+/* 链接颜色 链接颜色 a:link 显示的样子 a:visited已访问过的 a:hover鼠标放上去的颜色 a:active点下后的样子 */
+	/* 链接样式没有下划线  a:link { color: #4189C4; text-decoration:none;}*/
+a {
+	color: #4189C4;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #FF5500;
+}
+
+/* 链接样式没有下划线  */
+a {
+	text-decoration: none;
+}
+
+/* 滚动条 */
+html {
+	margin: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	scrollbar-face-color: #A4C4E1; /* 滚动条凸出部分的颜色      */
+	scrollbar-arrow-color: #FFFFFF; /* 上下按钮上三角箭头的颜色  */
+	scrollbar-highlight-color: #FFFFFF; /* 滚动条空白部分的颜色      */
+	scrollbar-shadow-color: #DEE3E7; /* 立体滚动条阴影的颜色      */
+	scrollbar-3dlight-color: #D1D7DC; /* 滚动条亮边的颜色          */
+	scrollbar-track-color: #EFEFEF; /* 滚动条的背景颜色          */
+	scrollbar-darkshadow-color: #98AAB1; /* 动条强阴影的颜色          */
+}
+/* 4. 菜单more 白色 */
+a.a_menu{ color:#FFFFFF;}
+a.a_menu:hover {text-decoration:underline;}
+
+/* 5. 帮助菜单 停留色蓝色,放上去桔黄色 */
+a.a_orange{ color:Blue; text-decoration:none;}
+a.a_orange:hover { color:#FF5500;}
+
+a.a_orange2:link	{color:#FF5500; text-decoration:underline}
+a.a_orange2:visited	{color:#FF5500; text-decoration:underline}
+a.a_orange2:hover	{color:#0000ff; text-decoration:none}
+
+a.a_orange3:link	{color:#FF5500; text-decoration:none}
+a.a_orange3:visited	{color:#FF5500; text-decoration:none}
+a.a_orange3:hover	{color:#0000ff; text-decoration:underline}
+
+a.a_blue:link	{color:#0000FF; text-decoration:none}
+a.a_blue:visited	{color:#0000FF; text-decoration:none}
+a.a_blue:hover	{color:#FF5500; text-decoration:underline}
+
+/* 6. 那些人浏览你了 停留色黑色,放上去桔黄色 */
+a.a_black{ color:#000000; text-decoration:none;}
+a.a_black:hover { color:#FF5500;}
+
+/* 7. 那些人浏览你了 停留色黑色,放上留桔黄色 */
+a.a_blackjh{ color:#000000; text-decoration:none;}
+a.a_blackjh:visited	{color:#FF5500; text-decoration:none; font-weight:bold;}
+a.a_blackjh:hover { color:#FF5500;}
+
+a.a_blackblue{ color:#000000; text-decoration:none;}
+a.a_blackblue:visited	{color:#000000; text-decoration:none;}
+a.a_blackblue:hover { color:#0000ff;text-decoration:underline}
+
+a.a_white{ color:#D4EAF8; text-decoration:none;}
+a.a_white:visited	{color:#D4EAF8; text-decoration:none;}
+a.a_white:hover { color:#FF5500;text-decoration:underline}
+
+a.a_yellow{ color:#BEED11; text-decoration:none;}
+a.a_yellow:visited	{color:#BEED11; text-decoration:none;}
+a.a_yellow:hover { color:#FF5500;text-decoration:underline}
+
+a.a_red{ color:#FF0000; text-decoration:none; cursor:pointer}
+a.a_red:visited	{color:#FF0000; text-decoration:none; cursor:pointer}
+a.a_red:hover { color:#FF5500;text-decoration:underline; cursor:pointer}
+
+a.a_blackjh_line{ color:#000000; text-decoration:none;text-decoration:underline}
+a.a_blackjh_line:visited	{color:#000000;}
+a.a_blackjh_line:hover { color:#FF5500; text-decoration:none;}
+
+a.a_hui{ color: #CCCCCC; text-decoration:none; cursor:pointer }
+a.a_hui:hover { color: #CCCCCC; text-decoration:underline}
+a.a_hui:visited{ color: #CCCCCC; text-decoration:none; cursor:pointer }
+
+
+/* 隐藏GridView编号列 */
+.visible{ display:none;}
+
+/* 圆角panel样式 */
+.dropPanel{ width:210px; background-color:#FFFFFF; margin-right:3px;}
+
+/* 边框样式 */
+.border{ background-color:#E2F5FF; border:solid 1px #60B0D8;}
+
+/* 左边的导航 图片的位置居中 */
+.img{ vertical-align:text-bottom;}

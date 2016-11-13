@@ -1,0 +1,90 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="scpc">
+    <output-path>$PROJECT_DIR$/out/artifacts/scpc</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="scpc" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="axis-ant.jar" module-name="scpc" />
+          <element id="library" level="module" name="axis.jar" module-name="scpc" />
+          <element id="library" level="module" name="c3p0-0.9.1.2.jar" module-name="scpc" />
+          <element id="library" level="module" name="c3p0-oracle-thin-extras-0.9.1.2.jar" module-name="scpc" />
+          <element id="library" level="module" name="commons-discovery-0.2.jar" module-name="scpc" />
+          <element id="library" level="module" name="commons-net-1.4.1.jar" module-name="scpc" />
+          <element id="library" level="module" name="commons-beanutils-1.7.0.jar" module-name="scpc" />
+          <element id="library" level="module" name="commons-lang-2.3.jar" module-name="scpc" />
+          <element id="library" level="module" name="displaytag-1.2.jar" module-name="scpc" />
+          <element id="library" level="module" name="displaytag-export-poi-1.2.jar" module-name="scpc" />
+          <element id="library" level="module" name="displaytag-portlet-1.2.jar" module-name="scpc" />
+          <element id="library" level="module" name="ezmorph-1.0.jar" module-name="scpc" />
+          <element id="library" level="module" name="antlr-2.7.6.jar" module-name="scpc" />
+          <element id="library" level="module" name="asm-attrs.jar" module-name="scpc" />
+          <element id="library" level="module" name="asm.jar" module-name="scpc" />
+          <element id="library" level="module" name="cglib-2.1.3.jar" module-name="scpc" />
+          <element id="library" level="module" name="commons-collections-2.1.1.jar" module-name="scpc" />
+          <element id="library" level="module" name="commons-collections-3.1.jar" module-name="scpc" />
+          <element id="library" level="module" name="dom4j-1.6.1.jar" module-name="scpc" />
+          <element id="library" level="module" name="ehcache-1.2.3.jar" module-name="scpc" />
+          <element id="library" level="module" name="hibernate3.jar" module-name="scpc" />
+          <element id="library" level="module" name="jaas.jar" module-name="scpc" />
+          <element id="library" level="module" name="javassist.jar" module-name="scpc" />
+          <element id="library" level="module" name="jaxen-1.1-beta-7.jar" module-name="scpc" />
+          <element id="library" level="module" name="jdbc2_0-stdext.jar" module-name="scpc" />
+          <element id="library" level="module" name="jta.jar" module-name="scpc" />
+          <element id="library" level="module" name="log4j-1.2.11.jar" module-name="scpc" />
+          <element id="library" level="module" name="persistence.jar" module-name="scpc" />
+          <element id="library" level="module" name="spring-jdbc.jar" module-name="scpc" />
+          <element id="library" level="module" name="spring-orm.jar" module-name="scpc" />
+          <element id="library" level="module" name="spring-tx.jar" module-name="scpc" />
+          <element id="library" level="module" name="xml-apis.jar" module-name="scpc" />
+          <element id="library" level="module" name="iTextAsian.jar" module-name="scpc" />
+          <element id="library" level="module" name="itext-2.1.7.jar" module-name="scpc" />
+          <element id="library" level="module" name="itext-rtf-2.1.7.jar" module-name="scpc" />
+          <element id="library" level="module" name="jaxrpc.jar" module-name="scpc" />
+          <element id="library" level="module" name="jxl.jar" module-name="scpc" />
+          <element id="library" level="module" name="mysql-connector-java-5.1.5-bin.jar" module-name="scpc" />
+          <element id="library" level="module" name="nls_charset12.jar" module-name="scpc" />
+          <element id="library" level="module" name="ojdbc14.jar" module-name="scpc" />
+          <element id="library" level="module" name="poi-3.6-20091214.jar" module-name="scpc" />
+          <element id="library" level="module" name="pushlet.jar" module-name="scpc" />
+          <element id="library" level="module" name="saaj.jar" module-name="scpc" />
+          <element id="library" level="module" name="snmp.jar" module-name="scpc" />
+          <element id="library" level="module" name="snmp4j.jar" module-name="scpc" />
+          <element id="library" level="module" name="aopalliance.jar" module-name="scpc" />
+          <element id="library" level="module" name="aspectjlib.jar" module-name="scpc" />
+          <element id="library" level="module" name="aspectjrt.jar" module-name="scpc" />
+          <element id="library" level="module" name="aspectjweaver.jar" module-name="scpc" />
+          <element id="library" level="module" name="cglib-nodep-2.1_3.jar" module-name="scpc" />
+          <element id="library" level="module" name="commons-attributes-api.jar" module-name="scpc" />
+          <element id="library" level="module" name="commons-attributes-compiler.jar" module-name="scpc" />
+          <element id="library" level="module" name="commons-logging.jar" module-name="scpc" />
+          <element id="library" level="module" name="spring-agent.jar" module-name="scpc" />
+          <element id="library" level="module" name="spring-aop.jar" module-name="scpc" />
+          <element id="library" level="module" name="spring-aspects.jar" module-name="scpc" />
+          <element id="library" level="module" name="spring-beans.jar" module-name="scpc" />
+          <element id="library" level="module" name="spring-context.jar" module-name="scpc" />
+          <element id="library" level="module" name="spring-core.jar" module-name="scpc" />
+          <element id="library" level="module" name="spring-tomcat-weaver.jar" module-name="scpc" />
+          <element id="library" level="module" name="spring-web.jar" module-name="scpc" />
+          <element id="library" level="module" name="springside-all.jar" module-name="scpc" />
+          <element id="library" level="module" name="commons-fileupload-1.2.1.jar" module-name="scpc" />
+          <element id="library" level="module" name="commons-io-1.3.2.jar" module-name="scpc" />
+          <element id="library" level="module" name="commons-logging-1.0.4.jar" module-name="scpc" />
+          <element id="library" level="module" name="freemarker-2.3.8.jar" module-name="scpc" />
+          <element id="library" level="module" name="WebRoot/WEB-INF/lib/struts/json/commons-lang-2.3.jar" module-name="scpc" />
+          <element id="library" level="module" name="json-lib-2.4-jdk15.jar" module-name="scpc" />
+          <element id="library" level="module" name="ognl-3.0.jar" module-name="scpc" />
+          <element id="library" level="module" name="struts2-core-2.2.1.jar" module-name="scpc" />
+          <element id="library" level="module" name="struts2-json-plugin-2.2.1.jar" module-name="scpc" />
+          <element id="library" level="module" name="struts2-junit-plugin-2.2.1.jar" module-name="scpc" />
+          <element id="library" level="module" name="struts2-spring-plugin-2.2.1.jar" module-name="scpc" />
+          <element id="library" level="module" name="xwork-core-2.2.1.jar" module-name="scpc" />
+          <element id="library" level="module" name="wsdl4j-1.5.1.jar" module-name="scpc" />
+        </element>
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/WebRoot" />
+    </root>
+  </artifact>
+</component>

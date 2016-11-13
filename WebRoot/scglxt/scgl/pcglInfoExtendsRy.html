@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>设备排产管理详细信息</title>
+</head>
+<body>
+		<table id="sbpcInfo" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+				<th>
+					序号
+				</th>
+				<th>
+					操作
+				</th>
+				<th>
+					图号
+				</th>
+				<th>
+					加工数量
+				</th>
+				<th>
+					额定工时
+				</th>
+				<th>
+					加工工艺
+				</th>
+				<th>
+					计划开始时间
+				</th>
+				<th>
+					实际开始时间
+				</th>
+				<th>
+					班组名称
+				</th>
+				<th>
+					设备名称
+				</th>
+			</tr>
+        </thead>
+    </table>
+    <div id="editJhkssjWindow" class="easyui-dialog" title="修改计划时间" style="width:400px;height:200px;padding:10px"
+			data-options="buttons:'#editJhkssjWindow-buttons',modal:true,closed:true">
+		<input id="editJhkssj" class="easyui-datetimebox" required style="width:200px">
+	</div>
+	<div id="editJhkssjWindow-buttons">
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="savaJhkssj()">保存</a>
+	</div>
+	<!-- bootstrap css 引入 -->
+	<link href="../../js/plugin/bootstrap/css/bootstrap.css" media="all" rel="stylesheet" type="text/css" />
+	<!-- bootstrap Datatables样式引入 -->
+	<link rel="stylesheet" href="../../js/datatablesExtends/dataTables.bootstrap.css" type="text/css"></link>
+	<!-- jquery ui css 引入 -->
+	<link rel="stylesheet" href="../../js/plugin/jquery-easyui-1.4.3/themes/bootstrap/easyui.css" type="text/css"></link>
+    <link rel="stylesheet" href="../../js/plugin/jquery-easyui-1.4.3/ themes/icon.css">
+	<!-- jQueryJS引入 -->
+	<script type="text/javascript" src="../../js/jquery/jquery.min.js"></script>
+	<!-- DataTables JS引入 -->
+	<script type="text/javascript" src="../../js/plugin/datatables/jquery.dataTables.js"></script>
+	<!--集成bootstap的datablesJS-->
+	<script type="text/javascript" src="../../js/datatablesExtends/dataTables.bootstrap.js"></script>
+
+	<!-- datatables固定列的JS-->
+	<script type="text/javascript" src="../../js/plugin/datatables/dataTables.fixedColumns.js"></script>
+	<!-- jquery-ui的JS -->
+	<script type="text/javascript" src="../../js/plugin/jquery-easyui-1.4.3/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../../js/plugin/jquery-easyui-1.4.3/locale/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript">
+	
+		var editRow = null;
+		
+		var table = 
+		$(document).ready(
+		
+			function() {
+			
+				initTable();
+			} 
+		);
+		
+		function initTable(){
+		
+			 table = $('#sbpcInfo').DataTable( {
+			"bLengthChange": true, 
+	      	"oLanguage": {
+	                    "sProcessing": "正在加载中......",
+	                    "sLengthMenu": "每页显示 _MENU_ 条记录",
+	                    "sZeroRecords": "对不起，查询不到相关数据！",
+	                    "sEmptyTable": "表中无数据存在！",
+	                    "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
+	                    "sInfoFiltered": "数据表中共为 _MAX_ 条记录",
+	                    "sSearch": "搜索",
+	                    "oPaginate": {
+	                        "sFirst": "首页",
+	                        "sPrevious": "上一页",
+	                        "sNext": "下一页",
+	                        "sLast": "末页"
+	                    }
+	                },
+	        "aLengthMenu":[5,10,15],
+			"ajax":"pcgl_getSbTbInfo.action",
+			scrollY:        "300px",
+			scrollX:        false,
+			scrollCollapse: false,
+			paging:         true,
+			"columnDefs": [ 
+	             {
+	                "render": function ( data, type, row ) {
+	                
+	                    return '<a href = "#">开始</a>&nbsp&nbsp&nbsp<a href = "#">完成</a>';
+	                },
+	                "targets": 1
+	            },
+	        ],
+	        "columns": [
+	        	{"data":null,"width":"30px"},
+	        	{"data":null,"width":"50px"},
+	        	{"data":'zddmc',"width":"80px"},
+	            { "data": "jgsl" ,"width":"60px"},
+	            { "data": "edgs" ,"width":"60px"},
+	            { "data": "gymc" ,"width":"60px"},
+	            { "data": "jhkssj" },
+	            { "data": "kssj" },
+	            { "data": "bzmc" ,"width":"80px"},
+	            { "data": "sbmc" ,"width":"80px"}
+	        ]
+	       
+		} );
+		 /**加上序号**/
+		  table.on( 'order.dt search.dt', function () {
+	        table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+	            cell.innerHTML = i+1;
+	        } );
+	   	  } ).draw();
+		}
+		function editJhkssj(data){
+			
+			$( "#editJhkssjWindow" ).dialog('open');
+			$("#editJhkssj").datetimebox("setValue",editRow.jhkssj); 
+			
+			
+		}
+		
+		function savaJhkssj(){
+		
+			
+			var sj = $("#editJhkssj").datetimebox("getValue");
+			var id = editRow.gygcid;
+			$.ajax({
+                type: "post",
+                url: "pcgl_editGygcJhkssjById.action",
+                dataType: "text",
+                data: {
+                    "gygcid": id,
+                    
+                    "jhkssj": sj
+                    
+                },
+                success: function (dt) {
+
+					if(dt=='success'){
+					
+						$( "#editJhkssjWindow" ).dialog('close');
+						window.location.reload();
+					}else{
+					
+						$( "#editJhkssjWindow" ).dialog('close');
+						
+						alert("对不起您选择的时间格式不正确，请联系管理员！");
+					}
+    	              	
+                }
+            });
+		}
+    </script>
+</body>
