@@ -87,14 +87,20 @@
                 }});
 
             if(options.clickeve){
-                inputele.click(function(){
-                    activeinputele = $(this);
-                    var p = GetScreenPosition(this);
-                    if(keyboard.css("display")=="none"){
-                        keyboard.css({"display":"block","left":p.x,"top":p.y+$(this).height()*1.2});
-                        mouseDrag();
-                        touchDrag();
-                    }});
+                inputele.click(function(event){
+
+                    if(event.target==this){
+                        activeinputele = $(this);
+                        var p = GetScreenPosition(this);
+                            if(keyboard.css("display")=="none"){
+                                keyboard.css({"display":"block","left":p.x,"top":p.y+$(this).height()*1.2});
+                                mouseDrag();
+                                touchDrag();
+                            }
+                        }
+                    event.stopPropagation();
+                });
+
             }
             if(numkeyboardcount<2){
                 for(var i=0;i<keyboard_button.length;i++){

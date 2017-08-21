@@ -1,0 +1,212 @@
+[
+    {
+        "id": "1001",
+        "text": "销售管理",
+        "state": {
+            "checked": "true"
+        },
+        "nodes": [
+            {
+                "id": "100102",
+                "text": "合同管理",
+                "state": {
+                    "checked": "true"
+                }
+            }
+        ]
+    },
+    {
+        "id": "1002",
+        "text": "技术管理",
+        "state": {
+            "checked": "true"
+        },
+        "nodes": [
+            {
+                "id": "100201",
+                "text": "订单管理",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100202",
+                "text": "BOM表管理",
+                "state": {
+                    "checked": "true"
+                }
+            }
+        ]
+    },
+    {
+        "id": "1003",
+        "text": "生产管理",
+        "state": {
+            "checked": "true"
+        },
+        "nodes": [
+            {
+                "id": "100304",
+                "text": "加工人员加工",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100305",
+                "text": "生产情况跟踪",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100306",
+                "text": "排产任务管理",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100307",
+                "text": "总体时间调配",
+                "state": {
+                    "checked": "true"
+                }
+            }
+        ]
+    },
+    {
+        "id": "1004",
+        "text": "采购管理",
+        "state": {
+            "checked": "true"
+        },
+        "nodes": [
+            {
+                "id": "100401",
+                "text": "订单采购管理",
+                "state": {
+                    "checked": "true"
+                }
+            }
+        ]
+    },
+    {
+        "id": "1005",
+        "text": "质量管理",
+        "state": {
+            "checked": "true"
+        },
+        "nodes": [
+            {
+                "id": "100501",
+                "text": "检验人员检验",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100502",
+                "text": "终检人员检验",
+                "state": {
+                    "checked": "true"
+                }
+            }
+        ]
+    },
+    {
+        "id": "1006",
+        "text": "库存管理",
+        "state": {
+            "checked": "true"
+        },
+        "nodes": [
+            {
+                "id": "100601",
+                "text": "基本零件管理",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100603",
+                "text": "备料库存管理",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100604",
+                "text": "成品入库管理",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100605",
+                "text": "成品出库管理",
+                "state": {
+                    "checked": "true"
+                }
+            }
+        ]
+    },
+    {
+        "id": "1007",
+        "text": "基本信息管理",
+        "state": {
+            "checked": "true"
+        },
+        "nodes": [
+            {
+                "id": "100701",
+                "text": "客户信息管理",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100702",
+                "text": "工序管理",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100703",
+                "text": "设备管理",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100704",
+                "text": "班组管理",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100705",
+                "text": "人员管理",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100706",
+                "text": "供货商管理",
+                "state": {
+                    "checked": "true"
+                }
+            },
+            {
+                "id": "100707",
+                "text": "生产材料管理",
+                "state": {
+                    "checked": "true"
+                }
+            }
+        ]
+    }
+]

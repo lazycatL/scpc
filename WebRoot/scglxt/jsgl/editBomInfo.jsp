@@ -2,9 +2,14 @@
 <%@ include file="/include/topFile.jsp" %>
 <link href="${pageContext.request.contextPath}/stylesheets/plugins/select2/select2.css" media="all" rel="stylesheet"
       type="text/css"/>
+<link rel="stylesheet" href="../../stylesheets/preview.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/plugin/select2/select2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/util/validata.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/util/validonblur.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/scglxt/jsgl/editBomInfo.js"></script>
+<script type="text/javascript" src="../../js/util/NumKeyBoard.js"></script>
+<script src="../../js/util/slider.js"></script>
+
 <div id='wrapper'>
     <div class="row">
         <div class="col-sm-12">
@@ -43,11 +48,20 @@
                                 </select>
                             </div>
                         </div>
+                        <%--<div class='form-group'>--%>
+                            <%--<label class='control-label col-sm-2' for='form_bomInfo_zddjb'>BOM级别</label>--%>
+                            <%--<div class='col-sm-3 controls'>--%>
+                                <%--<select  class='select2 form-control' id='form_bomInfo_zddjb' name='zddjb'>--%>
+                                <%--</select>--%>
+                                <%--<label class="textInfo"></label>--%>
+
+                            <%--</div>--%>
+                        <%--</div>--%>
                         <div class='form-group'>
                             <label class='control-label col-sm-2' for='form_bomInfo_zddcz'>材质</label>
 
                             <div class='col-sm-3 controls'>
-                                <select class='select2 form-control' id='form_bomInfo_zddcz' info="fromInfo"
+                                <select class=' form-control' id='form_bomInfo_zddcz' info="fromInfo"
                                         name='zddcz'>
                                 </select>
                             </div>
@@ -74,7 +88,7 @@
                             <label class='control-label col-sm-2'>加工数量</label>
 
                             <div class='col-sm-3 controls'>
-                                <input class='form-control required' id='form_bomInfo_jgsl' info="fromInfo"
+                                <input class='form-control required requiredDecimal numkeyboard'  id='form_bomInfo_jgsl' info="fromInfo"
                                        name='jgsl' placeholder=' ' type='text'>
                                 <label class="textInfo"></label>
                             </div>
@@ -82,25 +96,9 @@
 
                             <div class='col-sm-3 controls'>
                                 <input class='form-control' id='form_bomInfo_bmcl' info="fromInfo"
-                                       name='bmcl' placeholder=' ' type='text'>
+                                       name='bmcl' placeholder=' ' type='text'><label class="textInfo"></label>
                             </div>
                         </div>
-                        <%--<div class='form-group'>--%>
-                            <%--<label class='control-label col-sm-2'>子订单开始时间</label>--%>
-
-                            <%--<div class='col-sm-3 controls'>--%>
-                                <%--<input class="form-control required" id="form_bomInfo_starttime" info="fromInfo"--%>
-                                       <%--name="starttime" type="text" placeholder='子订单开始时间'/>--%>
-                                <%--<label class="textInfo"></label>--%>
-                            <%--</div>--%>
-                            <%--<label class='control-label col-sm-2'>子订单结束时间</label>--%>
-
-                            <%--<div class='col-sm-3 controls'>--%>
-                                <%--<input class="form-control required" id="form_bomInfo_endtime" info="fromInfo"--%>
-                                       <%--name="endtime" type="text" placeholder='子订单结束时间'/>--%>
-                                <%--<label class="textInfo"></label>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
                         <div class='form-group'>
                             <label class='control-label col-sm-2'>材料大小</label>
                             <div class='col-sm-3 controls'>
@@ -108,24 +106,25 @@
                                         name='cldx' placeholder=' ' type='text'>
                                 <div class="row " id="form_bomInfo_jx" >
                                     <label>长度(mm)</label>
-                                    <input style="border:1px solid lightgray;height:30px;width:50px;"  type="text" name="length" class=" " placeholder="">
-                                    <label>宽度(mm)</label><input  style="border:1px solid lightgray;height:30px;width:50px;"  type="text" name="width"
-                                                                 placeholder="">
-                                    <label>高度(mm)</label><input style="border:1px solid lightgray;height:30px;width:50px;"  type="text" name="height"
-                                                                 placeholder="">
+                                    <input class="requiredDecimal numkeyboard" style="border:1px solid lightgray;height:30px;width:50px;"  type="text" name="length" placeholder=""><span style="color:red;"></span>
+                                    <label>宽度(mm)</label><input class="requiredDecimal numkeyboard"  style="border:1px solid lightgray;height:30px;width:50px;"  type="text" name="width"
+                                                                 placeholder=""><span style="color:red;"></span>
+                                    <label>高度(mm)</label><input class="requiredDecimal numkeyboard" style="border:1px solid lightgray;height:30px;width:50px;"  type="text" name="height"
+                                                                 placeholder=""><span style="color:red;"></span>
                                 </div>
                                 <div class="row " id="form_bomInfo_yx"  hidden>
                                     <label>直径(mm)</label>
-                                    <input style="border:1px solid lightgray;height:30px;width:80px;" type="text" name="length" class=" " placeholder="">
+                                    <input  class="requiredDecimal numkeyboard" style="border:1px solid lightgray;height:30px;width:80px;" type="text" name="length" class=" " placeholder="">
+                                    <span style="color:red;"></span>
                                     <label>高度(mm)</label><input style="border:1px solid lightgray;height:30px;width:80px;" type="text" name="height"
-                                                                class="" placeholder="">
+                                                                class="requiredDecimal numkeyboard" placeholder=""><span style="color:red;"></span>
                                 </div>
                             </div>
                             <label class='control-label col-sm-2'>材料体积</label>
 
                             <div class='col-sm-2 controls '>
-                                <input class='form-control required' id='form_bomInfo_cltj' info="fromInfo"
-                                       name='cltj' placeholder=' ' type='text'>
+                                <input class='form-control ' id='form_bomInfo_cltj' info="fromInfo"
+                                       name='cltj' placeholder=' ' type='text'  class="requiredDecimal">
                                 <label class="textInfo"></label>
                             </div>
                             <div class='col-sm-2 controls '>
@@ -134,20 +133,39 @@
                             </div>
                         </div>
                         <div class='form-group'>
+                            <label class='control-label col-sm-2'>材料重量</label>
+
+                            <div class='col-sm-3 controls '>
+                                <input class='form-control ' id='form_bomInfo_clzl' info="fromInfo" name='clzl'
+                                       placeholder='材料重量'  class="requiredDecimal" type='text'>
+                                <label class="textInfo"></label>
+                            </div>
+
                             <label class='control-label col-sm-2'>材料金额</label>
 
                             <div class='col-sm-2 controls'>
                                 <input class='form-control' id='form_bomInfo_clje' info="fromInfo"
-                                       name='clje' placeholder=' ' type='text'>
+                                       name='clje' placeholder=' ' class="requiredDecimal" type='text'>
                             </div>
                             <div class='col-sm-1 controls '>
                                 <span>元</span>
                             </div>
+
+                        </div>
+                        <div class='form-group'>
+                            <label class='control-label col-sm-2'>备料件数</label>
+
+                            <div class='col-sm-3 controls '>
+                                <input class='form-control mustrequiredInteger numkeyboard' id='form_bomInfo_bljs' info="fromInfo" name='bljs'
+                                       placeholder='备料件数' type='text'>
+                                <label class="textInfo"></label>
+                            </div>
                             <label class='control-label col-sm-2'>图纸名称</label>
 
                             <div class='col-sm-3 controls '>
-                                <input class='form-control required' id='form_bomInfo_ddtz' info="fromInfo" name='ddtz'
-                                       placeholder='图纸名称' type='text'>
+                                <input class='form-control' id='form_bomInfo_ddtz' info="fromInfo" name='ddtz'
+                                       placeholder='图纸名称' readonly type='text'>
+                                <input id="form_bom_tz" class="btn btn-primary" type="button" value="图片选择">
                                 <label class="textInfo"></label>
                             </div>
                         </div>
@@ -170,7 +188,7 @@
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width:950px;height:500px;">
+    <div class="modal-dialog" style="width:950px;height:350px;">
         <div class="modal-content" style="height:90%;">
             <div class="modal-header">
                 <button id="modalClose" type="button" class="close"
@@ -179,7 +197,9 @@
                 </button>
             </div>
             <div class="modal-body" id="modal-body">
-               <div id="imageLoad"></div>
+                <div id="slider" class='box-content'>
+
+                </div>
             </div>
 
         </div>

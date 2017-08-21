@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>设备类型排产</title>
+    <link rel="stylesheet" href="../../js/plugin/jquery-easyui-1.4.3/themes/bootstrap/easyui.css" type="text/css"></link>
+    <link rel="stylesheet" href="../../js/plugin/jquery-easyui-1.4.3/themes/icon.css">
+</head>
+<body>
+    <!--设备排产统计图-->
+    <div id="sbpc" style="height:600px"></div>
+    <div id="pcglInfoWindow" title="排产信息" class="easyui-window" data-options="modal:true,closed:true,collapsible:false,maximizable:false,minimizable:false"  style="width:1000px;height:600px;padding:10px;">
+     <iframe id="pcglInfo" src="" style="  height: 450px;  width: 100%;  overflow-x: hidden;  overflow-y: hidden;  border: none;"></iframe>
+    </div>
+    <!-- jquery 引入 -->
+   <script type="text/javascript" src="../../js/jquery/jquery.min.js"></script>
+    <!-- ECharts单文件引入 -->
+    <script src="../../js/plugin/echarts-2.2.4/echarts-all.js"></script>
+   <script type="text/javascript" src="../../js/plugin/jquery-easyui-1.4.3/jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+
+    	var json = null;
+
+        // 基于准备好的dom，初始化echarts图表
+        var myChart = echarts.init(document.getElementById('sbpc'));
+		var colorList = new Array();
+        var colorArray = [
+                         '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+                          '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+                          '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+                       ];
+        var key=new Array();;
+        var value=new Array();
+        var dataArray = null;
+        var option = {
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {
+                    type: 'shadow'
+                }
+            },
+            toolbox: {
+                show : true,
+                orient : 'vertical',
+                y : 'center',
+                feature : {
+                    mark : {show: true},
+                    magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            xAxis : [
+                {
+                    type : 'category'
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    splitArea : {show : true},
+                    min:0,
+                    max:5,
+                    axisLabel : {
+                        formatter: function (value) {
+                            var date1 = new Date();
+                            var date2 = new Date();
+                            date2.setDate(date1.getDate()+value);
+                            var times = date2.getFullYear()+"-"+(date2.getMonth()+1)+"-"+date2.getDate();
+
+                            return times+'日';
+                        }
+                    }
+                }
+            ],
+            grid: {
+                x2:40
+            },
+            series : [
+                {
+                    name:'排产天数',
+                    type:'bar',
+                    stack: '总量 ',
+                    itemStyle: {
+                        normal: {
+                            color:function(params) {
+                                return 'skyblue'
+                            },
+                            label: {
+                                show: true,
+                                position: 'top',
+                                formatter: '{b}\n{c}天'
+                            },
+                            barBorderRadius: 5
+                        },
+                        emphasis: {
+                            barBorderRadius: 5
+                        }
+                    },
+                    data:[]
+                }
+            ]
+        };
+
+        $(function (){
+    		initCharts();
+    	});
+		function initCharts(){
+
+			$.ajax({
+				  type: "post",
+				  url: "pcgl_getPcSbLx.action",
+				  dataType: "json",
+				  data:{
+				  	"bzid":''
+				  },
+				  success:function(dt){
+				  	var currentc = null;
+				  	var ck = 0;
+				  	dataArray = dt;
+				  	for(var i = 0;i<dt.length;i++){
+				  		if(currentc!=dt[i].c){
+				  			ck++;
+				  			colorList.push(colorArray[ck]);
+				  			currentc = dt[i].c;
+				  		}else{
+				  			colorList.push(colorArray[ck]);
+				  		}
+
+				  		key.push(dt[i].k);
+				  		value.push(dt[i].t);
+
+				  	}
+				  	json = dt;
+				  	option.xAxis[0].data = key;
+
+        			option.series[0].data = value;
+
+       		 		myChart.setOption(option);
+				  }
+			});
+		}
+
+        myChart.on(echarts.config.EVENT.CLICK, function(param){
+        	//$('#pcglInfoWindow').window('open')
+
+      		//$("#pcglInfo").attr("src","gxSbManager.jsp?sbid="+json[param.dataIndex].id)
+       });
+    </script>
+</body>

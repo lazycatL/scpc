@@ -385,7 +385,7 @@
 						this.saveXtqx(userisn);
 					break;
 					default:
-						alert("出错！");
+                        Main.ShowErrorMessage("出错！");
 					break;
 				}
 				
@@ -499,7 +499,7 @@
 			updateUserInfo :function(jsonstr){
 				 var url = "user_updateUserInfo.action", JSON=jsonstr,successFun = function(resStr){
                         if (resStr == "SUCCESS") {
-							alert("保存成功！");
+                            Main.ShowSuccessMessage("保存成功！");
                             $('#detail_grid').datagrid("reload");
                         }
                 } ;
@@ -512,7 +512,7 @@
 			addUserInfo :function(jsonstr){
 				 var url = "user_addUserInfo.action", JSON=jsonstr,successFun = function(resStr){
                         if (resStr == "SUCCESS") {
-							alert("保存成功！");
+                            Main.ShowSuccessMessage("保存成功！");
                             $('#detail_grid').datagrid("reload");
                         }
                 } ;
@@ -525,7 +525,7 @@
 			checkUserIsn :function(userisn){
 				 var url = "user_checkUserIsn.action", successFun = function(resStr){
                         if (resStr == "REPEAT") {
-                            alert("用户名已存在！");
+                            Main.ShowErrorMessage("用户名已存在！");
                         }
                 } ;
                 $.CommonFun.asyncAjaxPost(url, {"userisn": userisn}, successFun, true);
@@ -614,9 +614,9 @@
 				var jsonStr = $.toJsonString(node);
 				var url = "user_getCheckWxjdNode.action", successFun = function(str){
 					if(str == "SUCCESS"){
-						alert("保存成功!");
+                        Main.ShowSuccessMessage("保存成功!");
 					}else{
-						alert("保存失败!");
+                        Main.ShoErrorMessage("保存失败!");
 					}
                 } ;
                 $.CommonFun.asyncAjaxPost(url,{"nodes":jsonStr,"userisn":userisn,"wxisn":wxisn}, successFun, true);
@@ -872,9 +872,9 @@
 				var jsonStr = $.toJsonString(nodeArr);
 				var url = "user_saveUserWgxtRole.action", successFun = function(str){
 					if(str == "SUCCESS"){
-						alert("保存成功!");
+                        Main.ShowSuccessMessage("保存成功!");
 					}else{
-						alert("保存失败!");
+                        Main.ShowErrorMessage("保存失败!");
 					}
                 } ;
                 $.CommonFun.asyncAjaxPost(url,{"json":jsonStr,"userisn":userisn,"wgxtisn":wgxtisn}, successFun, true);				

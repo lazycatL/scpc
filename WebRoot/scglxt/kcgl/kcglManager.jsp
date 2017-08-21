@@ -12,6 +12,7 @@
             <div class='box bordered-box ' style='margin-bottom: 0;'>
                 <div class='box-header'>
                     <div class='title'> 备料库存管理</div>
+                    <button id="form_export" class="btn btn-success btn-sm"><i class="icon-add"></i> 导出</button>
                     <div class='actions'><a class="btn box-remove btn-xs btn-link" href="#"><i class='icon-remove'></i>
                     </a> <a class="btn box-collapse btn-xs btn-link" href="#"><i></i> </a></div>
                 </div>
@@ -24,33 +25,15 @@
                                 <tr>
                                     <th class="serial">序号</th>
                                     <th style="width:180px;"> 备料情况</th>
-                                 
-                                    <th> 子订单名称</th>
-                                    <th> 材料状态</th>
+                                    <th> 订单名称</th>
+                                    <th> 零件名称</th>
                                     <th> 材料名称</th>
-                                    <th> 工序内容</th>
-                                    <th> 料的形状</th>
+                                    <th>备料件数</th>
                                     <th> 料的大小</th>
+                                    <th> 料的形状</th>
                                     <th> 料的体积</th>
                                     <th> 料的金额</th>
                                     <th> 加工数量</th>
-                                    <th> 表面处理</th>
-                                    <th> 子订单开始时间</th>
-                                    <th> 子订单结束时间</th>
-                                    <th> 子订单工时</th>
-
-                                    <th> 备料开始时间</th>
-                                    <th> 备料结束时间</th>
-
-                                    <th> 采购人员</th>
-                                    <th> 采购商家</th>
-                                    <th> 子订单图纸</th>
-                                    <th> 入库时间</th>
-                                    <th>
-                                        报废件数
-                                    </th>
-                                    <th>
-                                        不合格件数
                                     </th>
                                 </tr>
                                 </thead>
@@ -65,17 +48,18 @@
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width:750px;height:500px;">
+    <div class="modal-dialog" style="width:400px;height:240px;">
         <div class="modal-content" style="height:90%;">
             <div class="modal-header">
-                <button type="button" class="close"
-                        data-dismiss="modal" aria-hidden="true" style="margin-top:-10px">
+                <h5 class="modal-title" id="myModalLabel"><b>填写采购建议</b></h5>
+                <button type="button" class="close"data-dismiss="modal" aria-hidden="true" style="margin-top:-25px">
                     &times;
                 </button>
             </div>
             <div class="modal-body" id="modal-body">
+                <textarea id="cgjy" cols="55" rows="5"></textarea>
+                <input id="btn_saveCyy" style="margin-left: 200px;" onclick="CgglManager.addCgjy();" class="btn" type="button" value="保存">
             </div>
-
         </div>
         <!-- /.modal-content -->
     </div>
@@ -106,7 +90,10 @@
                         $("#form_add").on('click', function () {
                             Main.swapIframUrl('scglxt/jsgl/editBomInfo.jsp');
                             /*跳转iframe页面*/
-                        })
+                        });
+                        $("#form_export").on('click', function () {
+                            CgglManager.exportData();
+                        });
                         $(".blqk input[type='radio']").live("change",function(e){
                             e.stopPropagation();
                             var rowid = $(this).attr("name") ;
@@ -116,9 +103,7 @@
                     },
                     /** 初始化表格函数 */
                     tableInit = function (ssdd) {
-
                         var table = $('#bomInfo').DataTable({
-                          
                             "bLengthChange": false,
                             "oLanguage": {
                                 "sProcessing": "正在加载中......",
@@ -131,76 +116,97 @@
                                 "oPaginate": {"sFirst": "首页", "sPrevious": "上一页", "sNext": "下一页", "sLast": "末页"}
                             },
                             "aLengthMenu": [20, 30],
-                            "ajax": "bomInfo_getTableData.action?ssdd=" + ssdd + "&cggl=true",
+                            "ajax": "bomInfo_getTableData.action?ssdd=" + ssdd + "&kcgl=true",
                             scrollY: "disabled",
                             scrollX: true, /*scrollCollapse: false,*/
                             paging: true,
 
                             "columnDefs": [{
                                 "render": function (data, type, row) {
-                                   if (row.blqk == null || row.blqk == "0"||row.blqk=="") {
+                                   if (row.clzt == null ||row.clzt=="") {
                                         return ' <div class="blqk text-center"><input type="radio" value=1    name="'+row.id+'"/> 完成' +
-                                                '<input type="radio" value=0 checked  name="'+row.id+'"/>待采购  '  +
+                                                '<input type="radio" value=0  name="'+row.id+'"/>待采购  '  +
                                                 '<input type="radio" value=2   name="'+row.id+'"/>自备料 </div>';
-                                    } else if (row.blqk == "1") {
+                                    }else if (row.clzt=='0')
+                                   {
+                                       return ' <div class="blqk text-center"><input type="radio" value=1    name="'+row.id+'"/> 完成' +
+                                               '<div class="blqk text-center" style="color:green">待采购,<a href="javascript:CgglManager.stock(\''+row.id+'\')">填写采购建议</a></div>' ;
+                                   }else if (row.clzt == "1") {
                                         return '<div class="blqk text-center" style="color:green">已完成</div>' ;
-                                    }else if(row.blqk == "2"){
+                                    }else if(row.clzt == "2"){
                                         return ' <div class="blqk text-center" style="color:green">自备料 </div>' ;
-                                    }
+                                    }else{
+                                       return ' <div class="blqk text-center"><input type="radio" value=2 name="'+row.id+'"/> 完成 <span style="color:#fff;" class="label-default" style="color:green">自带料 </span></div>' ;
+                                   }
 
                                 }, "targets": [1]
-                            },
-                                {
 
-                                    "render": function (data, type, row) {
-                                        if (data == 1) {
-                                            return '<span class="label label-default">采购完成</span>';
-                                        } else {
-                                            return '<span class="label label-danger">未采购</span>';
-                                        }
-                                    },
-                                    "targets": [3]
-                                },
-                                {
-                                    "render": function (data, type, row) {
-                                        var str = "";
-                                        if(data=='1'){
-                                            str =  "长方体" ;
-                                        }else if(data=='2'){
-                                            str = "圆柱体" ;
-                                        }
-                                        return str ;
-                                    }, "targets":[6]
-                                },
+                            }, {
+                                "render": function ( data, type, row ) {
+                                    var jb=row.zddjb;
+                                    if (jb=="0601") {
+                                        return '<span class="label label-danger">'+row.zddmc+'</span>';
+                                    }else if(jb=="0602")
+                                    {
+                                        return '<span class="label label-warning">'+row.zddmc+'</span>';
+                                    }else{
+                                        return '<span>'+row.zddmc+'</span>';
+                                    }
+                                }, "targets": 3
+                            },{
+                                "render": function ( data, type, row )  {
+                                    var date = new Date();
+                                    var now="";
+                                    now = date.getFullYear() + "/";
+                                    now = now + (date.getMonth() + 1) + "/";  //取月的时候取的是当前月-1如果想取当前月+1就可以了
+                                    now = now + date.getDate() + " ";
+                                    // var cha = Math.round(( Date.parse(data['ddendtime'])-Date.parse(now) ) / 86400000)+1;
+                                    var cha=$.DateDiff(now,row.ddendtime);
+                                    if( cha<=0)
+                                    {
+                                        return data;
+                                    }
+                                    else if ( cha<=3 ) {
+                                        //$('td', row).eq(3).css('font-weight',"bold").css("background","red").css("color","#FFF");;
+                                        return '<span class="label label-danger">'+data+'</span>';
+                                    }else if(cha <7)
+                                    {
+                                        return '<span class="label label-warning">'+data+'</span>';
+                                    }else{
+                                        return data;
+                                    }
+                                }, "targets": 2
+                            }
                             ],
                             "columns": [
                                 {"data": null, "sWidth": "60px"},
-                             
-                                {"data": "blqk" ,"sWidth": "160px"},
-
-                                {"data": "zddmc", "sWidth": "120px"},
-                                {"data": "clzt", "sWidth": "120px"},
+                                {"data": "clzt" ,"sWidth": "160px"},
+                                {"data": "ddmc", "sWidth": "120px","visible":true},
+                                {"data": "zddmc", "sWidth": "130px"},
                                 {"data": "clmc", "sWidth": "120px"},
-                                {"data": "gxnr", "sWidth": "300px"},
-                                {"data": "clxz"},
+                                {"data": "bljs", "sWidth": "60px"},
                                 {"data": "cldx"},
+                                {"data": "clxz"},
                                 {"data": "cltj"},
                                 {"data": "clje"},
-                                {"data": "jgsl"},
-                                {"data": "bmcl"},
-                                {"data": "starttime", "sWidth": "120px"},
-                                {"data": "endtime", "sWidth": "120px"},
-                                {"data": "gs", "sWidth": "120px"},
-                                {"data": "blkssj", "sWidth": "120px"},
-                                {"data": "bljssj", "sWidth": "120px"},
+                                {"data": "jgsl"}
+                            ],"drawCallback": function(settings) {
+                                var api = this.api();
+                                var rows = api.rows({
+                                    page: 'current'
+                                }).nodes();
+                                var last = null;
 
-                                {"data": "cgry"},
-                                {"data": "cgsj"},
-                                {"data": "rksj", "sWidth": "120px"},
-                                {"data": "ddtz", "sWidth": "120px"},
-                                {"data": "bfjs"},
-                                {"data": "bhgjs", "sWidth": "120px"},
-                            ]
+                                api.column(2, {
+                                    page: 'current'
+                                }).data().each(function(group, i) {
+                                    if (last !== group) {
+                                        $(rows).eq(i).before('<tr class="group"><td colspan="10">' + group + '</td></tr>');
+
+                                        last = group;
+                                    }
+                                });
+                            }
 
                         });
 
@@ -214,34 +220,52 @@
 
                     },
                     stock = function (id) {
-/*                        var url = "../jsgl/bomInfo_updateBlzk.action", successFun = function (resStr) {
+                        $("#cgjy").attr("bomid",id);
+                        $('#myModal').modal({
+                            backdrop: false,
+                            show: true
+                        });
+                    },
+                    //添加采购建议
+                    addCgjy=function()
+                    {
+                        var cgjy=$("#cgjy").val();
+                        var id=$("#cgjy").attr("bomid");
+                        if(cgjy=="" || cgjy == null)
+                        {
+                            Main.ShowErrorMessage("采购意见不能为空！");
+                            return;
+                        }
+                        var url = "../jsgl/bomInfo_updateBlzkCgjy.action", successFun = function (resStr) {
                             if (resStr == "SUCCESS") {
-                                alert("更新库存成功！");
-                                window.location.reload();
-
+                                Main.ShowSuccessMessage("添加采购建议成功！");
+                                $('#myModal').modal('hide');
                             }
                         };
-                        if (confirm("确定更行库存？")) {
-                            $.asyncAjaxPost(url, {"id": id}, successFun, true);
-                        }*/
-
+                        $.asyncAjaxPost(url, {"id": id ,"cgjy" :cgjy}, successFun, true);
                     },
                     changeBlqk = function(rowid ,blqk ){
                         var url = "../jsgl/bomInfo_updateBlzk.action", successFun = function (resStr) {
                             if (resStr == "SUCCESS") {
-                                alert("更新库存成功！");
-//                                window.location.reload();
+                                Main.ShowSuccessMessage("更新库存成功！");
+                                //$('#bomInfo').dataTable().fnDraw(true);
+                                $('#bomInfo').DataTable().ajax.reload(function(){},true);
                             }
                         };
                         $.asyncAjaxPost(url, {"id": rowid ,"blqk" :blqk}, successFun, true);
                     }
-
+                        /**数据导出*/
+                        exportData = function(){
+                            var params="tableId=010404";
+                            window.location.href='../../resmgr_exportResourceData.action?'+params;
+                        } ;
                     ;
 
             return {
                 init: init,
-                stock: stock
-
+                stock: stock,
+                addCgjy:addCgjy,
+                exportData:exportData
             }
         })();
 
@@ -251,6 +275,11 @@
 
     $(document).ready(function () {
         CgglManager.init();
+        //定时器每10秒刷新table如果有新的工作自动更新
+        setInterval(function(){
+            //$('#bomInfo').DataTable().ajax.reload(function(){},true);
+            $('#bomInfo').dataTable().fnDraw(true);
+        },5000);
     });
 
 

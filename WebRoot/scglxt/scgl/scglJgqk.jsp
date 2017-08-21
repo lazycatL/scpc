@@ -17,7 +17,7 @@
 		  url: "xsgl_deleteRyInfo.action",
 		  dataType: "text",
 		  data:{
-		  	"id":id,
+		  	"id":id
 		  },
 		  success:function(dt){
 		  	alert(dt);
@@ -51,22 +51,23 @@
         },
         aLengthMenu:[15,30],
 		ajax:"pcgl_getZtJgQk.action",
-		scrollY:        "380px",
+		scrollY:        "500px",
 		scrollX:        true,
 		scrollCollapse: false,
 		paging:         true,
         columns: [
         	{"data":null,"sWidth":"40px"},
+            { "data": "ddmc","sWidth":"120px"},
         	{ "data": "zddmc","sWidth":"120px"},
         	{ "data": "gynr","sWidth":"120px"},
             { "data": "jgry","sWidth":"80px"},
             { "data": "jgjs" ,"sWidth":"80px"},
             { "data": "bfjs" ,"sWidth":"80px"},
             { "data": "sbmc" ,"sWidth":"80px"},
+            { "data": "edgs" ,"sWidth":"80px"},
+            { "data": "sjgs" ,"sWidth":"80px"},
             { "data": "jgkssj" ,"sWidth":"120px"},
-            { "data": "jgjssj" ,"sWidth":"120px"},
-            { "data": "jyry" ,"sWidth":"80px"},
-            { "data": "jysj" ,"sWidth":"120px"}
+            { "data": "jgjssj" ,"sWidth":"120px"}
         ]
        
 	} );
@@ -85,7 +86,10 @@
 	**/
 	$(document).ready(function() {
 	
-		tableInit()
+		tableInit();
+        $("#form_export").on('click', function () {
+                window.location.href='../resmgr_exportResourceData.action?tableId=0401';
+        });
 	} );
 </script>
 
@@ -95,7 +99,8 @@
 							<div class='col-sm-12'>
 								<div class='box bordered-box orange-border'
 									style='margin-bottom: 0;'>
-									<div class='box-header'>								
+									<div class='box-header'>
+                                        <button id="form_export" class="btn btn-success btn-sm"><i class="icon-add"></i> 导出</button>
 										<div class='title'>
 											生产加工情况
 										</div>
@@ -114,6 +119,9 @@
 														<tr>
 															<th>
 															</th>
+                                                            <th>
+                                                                订单名称
+                                                            </th>
 															<th>
 																子订单名称
 															</th>
@@ -132,17 +140,17 @@
 															<th>
 																所用设备
 															</th>
+                                                            <th>
+                                                                额定工时
+                                                            </th>
+                                                            <th>
+                                                                实际工时
+                                                            </th>
 															<th>
 																开始时间
 															</th>
 															<th>
 																结束时间
-															</th>
-															<th>
-																检验人员
-															</th>
-															<th>
-																检验时间
 															</th>
 														</tr>
 													</thead>

@@ -24,14 +24,32 @@
         <listener-class>org.apache.axis.transport.http.AxisHTTPSessionListener</listener-class>
     </listener>
     <servlet>
+        <servlet-name>FolderReadServlet</servlet-name>
+        <servlet-class>
+            com.project.util.FolderReadAction
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FolderReadServlet</servlet-name>
+        <url-pattern>/FolderReadServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>ImageUploadServlet</servlet-name>
         <servlet-class>
-            com.project.util.UploadAction
+            com.project.common.action.UploadAction
         </servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ImageUploadServlet</servlet-name>
         <url-pattern>/ImageUploadServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ExcelExportServlet</servlet-name>
+        <servlet-class>com.project.util.ExcelExportUtil</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExcelExportServlet</servlet-name>
+        <url-pattern>/excelExportServlet</url-pattern>
     </servlet-mapping>
   <servlet>
     <servlet-name>AxisServlet</servlet-name>
@@ -135,6 +153,16 @@
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
+    <filter>
+        <filter-name>cors</filter-name>
+        <filter-class>com.project.commonModel.util.myCORSFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>cors</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 	<!-- session过滤器 -->
 	<!-- 
 	 <filter>  

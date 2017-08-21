@@ -10,7 +10,9 @@
     <div  id='content-wrapper'>
             <div class='box bordered-box ' style='margin-bottom: 0;'>
                 <div class='box-header'>
+
                     <div class='title'> 订单采购管理</div>
+                    <button id="form_export" class="btn btn-success btn-sm"><i class="icon-add"></i> 导出</button>
                     <div class='actions'><a class="btn box-remove btn-xs btn-link" href="#"><i class='icon-remove'></i>
                     </a> <a class="btn box-collapse btn-xs btn-link" href="#"><i></i> </a></div>
                 </div>
@@ -23,33 +25,17 @@
                                 <tr>
                                     <th class="serial"></th>
                                     <th style="width:120px;"> 材料状态</th>
-                                    <th> 子订单名称</th>
-                                    <th> 备料情况</th>
+                                    <th>订单名称</th>
+                                    <th>零件名称</th>
                                     <th> 材料名称</th>
-                                    <th> 工序内容</th>
                                     <th> 料的形状</th>
                                     <th> 料的大小</th>
+                                    <th> 备料件数</th>
+                                    <th> 加工数量</th>
                                     <th> 料的体积</th>
                                     <th> 料的金额</th>
-                                    <th> 加工数量</th>
                                     <th> 表面处理</th>
-                                    <th> 子订单开始时间</th>
-                                    <th> 子订单结束时间</th>
-                                    <th> 子订单工时</th>
-
-                                    <th> 备料开始时间</th>
-                                    <th> 备料结束时间</th>
-
-                                    <th> 采购人员</th>
-                                    <th> 采购商家</th>
-                                    <th> 子订单图纸</th>
-                                    <th> 入库时间</th>
-                                    <th>
-                                        报废件数
-                                    </th>
-                                    <th>
-                                        不合格件数
-                                    </th>
+                                    <th> 采购建议</th>
                                 </tr>
                                 </thead>
                             </table>
@@ -96,6 +82,9 @@
                         }
                         tableInit(ssdd);
                         registerEvent();
+                        $("#form_export").on('click', function () {
+                            CgglManager.exportData();
+                        });
 
                     },
 
@@ -137,70 +126,45 @@
                             "columnDefs": [{
                                 "render": function (data, type, row) {
 
-                                    if (row.blqk == null || row.blqk == "0" ||row.blqk == "") {
+                                    if (row.clzt == null ||row.clzt == "0" ||row.clzt == "") {
                                         return ' <div class="clzt text-center"><input type="radio" value=1    name="' + row.id + '"/> 已采购' +
                                                 '<input type="radio" value=0 checked  name="' + row.id + '"/>未采购  ' +
                                                 ' </div>';
-                                    } else if (row.blqk == "1") {
+                                    } else if (row.clzt == "1") {
                                         return '<div class="text-center" style="color:green">已完成</div>';
                                     }else{
-                                    	
                                     	return '<div class="text-center" style="color:green">自备料</div>';
                                     }
 
                                 }, "targets": 1
-                            },
-                                {
-
-                                    "render": function (data, type, row) {
-                                        console.log(data);
-                                        if (data == 1 || data == 2) {
-                                            return '<span class="label label-default">备料完成</span>';
-                                        } else   {
-                                            return '<span class="label label-danger">备料未完成</span>';
-                                        }
-                                    },
-                                    "targets": 3
-                                },
-                                {
-                            "render": function (data, type, row) {
-                                var str = "";
-                                if(data=='1'){
-                                    str =  "长方体" ;
-                                }else if(data=='2'){
-                                    str = "圆柱体" ;
-                                }
-                                console.log(data);
-                                return str ;
-                            }, "targets": 7
-                        },
-                                
+                            }, {
+                                "render": function ( data, type, row ) {
+                                    var jb=row.zddjb;
+                                    if (jb=="0601") {
+                                        return '<span class="label">'+row.zddmc+'</span>';
+                                    }else if(jb=="0602")
+                                    {
+                                        return '<span class="label">'+row.zddmc+'</span>';
+                                    }else{
+                                        return '<span>'+row.zddmc+'</span>';
+                                    }
+                                }, "targets": 3
+                            }
                             ],
                             "columns": [
                                 {"data": null, "sWidth": "60px"},
-                                {"data": "clzt", "sWidth": "160px"},
-                                {"data": "zddmc", "sWidth": "120px"},
                                 {"data": "blqk", "sWidth": "120px"},
+                                {"data": "ddmc", "sWidth": "120px"},
+                                {"data": "zddmc", "sWidth": "120px"},
                                 {"data": "clmc", "sWidth": "120px"},
-                                {"data": "gxnr", "sWidth": "300px"},
                                 {"data": "clxz"},
                                 {"data": "cldx"},
+                                {"data": "bljs"},
+                                {"data": "jgsl"},
                                 {"data": "cltj"},
                                 {"data": "clje"},
-                                {"data": "jgsl"},
                                 {"data": "bmcl"},
-                                {"data": "starttime", "sWidth": "120px"},
-                                {"data": "endtime", "sWidth": "120px"},
-                                {"data": "gs", "sWidth": "120px"},
-                                {"data": "blkssj", "sWidth": "120px"},
-                                {"data": "bljssj", "sWidth": "120px"},
-
-                                {"data": "cgry"},
-                                {"data": "cgsj"},
-                                {"data": "rksj", "sWidth": "120px"},
-                                {"data": "ddtz", "sWidth": "120px"},
-                                {"data": "bfjs"},
-                                {"data": "bhgjs", "sWidth": "120px"},
+                                {"data": "cgsj"}
                             ]
 
                         });
@@ -219,17 +183,22 @@
                     changeClzt = function (rowid, clzt) {
                         var url = "../jsgl/bomInfo_changeStatusClzt.action", successFun = function (resStr) {
                             if (resStr == "SUCCESS") {
-                                alert("更新采购状态成功！");
+                                Main.ShowSuccessMessage("更新采购状态成功!");
+                                $('#bomInfo').DataTable().ajax.reload(function(){},true);
                             }
                         };
                         $.asyncAjaxPost(url, {"id": rowid, "clzt": clzt}, successFun, true);
-                    }
-
-                    ;
+                    },
+                    /**数据导出*/
+                    exportData = function(){
+                        var params="tableId=010402";
+                        window.location.href='../resmgr_exportResourceData.action?'+params;
+                    } ;
 
             return {
                 init: init,
-                stock: stock
+                stock: stock,
+                exportData:exportData
 
             }
         })();
@@ -240,6 +209,10 @@
 
     $(document).ready(function () {
         CgglManager.init();
+        setInterval(function(){
+            //$('#bomInfo').DataTable().ajax.reload(function(){},true);
+            $('#bomInfo').dataTable().fnDraw();
+        },5000);
     });
 
 

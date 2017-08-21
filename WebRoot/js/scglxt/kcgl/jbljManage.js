@@ -71,20 +71,18 @@
 		                ' </div>';
 		            },
 		            "targets": 1
-		        },
-		        { "visible": false,  "targets": [ 2 ] }
+		        }
 		    ],
 		    "columns": [
 		    	    	{"data":null,"sWidth":"60px"},
 				    	{"data":'id', "sWidth":"100px"},
-				    	//{ "data": "id" },
 				        { "data": "mc" } ,
 				        { "data": "lx" },
 				        { "data": "cc" },
 				        { "data": "zsl" },
 				        { "data": "kcsl" },
 				        { "data": "dj" },
-				        { "data": "ghs" },
+				        { "data": "ghs" }
 		        
 		    ]
 		   
@@ -107,7 +105,7 @@
                  if (resStr.toUpperCase() == "SUCCESS") {
 	     			  	window.location.reload(); 
 	    			  	$("#sorting-advanced").dataTable().fnPageChange( 'previous', true );
-						alert("保存成功！");
+                        Main.ShowSuccessMessage("保存成功！");
                  }
          } ;
          if(confirm("是否删除？")){

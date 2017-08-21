@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="../../js/plugin/bootstrap/css/bootstrap.css" type="text/css"></link>
 
 <!-- jquery ui css 引入 -->
-
 <link rel="stylesheet" href="../../js/plugin/jquery-easyui-1.4.3/themes/bootstrap/easyui.css" type="text/css"></link>
 <!-- jquery-ui的JS -->
 <script type="text/javascript" src="../../js/plugin/jquery-easyui-1.4.3/jquery.easyui.min.js"></script>
@@ -128,7 +127,7 @@
             show: true
         });
         //在modalbody 中家在iframe 内容为 工序编排的内容
-        $content = "<iframe src='/scglxt/jsgl/gygcManager.jsp?bomid=" + data + "' class='modal_iframe'></iframe>";
+        $content = "<iframe src='../jsgl/gygcManager.jsp?type=read&bomid=" + data + "' class='modal_iframe'></iframe>";
         $container = $('#modal-body');
         $container.empty().append($content);
     }
@@ -161,33 +160,97 @@
             {
                 "render": function ( data, type, row ) {
                     if (row.kjgjs != "0") {
-                            return '<div class="text-center">  <a class=" " href="#" title="工序编排" ' +
-                            'onclick = "showModel(\'' + row.bomid + '\')"> 工艺编排</a>&nbsp;&nbsp;' +
-                            ' <a class=" "  TARGET="viewer"  href="http://' + window.location.hostname + '/uploadFile/' + row.xmname + "/" + row.ddtz + '" title="图纸" ' +
-                            '> 图纸</a>&nbsp;&nbsp;'
-                            + '<a href="#" onclick="jgryksjgWindowOpen(' + "\'" + data + "\'" + ')">开始</a>&nbsp;&nbsp;<a href="#" onclick="jgryJgJs(' + "\'" + data + "\'" + ')">结束</a></div>';
+                         var text= '';
+                        if (row.yjgcount == "0")
+                        {
+                            //text+= '<a href="#" onclick="jgryksjgWindowOpen(' + "\'" + data + "\'" + ')">开始</a>&nbsp;&nbsp;<a href="#" disabled="true" onclick="jgryJgJs(' + "\'" + data + "\'" + ')">结束</a></div>';
+                            text+='<button class="btn btn-primary " onclick="jgryksjgWindowOpen(' + "\'" + data + "\'" + ')"> <span class="glyphicon glyphicon-play"></span>开始</button>   &nbsp; ';
+                            text+='<button class="btn btn-primary" onclick="jgryJgJs(' + "\'" + data + "\',\'"+row.djgjs+"\'" + ')"> <span class="glyphicon glyphicon-stop"></span>结束</button> ';
+                            //text+='<img style="" src="../../images/start-1.png">';
+                        }else{
+                            //text+= '<a href="#" disabled="true" onclick="jgryksjgWindowOpen(' + "\'" + data + "\'" + ')">开始</a>&nbsp;&nbsp;<a href="#" onclick="jgryJgJs(' + "\'" + data + "\'" + ')">结束</a></div>';
+                            text+='<button class="btn btn-primary " onclick="jgryksjgWindowOpen(' + "\'" + data + "\'" + ')"> <span class="glyphicon glyphicon-play"></span>开始</button>   &nbsp; ';
+                            text+='<button class="btn btn-primary" onclick="jgryJgJs(' + "\'" + data + "\',\'"+row.djgjs+"\'" + ')"> <span class="glyphicon glyphicon-stop"></span>结束</button> ';
+                            text+='<img  style="width:30px;" src="../../images/time.gif">';
+                        }
+                        return text;
                     }else{
                         return '<span></span>';
                     }
                 },
                 "targets": 1
+            },
+            {
+                "render": function ( data, type, row ) {
+                    var text= '<div class="text-center">  <a class=" " href="#" title="工序编排" ' +
+                            'onclick = "showModel(\'' + row.bomid + '\')"> 工艺编排</a>&nbsp;&nbsp;';
+                    if(row.tzlx!=null && row.tzlx!="")
+                    {
+                        if(row.tzlx.toUpperCase().indexOf("JPG")!=-1 || row.tzlx.toUpperCase().indexOf("PNG")!=-1 || row.tzlx.toUpperCase().indexOf("GIF")!=-1)
+                        {
+                            text+=' <a class=" "  TARGET="viewer"  href="../lctImg.html?img=' + row.tzurl + '" title="图纸">图纸</a>';
+                        }else{
+                            text+=' <a class=""  TARGET="viewer"  href="../../'+ row.tzurl + '" title="图纸">图纸</a>';
+                        }
+                    }
+                    return text;
+
+                },
+                "targets": 2
+            },
+            {
+                    "render": function ( data, type, row ) {
+                    var jb=row.zddjb;
+                    if (jb=="0601") {
+                        return '<span class="label label-danger">'+row.zddmc+'</span>';
+                    }else if(jb=="0602")
+                    {
+                        return '<span class="label label-warning">'+row.zddmc+'</span>';
+                    }else{
+                        return '<span>'+row.zddmc+'</span>';
+                    }
+                }, "targets": 4
+            },
+            {
+                "render": function (data, type, row) {
+                    var date = new Date();
+                    var now = "";
+                    now = date.getFullYear() + "/";
+                    now = now + (date.getMonth() + 1) + "/";  //取月的时候取的是当前月-1如果想取当前月+1就可以了
+                    now = now + date.getDate() + " ";
+                    // var cha = Math.round(( Date.parse(data['ddendtime'])-Date.parse(now) ) / 86400000)+1;
+                    var cha = $.DateDiff(now, row.ddjssj);
+                    if (cha <= 0) {
+                        return data ;
+                    }
+                    else if (cha <= 3) {
+                        //$('td', row).eq(3).css('font-weight',"bold").css("background","red").css("color","#FFF");;
+                        return '<span class="label label-danger">' + data + '</span>';
+                    } else if (cha < 7) {
+                        return '<span class="label label-warning">' + data + '</span>';
+                    } else {
+                        return data;
+                    }
+                }, "targets": 3
             }
         ],
         "columns": [
-             {"data": null,"sWidth": "30px"},
-             {"data": 'id',"sWidth": "150px"},
-             {"data": "zddmc", "sWidth": "120px"}, 
+             {"data": null},
+            {"data": 'id',"sWidth": "220px"},
+             {"data": 'id',"sWidth": "130px"},
+            {"data": "ddmc", "sWidth": "120px"},
+            {"data": "zddmc", "sWidth": "120px"},
+            {"data": "clmc", "sWidth": "80px"},
              {"data": "bmcl","sWidth": "80px"},
-             {"data": "jhkssj","sWidth": "100px"},
-             {"data": "jhjssj","sWidth": "100px"},
-             {"data": "gs", "sWidth": "40px"},
-             {"data": "gymc", "sWidth": "100px"},
-            {"data": "jgsl", "sWidth": "60px"},
-            {"data": "kjgjs", "sWidth": "60px"},
-             {"data": "yjgjs", "sWidth": "60px"},
-             {"data": "bfjs", "sWidth": "80px"},
-             {"data": "djgjs", "sWidth": "80px"},
-             {"data": "sjjs", "sWidth": "100px"}
+             {"data": "ddjssj","sWidth": "100px"},
+             {"data": "gs"},
+             {"data": "gymc"},
+            {"data": "jgsl"},
+            {"data": "kjgjs"},
+             {"data": "yjgjs"},
+             {"data": "bfjs"},
+             {"data": "djgjs"},
+             {"data": "sjjs"}
         ]
        
 	} );
@@ -202,56 +265,58 @@
 	}
 	
 	
-	function jgryJgJs(data){
-		
-		
-		yksjgryjs(data);	
+	function jgryJgJs(data,kjgsl){
+		yksjgryjs(data,kjgsl);
 		$('#dlg').dialog('open');
 		gygcid = data;
-		$('#jgsb').val('')
+        $('#jgjs').val('');
+		$('#jgsb').val('');
 		
 	}
 	
-	function yksjgryjs(data){
-		
-		
+	function yksjgryjs(data,kjgsl){
 		$.ajax({
             type: "post",
             url: "pcgl_getYksGyJgry.action",
             dataType: "json",
             data:{
-            	
             	gygcid:data
             },
             success: function (dt) {
-
             	 $("#dlg-buttons").html('');
             	 $('#jgsb').val('')
-            	 for (var i = 0; i < dt.length; i++) {
-            		 
-            		  var html = "<a href='#' onclick='saveSj(event)' class='btn' id=js"+dt[i].id+">"+dt[i].mc+"</a>";
-                      $("#dlg-buttons").append(html);
-                 }
-            	
+                if(dt.length>0){
+                     for (var i = 0; i < dt.length; i++) {
+                          var html = "<a href='#' onclick='saveSj(event,"+kjgsl+")' class='btn' id=js"+dt[i].id+">"+dt[i].mc+"</a>";
+                          $("#dlg-buttons").append(html);
+                     }
+                }
             }
         });
 	}
 	
-	function saveSj(event){
+	function saveSj(event,kjgsl){
 		
 		var jsjgry = $(event.target).attr("id");
 		
 		jsjgry = jsjgry.substr(2,jsjgry.length);
 		var jgsb = $('#jgsb').val();
-		
-		
+
 		var jgjs = $('#jgjs').val();
-		
+
+        if(jgjs>kjgsl)
+        {
+            Main.ShowSuccessMessage('加工件数必须小于可加工件数！');
+            return;
+        }
 		if(jgjs==""){
-			
-			alert('请输入本次加工件数！');
+            Main.ShowSuccessMessage('请输入本次加工件数！');
 			return;
 		}
+        if(jgsb==""){
+            Main.ShowSuccessMessage("请选择加工设备！");
+            return;
+        }
 		$.ajax({
             type: "post",
             url: "pcgl_jgryJs.action",
@@ -264,9 +329,9 @@
                 
             },
             success: function (dt) {
-	              	
             	$('#dlg').dialog('close');
             	$('#pcglJgryJg').DataTable().ajax.reload(function(){},true);
+                // $('#pcglJgryJg').DataTable().fnDraw(false);
             }
         });
 	}
@@ -281,17 +346,15 @@
                 
             },
             success: function (dt) {
-
 				if(dt=='success'){
-				
-					alert('加工开始成功,已开始计时');
+                    Main.ShowSuccessMessage('加工开始成功,已开始计时');
 					disableButtonByJgr(gygcid);
-					
+                    $('#ksjg').dialog('close');
+                    $('#pcglJgryJg').DataTable().ajax.reload(function(){},true);
+                    // $('#pcglJgryJg').DataTable().fnDraw(false);
 				}else{
-				
-					alert("对不起发生错误，请联系管理员！");
+                    Main.ShowSuccessMessage("对不起发生错误，请联系管理员！");
 				}
-	              	
             }
         });
 	}
@@ -299,6 +362,7 @@
 	
 		tableInit();
 		initSbzd();
+
         $(".numkeyboard").numkeyboard({
             keyboardRadix:300,//键盘大小基数
             mainbackground:'#C8BFE7', //主背景色
@@ -306,6 +370,15 @@
             exitbackground:'#4376A0', //关闭按钮背景色
             buttonbackground:'#ff730e', //键盘背景色
             clickeve:true//是否绑定元素click事件
+        });
+        //定时器每10秒刷新table如果有新的工作自动更新
+        setInterval(function(){
+            $('#pcglJgryJg').DataTable().draw(false);
+        },60000);
+        $("#dlg").dialog({
+            onClose: function () {
+                $('.auth_keybord').hide();
+            }
         });
 	} );
 	
@@ -327,11 +400,13 @@
                                 <thead>
                                 <tr>
                                     <th></th>
-                                    <th  style="width:150px;"> 操作</th>
-                                    <th> 子订单</th>
+                                    <th> 操作</th>
+                                    <th>查看</th>
+                                    <th> 订单名称</th>
+                                    <th> 零件名称</th>
+                                    <th>材料名称</th>
                                     <th> 表面处理</th>
-                                    <th> 计划开始时间</th>
-                                    <th> 计划完成时间</th>
+                                    <th>订单结束时间</th>
                                     <th> 额定工时</th>
                                     <th> 工艺名称</th>
                                     <th> 订单件数</th>
@@ -352,7 +427,7 @@
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width:950px;height:500px;">
+    <div class="modal-dialog" style="width:950px;height:700px;">
         <div class="modal-content" style="height:90%;">
             <div class="modal-header">
                 <button id="modalClose" type="button" class="close"
@@ -369,14 +444,11 @@
     <!-- /.modal -->
 </div>
 <div id="dlg" class="easyui-dialog" title="加工完成" style="width:400px;height:200px;padding:15px"
-			data-options="closed:true">
-		
-		<span style="margin-left:40px;margin-top:40px;">完成件数：</span><input id="jgjs"  style="width:175px; height:28px" class="numkeyboard">
-		<p style="margin-top:15px;">
+			data-options="closed:true" onclick="$('.auth_keybord').hide();">
 		<span style="margin-left:40px;margin-top:40px;">所用设备：</span><select style="height:28px;width:175px;" id='jgsb'></select>
-
+        <p style="margin-top:15px;">
+     <span style="margin-left:40px;margin-top:40px;">完成件数：</span><input id="jgjs"  style="width:175px; height:28px" class="numkeyboard">
 	<div id="dlg-buttons">
-		
 	</div>
 </div>
 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>北京朝阳兴隆模具生产管理系统</title>
+
+    <link rel="stylesheet" href="../js/plugin/ImageShrink/styles.css" />
+
+    <script src="../js/jquery/jquery.min.js"></script>
+    <script src="../js/util/CommonUtils.js"></script>
+    <script src="../js/plugin/ImageShrink/js/e-smart-zoom-jquery.min.js"></script>
+
+</head>
+<script>
+    $(document).ready(function() {
+        var request = $.GetRequest();
+        var img = null;
+        if (request.img) {
+            img = request.img;
+            $("#imageFullScreen").attr("src",'http://' + window.location.hostname + '/scpc/' +img) ;
+        }
+        $('#imageFullScreen').smartZoom({'containerClass':'zoomableContainer'});
+        $('#topPositionMap,#leftPositionMap,#rightPositionMap,#bottomPositionMap').bind("click", moveButtonClickHandler);
+        $('#zoomInButton,#zoomOutButton').bind("click", zoomButtonClickHandler);
+
+        function zoomButtonClickHandler(e){
+            var scaleToAdd = 0.8;
+            if(e.target.id == 'zoomOutButton')
+                scaleToAdd = -scaleToAdd;
+            $('#imageFullScreen').smartZoom('zoom', scaleToAdd);
+        }
+        function moveButtonClickHandler(e){
+            var pixelsToMoveOnX = 0;
+            var pixelsToMoveOnY = 0;
+
+            switch(e.target.id){
+                case "leftPositionMap":
+                    pixelsToMoveOnX = 50;
+                    break;
+                case "rightPositionMap":
+                    pixelsToMoveOnX = -50;
+                    break;
+                case "topPositionMap":
+                    pixelsToMoveOnY = 50;
+                    break;
+                case "bottomPositionMap":
+                    pixelsToMoveOnY = -50;
+                    break;
+            }
+            $('#imageFullScreen').smartZoom('pan', pixelsToMoveOnX, pixelsToMoveOnY);
+        }
+    });
+</script>
+<body style="height:800px;">
+<div id="pageContent">
+    <div id="imgContainer"> <img id="imageFullScreen" src=""/> </div>
+    <div id="positionButtonDiv">
+        <p><span> <img id="zoomInButton" class="zoomButton" src="../js/plugin/ImageShrink/assets/zoomIn.png" title="zoom in" alt="zoom in" /> <img id="zoomOutButton" class="zoomButton" src="../js/plugin/ImageShrink/assets/ZoomOut.png" title="zoom out" alt="zoom out" /> </span> </p>
+        <p><span class="positionButtonSpan">
+<map name="positionMap" class="positionMapClass">
+    <area id="topPositionMap" shape="rect" coords="20,0,40,20" title="move up" alt="move up"/>
+    <area id="leftPositionMap" shape="rect" coords="0,20,20,40" title="move left" alt="move left"/>
+    <area id="rightPositionMap" shape="rect" coords="40,20,60,40" title="move right" alt="move right"/>
+    <area id="bottomPositionMap" shape="rect" coords="20,40,40,60" title="move bottom" alt="move bottom"/>
+</map>
+</span> </p>
+    </div>
+</div>
+</body>
+</html>

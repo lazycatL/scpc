@@ -132,7 +132,7 @@ $(document).ready(function () {
             addKhInfo: function (jsonstr) {
                 var url = "khInfo_addUserInfo.action", JSON = jsonstr, successFun = function (resStr) {
                     if (resStr.toUpperCase() == "SUCCESS") {
-                        alert("保存成功！");
+                        Main.ShowSuccessMessage("保存成功！");
                         $("#form_return").click();
                     }
                 };
@@ -144,7 +144,7 @@ $(document).ready(function () {
             editRow: function () {
                 var url = "khInfo_addUserInfo.action", JSON = jsonstr, successFun = function (resStr) {
                     if (resStr.toUpperCase() == "SUCCESS") {
-                        alert("保存成功！");
+                        Main.ShowSuccessMessage("保存成功！");
                     }
                 };
             }

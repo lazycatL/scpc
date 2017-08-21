@@ -406,11 +406,11 @@ table.ssi-fileList tr.ssi-space > td {
 }
 
 .ssi-imgToUploadTable tr:first-child td:first-child {
-  height: 126px;
+  height:90px;
 }
 
 .ssi-imgToUploadTable tr td {
-  width: 140px;
+  width: 120px;
 }
 
 .ssi-imgToUploadTable {

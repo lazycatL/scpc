@@ -45,7 +45,7 @@ function editRow(id){
 }
 
 function tableInit(){
-
+    var height = document.body.offsetHeight;
 	var table = $('#ryxx').DataTable( {
 	"bLengthChange": false,
   	"oLanguage": {
@@ -68,7 +68,7 @@ function tableInit(){
 	"ajax":"khxxgl_getKhxxData.action",
         //scrollY:        "200px",
         scrollX:        true,
-        scrollY:        '50vh',
+        scrollY:      height-150+ "px",
 	scrollCollapse: false,
 	paging:         true,
 	"columnDefs": [
@@ -77,6 +77,7 @@ function tableInit(){
                 return '<div class="">'+
                 '<a class=" "  onclick = "editRow(\''+data+'\')" title="编辑"  href="#">编辑 </a>'+
                 ' <a class=" " onclick = "deleteRow(\''+data+'\')" title="删除" href="#">删除 </a>' +
+                 ' <a class=" " onclick = "lxrModel(\''+data+'\')" title="联系人" href="#">联系人 </a>' +
                     '<a class="" href="#" title＝"查看" onclick = "showModel(\''+data+'\')">合同信息</a>' +
                     '</div>';
             },
@@ -88,11 +89,11 @@ function tableInit(){
         "bProcessing":true,
     "columns": [
     	{"data":null},
-    	{"data":'id'},
-        { "data": "mc" },
+    	{"data":'id', "sWidth": "180px"},
+        { "data": "mc" , "sWidth": "250px"},
         { "data": "lx" },
         { "data": "dw" },
-        { "data": "dz" },
+        { "data": "dz", "sWidth": "250px" },
         //{ "data": "gx" },
         { "data": "iscj" },
         { "data": "starttime"},
@@ -137,4 +138,15 @@ function showModel(data){
     $container = $('#modal-body');
     $container.empty().append($content);
 }
- 
+
+function lxrModel(data)
+{
+    $('#myModal').modal({
+        backdrop:false,
+        show:true
+    });
+    //在modalbody 中家在iframe 内容为 工序编排的内容
+    $content = "<iframe src='../../resmgr/resView.html?tableId=0103&isFlag=list&queryColumn=sjkh_id&queryKey="+data+"&temp="+Math.random()+"' class='modal_iframe'></iframe>" ;
+    $container = $('#modal-body');
+    $container.empty().append($content);
+}

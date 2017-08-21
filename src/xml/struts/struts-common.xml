@@ -7,7 +7,18 @@
 		<action name="common_*" class="com.project.common.action.CommonAction" method="{1}">
 		</action>
 	</package>
-
+    <package name="import" extends="struts-default">
+        <action name="import_*" class="com.project.common.action.ExcelImportAction" method="{1}">
+        </action>
+    </package>
+    <package name="upload" extends="struts-default">
+        <action name="upload_*" class="com.project.common.action.UploadActionbak" method="{1}">
+        </action>
+    </package>
+    <package name="resmgr" extends="struts-default">
+        <action name="resmgr_*" class="com.project.common.action.ResourceManageAction" method="{1}">
+        </action>
+    </package>
 	<package name="admin"  extends="struts-default">
 		<action name="login" class="com.project.admin.action.AdminAction" method="login">
 			<result name="success">/index.jsp</result>

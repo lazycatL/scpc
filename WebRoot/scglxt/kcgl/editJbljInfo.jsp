@@ -189,7 +189,7 @@
                         var $save = $('#btn_save'), $saving = $('#btn_save');
                         var url = "jblj_updateInfo.action?flag=" + flag, successFun = function (resStr) {
                             if (resStr == "SUCCESS") {
-                                alert('保存成功！');
+                                Main.ShowSuccessMessage('保存成功！');
                                 $("#form_return").click();
                             }
                         }

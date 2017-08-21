@@ -36,11 +36,11 @@
                 "autoclose":true
 
             });
-            $('#form_khxx_jssj').datetimepicker({
-                "format":"yyyy-mm-dd",
-                "minView":2,
-                "autoclose":true
-            });
+//            $('#form_khxx_jssj').datetimepicker({
+//                "format":"yyyy-mm-dd",
+//                "minView":2,
+//                "autoclose":true
+//            });
             registerEvent();
             loadYwlxList();//加载业务类型列表
             loadFkztList();//加载付款状态列表
@@ -132,6 +132,10 @@
                                 }
                             }
                         }
+                        if(''!=data[0].qssj && null!=data[0].qssj && ''!=data[0].jssj && null!=data[0].jssj)
+                        {
+                            $('#form_khxx_gq').val($.DateDiff(data[0].qssj,data[0].jssj));
+                        }
                         if(''!=data[0].ywlx && null!=data[0].ywlx){
                         	 $('#form_htInfo_ywlx').select2('val', data[0].ywlx);
                         }
@@ -144,6 +148,9 @@
                         if(''!=data[0].htmx){
                       	 	 $('#form_khxx_htmx').val(data[0].htmx);
                       }
+                        if(''!=data[0].remark){
+                            $('#form_khxx_remark').val(data[0].remark);
+                        }
                         
                        
                        // $('#form_khxx_fkzt').select2('val', data[0].fkzt);
@@ -156,44 +163,78 @@
          * 保存或者更改表单信息
          */
             saveFormInfo = function (flag, id) {
+                var gq=$('#form_khxx_gq').attr("value");
+                if(gq==null || gq=="")
+                {
+                    Main.ShowErrorMessage("必须填写合同工期！");
+                    return;
+                }
+                var kssj=$('#form_khxx_qssj').attr("value");
+                var jssj= $.dateAddDays(kssj,eval(gq));
+                var jkje=$('#form_khxx_jkje').attr("value");
+                var htje=$('#form_khxx_htje').attr("value");
+                console.log(jssj);
                 var formInfo = {
-                    mc: $('#form_khxx_mc').attr("value"),
                     htbh: $('#form_khxx_htbh').attr("value"),
                     ywlx: $('#form_htInfo_ywlx').attr("value"),
                     khid: $('#form_khxx_htkh').attr("value"),
-                    htje: $('#form_khxx_htje').attr("value"),
-                    qssj: $('#form_khxx_qssj').attr("value"),
-                    jssj: $('#form_khxx_jssj').attr("value"),
-                    dqjd: $('#form_khxx_dqjd').attr("value"),
+                    htje:htje,
+                    qssj:kssj,
+                    jssj: jssj,
                     fkzt: $('#form_khxx_fkzt').attr("value"),
-                    //jkbfb : $('#form_khxx_jkbfb').attr("value"),
-                    jkbfb: "",
-                    jkje: $('#form_khxx_jkje').attr("value"),
-                    jscb: $('#form_khxx_jscb').attr("value"),
-                    hkzh: $('#form_khxx_hkzh').attr("value"),
-                    hkkhh: $('#form_khxx_hkkhh').attr("value"),
+                    jkbfb: eval(jkje/htje*100).toFixed(2),
+                    jkje: jkje,
+                    jscb:"",
+                    hkzh: '',
+                    hkkhh: '',
                     remark: $('#form_khxx_remark').attr("value"),
                     htmx: $('#form_khxx_htmx').attr("value"),
+                    htjc: $('#form_khxx_htjc').attr("value"),
+
                     flag: flag,
                     id: $.decodeEmptyValue(id)
                 }
                 var JSON = $.toJsonString(formInfo);
                 var $save = $('#btn_save'), $saving = $('#btn_save');
+                if((parseInt(formInfo.htje)<parseInt(formInfo.jkje)) && (parseInt(formInfo.htje)!=parseInt(formInfo.jkje)))
+                {
+                    Main.ShowErrorMessage("结款金额不能大于合同金额！");
+                    return;
+                }
                 var url = "htInfo_updateInfo.action", successFun = function (resStr) {
-                    console.log(resStr);
                     if (resStr.toUpperCase() == "SUCCESS") {
-                        alert('保存成功');
+
                         Main.swapIframUrl('scglxt/xsgl/htManager.jsp');//跳转iframe页面
+                        Main.ShowSuccessMessage('保存成功');
                     }
                 }
                 $.asyncAjaxPost(url, {"JSON": JSON}, successFun, true);
 
+            },
+        /***
+         * 显示图纸上传框
+         * @param data
+         */
+            showUploadModel=function(data){
+                var htbh= $('#form_khxx_htbh').val();
+                if(htbh!=null && htbh!="")
+                {
+                    $('#myModalUpload').modal({
+                        backdrop: false,
+                        show: true
+                    });
+                    $('#ssi-upload').ssi_uploader({url:'../../ImageUploadServlet?type=htfj&htbh='+ $('#form_khxx_htbh').val(),dropZone:false,allowed:['jpg','gif','png','pdf','xls']});
+                }else{
+                    Main.ShowErrorMessage("必须填写合同编号！");
+                    return;
+                }
             }
         ;
         return {
             init: init,
             initFormInfo: initFormInfo,
-            saveFormInfo: saveFormInfo
+            saveFormInfo: saveFormInfo,
+            showUploadModel:showUploadModel
         }
 
     })();

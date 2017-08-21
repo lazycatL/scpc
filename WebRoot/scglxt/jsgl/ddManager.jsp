@@ -1,20 +1,28 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@ include file="/include/topFile.jsp" %>
 <!DOCTYPE html>
-
 <html>
 <head>
-
     <title>订单管理</title>
-    <script type="text/javascript"
-            src="../../js/plugin/datatables/dataTables.fixedColumns.js"></script>
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/js/plugin/ImgInput/css/ssi-uploader.css"/>
+    <script src="${pageContext.request.contextPath}/js/plugin/ImgInput/js/ssi-uploader.js"></script>
+    <script type="text/javascript" src="../../js/plugin/datatables/dataTables.fixedColumns.js"></script>
     <script type="text/javascript" src="../../js/scglxt/jsgl/ddManage.js"></script>
 </head>
+<style>
+    .col_class{
+        color:#FFFFFF;
+    }
+    .cos_class{
+        color:#F5F683;
+
+    }
+</style>
 <body>
 <div class='container-fluid'>
     <div id='content-wrapper'>
-        <div class='box bordered-box orange-border'
-             style='margin-bottom: 0;'>
+        <div class='box bordered-box'  style='margin-bottom: 0;'>
             <div class='box-header'>
                 <button id="form_add" class="btn btn-success btn-sm">
                     <i class="icon-add"></i>
@@ -28,63 +36,47 @@
             <div class='box-content box-no-padding'>
                 <div class='responsive-table'>
                     <div class='scrollable-area'>
-                         <table id="ddInfo" class='table table-striped table-bordered cell-border tableGrid'
+                         <table id="ddInfo" class='table table-striped table-bordered tableGrid cell-border'
                        style='margin-bottom: 0;'>
                     <thead>
                     <tr>
-                        <th class="serial" style="width: 20px;">
-
-                        </th>
-                        <th class="th-xlarger" style="width:300px;">
-                            操作
-                        </th>
+                        <th class=""></th>
+                        <th class="th-xlarger"> 操作 </th>
+                        <th> ID </th>
                         <th>
-                            ID
-                        </th>
-
-                        <th style="width:150px;">
                             订单编号
                         </th>
-                        <th style="width:150px;">
+                        <th>
                             订单级别
                         </th>
-                        <th style="width:150px;">
-                            交货日期
+                        <th>
+                            开始时间
                         </th>
-                        <th class="th-middle">
-                            下单日期
+                        <th>
+                            结束时间
                         </th>
-                        <th class=" th-middle">
-                            交付日期
-                        </th>
-                        <th class=" th-middle">
-                            实际开始时间
-                        </th>
-                        <th class=" th-middle">
-                            实际结束时间
-                        </th>
-                        <th class=" th-middle">
-                            所用总工时
-                        </th>
-                        <th class=" th-middle">
+                        <th>
                             当前总进度
                         </th>
-                        <th class="th-small">
-                            图纸
+                        <th>
+                            所需总工时
                         </th>
-                        <th class="th-middle">
+                        <th>
+                            图纸目录
+                        </th>
+                        <th>
                             备注
                         </th>
-                        <th class="th-small">
+                        <th>
                             项目联系人
                         </th>
-                        <th class="th-middle">
+                        <th>
                             项目负责人
                         </th>
-                        <th class="th-middle">
+                        <th>
                             出库状态
                         </th>
-                        <th  class="th-middle">
+                        <th>
                             出库时间
                         </th>
 
@@ -118,6 +110,29 @@
     </div>
     <!-- /.modal -->
 </div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModalUpload" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:950px;height:500px;">
+        <div class="modal-content" style="height:90%;">
+            <div class="modal-header">
+                <button id="modalClose" type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true" style="margin-top:-10px">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body2">
+                <iframe id="uploadFile" name="ajaxUpload" style="display:none;"></iframe>
+                <form enctype="multipart/form-data" method="post" target="ajaxUpload">
+                    <input type="file" multiple id="ssi-upload"  name="ssi-upload"/>
+                </form>
 
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
 </body>
 </html>

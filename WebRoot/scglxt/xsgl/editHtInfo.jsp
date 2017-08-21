@@ -2,6 +2,8 @@
 <%@ include file="/include/topFile.jsp" %>
 <link href="${pageContext.request.contextPath}/stylesheets/plugins/select2/select2.css" media="all" rel="stylesheet"
       type="text/css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/js/plugin/ImgInput/css/ssi-uploader.css"/>
+<script src="${pageContext.request.contextPath}/js/plugin/ImgInput/js/ssi-uploader.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/plugin/select2/select2.js"></script>
 <script src="${pageContext.request.contextPath}/js/util/validata.js" type="text/javascript"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/scglxt/xsgl/editHtInfo.js"></script>
@@ -22,14 +24,12 @@
                 <div class="box-content box-no-padding">
                     <form id="form_htInfo" class='form form-horizontal ' method="post" style='margin-bottom: 0;'>
                         <div class='form-group'>
-                            <label class='control-label col-sm-2' for='form_khxx_mc'>合同名称</label>
-
+                            <label class='control-label col-sm-2' for='form_khxx_htkh'>客户名称</label>
                             <div class='col-sm-3 controls'>
-                                <input class='form-control required' id='form_khxx_mc' info="fromInfo"
-                                       name='form_khxx_mc'
-                                       placeholder='合同名称' type='text'>
-                                <label class="error"></label>
+                                <select id='form_khxx_htkh' class='select2 form-control' info="fromInfo" name='form_khxx_htkh'>
+                                </select>
                             </div>
+
                             <label class='control-label col-sm-2' for='form_khxx_htbh'>合同编号</label>
 
                             <div class='col-sm-3 controls'>
@@ -37,6 +37,22 @@
                                        name='form_khxx_htbh'
                                        placeholder='合同编号' type='text'>
                                 <label class="error"></label>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <label class='control-label col-sm-2' for='form_khxx_htjc'>合同简称</label>
+                            <div class='col-sm-2 controls'>
+                                <input class='form-control required' id='form_khxx_htjc' info="fromInfo"
+                                       name='form_khxx_htjc'
+                                       placeholder='合同简称' type='text'>
+                            </div>
+                            <div class='col-sm-1 controls'>
+                                       <label class="textInfo">生成订单编号</label>
+                            </div>
+                            <label class='control-label col-sm-2' for='form_khxx_htfj'>合同附件</label>
+                            <div class='col-sm-3 controls '>
+                                <input id="form_khxx_htfj" onclick="HtEditManage.showUploadModel();" class="btn btn-primary" type="button" value="上传附件">
+                                <label class="textInfo"></label>
                             </div>
                         </div>
                         <div class='form-group'>
@@ -64,31 +80,24 @@
                                        name='form_khxx_qssj' placeholder='签署时间' readonly type='text'>
                                 <label class="error"></label>
                             </div>
-                            <label class='control-label col-sm-2' for='form_khxx_qssj'>预计结束时间</label>
+                            <label class='control-label col-sm-2' for='form_khxx_qssj'>交货工期</label>
 
                             <div class='col-sm-3 controls'>
-                                <input class='form-control required' id='form_khxx_jssj' style="cursor:pointer;"
-                                       info="fromInfo"
-                                       name='form_khxx_jssj' placeholder='结束时间' readonly type='text'>
+                                <%--<input class='form-control required' id='form_khxx_jssj' style="cursor:pointer;"--%>
+                                       <%--info="fromInfo"  name='form_khxx_jssj' placeholder='交货时间' readonly type='text'>--%>
+                                    <input class='form-control requiredDecimal' id='form_khxx_gq' info="fromInfo"
+                                           name='form_khxx_gq'  placeholder='交货工期' type='text'>
                                 <label class="error"></label>
                             </div>
                         </div>
 
                         <div class='form-group'>
-                            <label class='control-label col-sm-2' for='form_khxx_dqjd'>当前进度</label>
-
-                            <div class='col-sm-3 controls'>
-                                <input class='form-control' id='form_khxx_dqjd' readonly info="fromInfo"
-                                       name='form_khxx_dqjd' placeholder='当前进度' type='text'>
-                            </div>
                             <label class='control-label col-sm-2' for='form_khxx_fkzt'>付款状态</label>
 
                             <div class='col-sm-3 controls'>
                                 <select id='form_khxx_fkzt' class='select2 form-control' info="fromInfo" name='form_khxx_fkzt'>
                                 </select>
                             </div>
-                        </div>
-                        <div class='form-group'>
                             <label class='control-label col-sm-2' for='form_khxx_jkje'>结款金额</label>
 
                             <div class='col-sm-3 controls'>
@@ -97,38 +106,26 @@
                                        placeholder='结款金额' type='text'>
                                 <label class="error"></label>
                             </div>
-                            <label class='control-label col-sm-2' for='form_khxx_jscb'>成本</label>
-
-                            <div class='col-sm-3 controls'>
-                                <input class='form-control' id='form_khxx_jscb' readonly info="fromInfo"
-                                       name='form_khxx_jscb' placeholder='计算成本' type='text'>
-                            </div>
                         </div>
+                        <%--<div class='form-group'>--%>
+                            <%--<label class='control-label col-sm-2' for='form_khxx_jkje'>汇款开户行</label>--%>
+
+                            <%--<div class='col-sm-3 controls'>--%>
+                                <%--<input class='form-control' id='form_khxx_hkkhh' info="fromInfo"--%>
+                                       <%--name='form_khxx_hkkhh' placeholder='汇款开户行' type='text'>--%>
+                            <%--</div>--%>
+                            <%--<label class='control-label col-sm-2' for='form_khxx_hkzh'>汇款账户</label>--%>
+
+                            <%--<div class='col-sm-3 controls'>--%>
+                                <%--<input class='form-control' id='form_khxx_hkzh' info="fromInfo" name='form_khxx_hkzh'--%>
+                                       <%--placeholder='汇款账户' type='text'>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                         <div class='form-group'>
-                            <label class='control-label col-sm-2' for='form_khxx_jkje'>汇款开户行</label>
-
-                            <div class='col-sm-3 controls'>
-                                <input class='form-control' id='form_khxx_hkkhh' info="fromInfo"
-                                       name='form_khxx_hkkhh' placeholder='汇款开户行' type='text'>
-                            </div>
-                            <label class='control-label col-sm-2' for='form_khxx_hkzh'>汇款账户</label>
-
-                            <div class='col-sm-3 controls'>
-                                <input class='form-control' id='form_khxx_hkzh' info="fromInfo" name='form_khxx_hkzh'
-                                       placeholder='汇款账户' type='text'>
-                            </div>
-                        </div>
-                        <div class='form-group'>
-                            <label class='control-label col-sm-2' for='form_khxx_htkh'>客户名称</label>
-
-                            <div class='col-sm-3 controls'>
-                                <select id='form_khxx_htkh' class='select2 form-control' info="fromInfo" name='form_khxx_htkh'>
-                                </select>
-                            </div>
 
                             <label class='control-label col-sm-2' for='form_khxx_jkje'>合同细节</label>
 
-                            <div class='col-sm-3 controls'>
+                            <div class='col-sm-8 controls'>
                                 <input class='form-control' id='form_khxx_htmx' info="fromInfo" name='form_khxx_htmx'
                                        placeholder='合同细节' type='text'>
                             </div>
@@ -157,4 +154,28 @@
             </div>
         </div>
     </div>
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModalUpload" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:950px;height:500px;">
+        <div class="modal-content" style="height:90%;">
+            <div class="modal-header">
+                <button id="modalClose" type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true" style="margin-top:-10px">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body2">
+                <iframe id="uploadFile" name="ajaxUpload" style="display:none;"></iframe>
+                <form enctype="multipart/form-data" method="post" target="ajaxUpload">
+                    <input type="file" multiple id="ssi-upload"  name="ssi-upload"/>
+                </form>
+
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
 </div>

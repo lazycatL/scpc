@@ -71,7 +71,7 @@
 			var $save = $('#btn_save'), $saving = $('#btn_save');
             var url = "gyInfo_updateInfo.action", successFun = function(resStr){
                 if (resStr == "SUCCESS") {
-                	alert('success');
+                    Main.ShowSuccessMessage('修改成功！');
                 }
             }
             $.asyncAjaxPost(url, {"JSON": JSON}, successFun, true);		

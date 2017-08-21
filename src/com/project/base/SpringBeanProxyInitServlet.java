@@ -22,7 +22,7 @@ private static final long serialVersionUID = -3754547957057400569L;
 		super.init();
 		
 		application = getServletContext();
-		System.out.println("=============="+application.getContext("/log4jCfg.properties"));
+		//System.out.println("111=============="+application.getContext("/log4jCfg.properties"));
 		context = WebApplicationContextUtils.getWebApplicationContext(application);
 		if(context==null){
 			throw new RuntimeException("Application environment initialization error!");

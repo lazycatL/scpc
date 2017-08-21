@@ -18,8 +18,6 @@
 		_include("js/jQuery/Flatty/html/assets/javascripts/bootstrap/bootstrap.qxgl.js");	
 		_include("js/jQuery/Flatty/html/assets/javascripts/plugins/select2/select2.js");
 		//jquery validateion 插件js
-//		_include("js/jQuery/Flatty/html/assets/javascripts/plugins/validate/jquery.validate.min.js");	
-//		_include("js/jQuery/Flatty/html/assets/javascripts/plugins/validate/jquery.validate.message_cn.js");
 		_include("js/jQuery/validate/jquery.validate.js");
 		_include("js/jQuery/validate/jquery.metadata.js");
 		_include("js/jQuery/validate/jquery.validate.message_cn.js");

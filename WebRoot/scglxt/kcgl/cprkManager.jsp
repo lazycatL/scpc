@@ -38,24 +38,15 @@
                                             <tr>
                                                 <th class=""></th>
                                                 <th> 操作</th>
+                                                <td>订单名称</td>
                                                 <th> 子订单名称</th>
                                                 <th> 子订单状态</th>
                                                 <th> 子订单材质</th>
                                                 <th> 工序内容</th>
                                                 <th> 加工数量</th>
-                                                <th> 料的形状</th>
-                                                <th> 料的大小</th>
-                                                <th> 料的体积</th>
-                                                <th> 料的金额</th>
-                                                <th> 表面处理</th>
                                                 <th> 子订单开始时间</th>
                                                 <th> 子订单结束时间</th>
                                                 <th> 子订单工时</th>
-                                                <th> 当前备料情况</th>
-                                                <th> 料的状态</th>
-                                                <th> 采购人员</th>
-                                                <th> 采购商家</th>
-                                                <th> 子订单图纸</th>
                                                 <th> 入库时间</th>
                                                 <th>
                                                     报废件数
@@ -126,7 +117,7 @@
                                         {
                                             "render": function ( data, type, row ) {
                                                 return '<div class="">'+
-                                                        ' <a class="btn btn-danger btn-xs" href="#" title＝"成品出库" onclick = "CprkManager.passAllInfo(\''+data+'\')">成品出库<i class="icon-edit"></i></a> '+
+                                                        ' <a class="btn btn-danger btn-xs" href="#" title＝"成品入库" onclick = "CprkManager.passAllInfo(\''+data+'\')">成品入库<i class="icon-edit"></i></a> '+
                                                         ' </div>';
                                             },
                                             "targets": 1
@@ -135,29 +126,18 @@
                                     ],
                                     "columns": [{"data": null, "sWidth": "30px"},
                                         {"data": "id"},
+                                        {"data": "ddmc", "sWidth": "120px"},
                                         {"data": "zddmc", "sWidth": "120px"},
                                         {"data": "ddztmc", "sWidth": "120px"},
                                         {"data": "clmc","sWidth": "120px"},
                                         {"data": "gxnr","sWidth": "300px"},
                                         {"data": "jgsl","sWidth": "60px"},
-                                        {"data": "clxz"},
-                                        {"data": "cldx"},
-                                        {"data": "cltj"},
-                                        {"data": "clje"},
-                                        {"data": "bmcl"},
-                                        {
-                                            "data": "starttime",
-                                            "sWidth": "120px"
-                                        }, {"data": "endtime", "sWidth": "120px"},
+                                        {"data": "starttime","sWidth": "120px"},
+                                        {"data": "endtime", "sWidth": "120px"},
                                         {"data": "gs", "sWidth": "120px"},
-                                        {"data": "blqk", "sWidth": "120px"},
-                                        {"data": "clzt", "sWidth": "120px"},
-                                        {"data": "cgry"},
-                                        {"data": "cgsj"},
                                         {"data": "rksj", "sWidth": "120px"},
-                                        {"data": "ddtz", "sWidth": "120px"},
                                         {"data": "bfjs"},
-                                        {"data": "bhgjs", "sWidth": "120px"},
+                                        {"data": "bhgjs", "sWidth": "120px"}
                                     ]
 
                         } );
@@ -174,14 +154,14 @@
                     passAllInfo=function(id){
                         var url = "bomInfo_updateZddzt.action", successFun = function (resStr) {
                             if (resStr == "success") {
-                                window.location.reload();
+                                $('#bomInfo').DataTable().ajax.reload(function(){},true);
                                 $("#sorting-advanced").dataTable().fnPageChange('previous', true);
-                                alert("出库完成！");
+                                Main.ShowSuccessMessage("入库完成！");
                             }else{
-                                alert("出库失败！");
+                                Main.ShowErrorMessage("入库失败！");
                             }
                         };
-                        if (confirm("是否确定该订单所有成品出库？")) {
+                        if (confirm("是否确定该订单所有成品入库？")) {
                             $.asyncAjaxPost(url, {"id": id,"zddzt":"0505","date":"cksj"}, successFun, true);
                         }
                     }

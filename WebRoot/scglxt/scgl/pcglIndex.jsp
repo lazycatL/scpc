@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					var selDate =$.fullCalendar.formatDate(date,'yyyy-MM-dd');
 					$.fancybox({
 						'type':'ajax',
-						'href':'zjpcgl.jsp'
+						'href':''
 					});
 		    	},
 				//点击有排产任务的内容

@@ -532,6 +532,10 @@
                         console.log(arguments);//log the error
                         console.log(" Ajax error: " + error);
                     }
+                },
+                success:function(file,response)
+                {
+                   console.log(file);
                 }
             }, thisS.options.ajaxOptions);
             $.ajax(ajaxOptions).done(function (responseData, textStatus, jqXHR) {
@@ -751,7 +755,6 @@
             maxFileSize: 5,
             ajaxOptions: {},
             onUpload: function (data) {
-
             },
             onEachUpload: function () {
             },
@@ -759,7 +762,7 @@
             },
             beforeEachUpload: function (fileInfo,xhr) {
             },
-            allowed: ['jpg', 'jpeg', 'png', 'bmp', 'gif'],
+            allowed: ['jpg', 'jpeg', 'png', 'bmp', 'gif','stp','dwg','sldasm','slddrw','','*'],
             errorHandler: {
                 method: function (msg) {
                     alert(msg);

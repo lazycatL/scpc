@@ -52,7 +52,7 @@
              {"data": null,"sWidth": "40px"}, 
              {"data": "id","sWidth": "80px"}, 
              {"data": "zddmc", "sWidth": "120px"}, 
-             {"data": "ddtz","sWidth": "180px"},
+             {"data": "ddtz","sWidth": "350px"},
              {"data": "bmcl","sWidth": "120px"},
              {"data": "jhkssj","sWidth": "150px"}, 
              {"data": "jhjssj", "sWidth": "150px"},
@@ -127,7 +127,7 @@
                                     <th></th>
                                     <th> 操作</th>
                                     <th> 名称</th>
-                                    <th> 状态(报废件数/)</th>
+                                    <th> 进度(报废件数/已加工件数/可加工件数)</th>
                                     <th> 表面处理</th>
                                     <th> 计划开始时间</th>
                                     <th> 计划完成时间</th>

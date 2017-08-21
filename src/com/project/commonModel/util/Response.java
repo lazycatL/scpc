@@ -10,6 +10,13 @@ import org.apache.struts2.ServletActionContext;
 public class Response {
 	public static void write(String str){
 		HttpServletResponse response=ServletActionContext.getResponse();
+
+        response.setHeader("Access-Control-Allow-Origin","*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, Authorization, X-Requested-With, Origin, Accept");
+        response.setHeader("Access-Control-Allow-Credentials","true");
+
 		PrintWriter out = null;
 		try {
 			response.setCharacterEncoding("utf-8");	

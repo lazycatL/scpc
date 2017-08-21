@@ -28,8 +28,7 @@ public class SbglAction {
 	public void getSbTableData(){
 		String sql = "select sbbz.bzmc sbbz,sb.sbxh,sb.ccbh,sb.id,sblx.mc sblx,sbmc, cast(cgsj as char) cgsj, " +
 				" cast(bxjssj as char) bxjssj,sbszd,sbzt.mc sbzt,wxjl,sb.sccj,sb.sccjdetail ,remark from " +
-				" scglxt_t_sb sb, scglxt_tyzd sblx,scglxt_tyzd sbzt,scglxt_t_bz sbbz " +
-				" where sbzt.id = dqzt and sblx.id = sblx and bzid = sbbz.id";
+				" scglxt_t_sb sb LEFT JOIN `scglxt_t_sblx` sblx ON sblx.id = sblx LEFT JOIN scglxt_tyzd sbzt ON  sbzt.id = dqzt  LEFT JOIN scglxt_t_bz sbbz ON bzid = sbbz.id ";
 		log.info("设备信息查询sql"+sql);
 		List list = this.selectDataService.queryForList(sql);
 		String json = JsonObjectUtil.list2Json(list);

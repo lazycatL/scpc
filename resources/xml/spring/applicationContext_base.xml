@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+ 
+	<bean id="baseDao" class="com.project.base.dao.impl.BaseDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="baseService" class="com.project.base.service.impl.BaseServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<bean id="selectDataDao" class="com.project.base.dao.impl.SelectDataDaoImpl">
+		<property name="dataSource" ref="dataSource"></property> 
+	</bean>
+	<bean id="selectDataService" class="com.project.base.service.impl.SelectDataServiceImpl">
+		<property name="selectDataDao" ref="selectDataDao"></property>
+	</bean>
+</beans>

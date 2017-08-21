@@ -77,7 +77,7 @@
                 var $save = $('#btn_save'), $saving = $('#btn_save');
                 var url = "gxInfo_updateInfo.action", successFun = function (resStr) {
                     if (resStr == "SUCCESS") {
-                        alert('保存成功');
+                        Main.ShowSuccessMessage('保存成功');
                         Main.swapIframUrl('scglxt/jsgl/gxManager.jsp');//跳转iframe页面
                     }
                 }

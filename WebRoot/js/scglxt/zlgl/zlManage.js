@@ -67,35 +67,35 @@
 		            },
 		            "targets": 1
 		        },
-		        { "visible": true,  "targets": [ 2 ] }
+                {
+                    "render": function ( data, type, row ) {
+                        var jb=row.zddjb;
+                        if (jb=="0601") {
+                            return '<span class="label">'+row.zddmc+'</span>';
+                        }else if(jb=="0602")
+                        {
+                            return '<span class="label">'+row.zddmc+'</span>';
+                        }else{
+                            return '<span>'+row.zddmc+'</span>';
+                        }
+                    }, "targets": 3
+                },
 		    ],
                 "columns": [{"data": null, "sWidth": "30px"},
                     {"data": "id"},
+                    {"data": "ddmc", "sWidth": "120px"},
                     {"data": "zddmc", "sWidth": "120px"},
                     {"data": "ddztmc", "sWidth": "120px"},
                     {"data": "clmc","sWidth": "120px"},
                     {"data": "gxnr","sWidth": "300px"},
                     {"data": "jgsl","sWidth": "60px"},
-                    {"data": "clxz"},
-                    {"data": "cldx"},
-                    {"data": "cltj"},
-                    {"data": "clje"},
-                    {"data": "bmcl"},
-                    {
-                        "data": "starttime",
-                        "sWidth": "120px"
-                    }, {"data": "endtime", "sWidth": "120px"},
-                    {"data": "gs", "sWidth": "120px"},
-                    {"data": "blqk", "sWidth": "120px"},
-                    {"data": "blkssj", "sWidth": "120px"},
-                    {"data": "bljssj", "sWidth": "120px"},
-                    {"data": "clzt", "sWidth": "120px"},
-                    {"data": "cgry"},
-                    {"data": "cgsj"},
-                    {"data": "rksj", "sWidth": "120px"},
-                    {"data": "ddtz", "sWidth": "120px"},
                     {"data": "bfjs"},
-                    {"data": "bhgjs", "sWidth": "120px"},
+                    {"data": "starttime","sWidth": "120px"},
+                    {"data": "endtime", "sWidth": "120px"},
+                    {"data": "ddendtime", "sWidth": "120px"},
+                    {"data": "gs", "sWidth": "120px"},
+                    {"data": "rksj", "sWidth": "120px"},
+                    {"data": "bhgjs", "sWidth": "120px"}
                 ]
 		   
 		} );
@@ -113,11 +113,10 @@
         passAllInfo=function(id){
                 var url = "bomInfo_updateZddzt.action", successFun = function (resStr) {
                     if (resStr == "success") {
-                        window.location.reload();
-                        $("#sorting-advanced").dataTable().fnPageChange('previous', true);
-                        alert("该订单成品入库成功！");
+                        $('#bomInfo').DataTable().ajax.reload(function(){},true);
+                        Main.ShowSuccessMessage("该订单成品入库成功！");
                     }else{
-                        alert("该订单成品入库失败！");
+                        Main.ShowErrorMessage("该订单成品入库失败！");
                     }
                 };
                 if (confirm("是否确定全部入库？")) {

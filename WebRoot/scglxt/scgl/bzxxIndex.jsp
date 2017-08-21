@@ -18,19 +18,28 @@
                     "id":id
                 },
                 success:function(str){
-                    alert("删除成功！");
+                    Main.ShowSuccessMessage("删除成功！");
                     window.location.reload();
                     $("#sorting-advanced").dataTable().fnPageChange( 'previous', true );
                 }
             });
         }
     }
+    showModel = function (data) {
+        $('#myModal').modal({
+            backdrop: false,
+            show: true
+        });
+        //在modalbody 中家在iframe 内容为 工序编排的内容
+        $content = "<iframe src='../qxgl/qxglManage.jsp?flag=edit&bzid=" + data + "' class='modal_iframe'></iframe>";
+        $container = $('#modal-body');
+        $container.empty().append($content);
+    }
     function tableInit() {
 
         var height = document.body.offsetHeight;
 
         var table = $('#bzxx').DataTable({
-//            "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
             "bLengthChange": false,
             "oLanguage": {
                 "sProcessing": "正在加载中......",
@@ -57,9 +66,10 @@
                 {
                     "render": function (data, type, row) {
                         return '<div class="text-center">' +
+                                '<a href="#"  onclick = "showModel(\'' + data + '\')">菜单权限</a>'+
+                                "&nbsp;"+
                                 '<a href="${pageContext.request.contextPath}/scglxt/scgl/addBzInfo.jsp?flag=edit&id=' + data + '">修改</a>' +
                                         "&nbsp;"+
-                                <%--'<a  href="${pageContext.request.contextPath}/scglxt/scgl/scglbz_deleteBzInfo.action?id=' + data + '">删除</a>' +--%>
                                 '<a  href="#" onclick="deleteRow(\'' + data + '\')">删除</a>'
                                 '</div>';
                     },
@@ -125,6 +135,25 @@
             </div>
         </div>
     </div>
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:550px;height:500px;">
+        <div class="modal-content" style="height:90%;">
+            <div class="modal-header">
+                <button id="modalClose" type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true" style="margin-top:-10px">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
 </div>
 </body>
 </html>

@@ -49,14 +49,31 @@ $(function(){
 			}
 		}
 	});
-	
-	//整形验证
+    //整形验证
+    $(".requiredDecimal").blur(function() {
+        reg = /([1-9]+[0-9]*|0)(\\.[\\d]+)?/;
+        if(!reg.test($(this).val()) && $(this).val() != ""){
+            $(this).next().html("数字格式不正确！");
+        }else{
+            $(this).next().html("");
+            if($('.auth_keybord'))
+            {
+                $('.auth_keybord').hide();
+            }
+        }
+    });
+
+    //整形验证
 	$(".requiredInteger").blur(function() {
 					reg=/^[-+]?\d+$/;
 					if(!reg.test($(this).val()) && $(this).val() != ""){
 					    $(this).next().html("数字格式不正确！");
 					}else{
 						$(this).next().html("");
+                        if($('.auth_keybord'))
+                        {
+                            $('.auth_keybord').hide();
+                        }
 					}
 				});	
 	//整形验证(必填)
@@ -66,6 +83,10 @@ $(function(){
 					    $(this).next().html("数字格式不正确！");
 					}else{
 						$(this).next().html("");
+                        if($('.auth_keybord'))
+                        {
+                            $('.auth_keybord').hide();
+                        }
 					}
 					if($(this).val() == ""){
 						$(this).next().html("数字不能为空！");

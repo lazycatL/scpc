@@ -4,7 +4,8 @@
  * @date 20141024
  */
 (function(){
-	var operateFlag = ""; 
+	var operateFlag = "";
+    var selectRowId="";
 	window.HtManage = (function(){
 		var _t = this ,
 		_operateFlag = "",
@@ -27,7 +28,35 @@
 		registerEvent = function(){
 			$("#form_add").on('click',function(){
 				Main.swapIframUrl('scglxt/xsgl/editHtInfo.jsp');//跳转iframe页面
-			})			
+			});
+            //导出报价单模板
+            $("#form_exportbjd").on("click",function(){
+                window.location.href=resUrl+'/resourceImport_exportAllTemplate.action?tableId=0110&ISIMPORT=1&ISSHOWDELETE=1&PAGEBEAN.CURRENTPAGE=1&ISEXPORT=1&PAGEBEAN.PAGESIZE=10&ISSHOWQUERY=1&ISSHOWDATA=1&LISTORDERRULE=&ISSHOWNO=1&ISSHOWLOG=1&TABLEID=0104&ISBATCHDELETE=1&LISTORDERCOLUMN=&ISSHOWMODIFY=1&ISSHOWPAGE=1&ISSHOWHEAD=1&ISBATCHMODIFY=1&ISSUPERQUERY=1&ISSHOWINSERT=1&ISSHOWTITLE=1&ISSHOWPROPERTY=1&';
+            });
+            //点击导入
+            $("#btn_import").on("click",function(){
+                var file= $('#import_excel').attr("filepath");
+                if(file==null || file=="")
+                {
+                    Main.ShowErrorMessage("请先选择excel上传后再执行导入！");
+                    return;
+                }else{
+                    var url = "import_excel.action", successFun = function (resStr) {
+                        if (resStr) {
+                            $('#bomInfo').DataTable().ajax.reload(function(){},true);
+                            $("#sorting-advanced").dataTable().fnPageChange('previous', true);
+                            $('#myModalUpload').modal('hide');
+                            Main.ShowSuccessMessage("导入成功！");
+                        }else{
+                            $('#myModalUpload').modal('hide');
+                            Main.ShowSuccessMessage("导入失败，请联系管理员！");
+                        }
+                    };
+                    if (confirm("确定导入上传的Excel？")) {
+                        $.asyncAjaxPost(url, {"filepath": file,"ssht":selectRowId}, successFun, true);
+                    }
+                }
+            });
 		},
 		/**
 		 * 初始化表格函数
@@ -63,29 +92,19 @@
 			scrollX:        true,
 			scrollCollapse: true,
 			paging:         true,
-//			"columnDefs": [
-//				{ width: '20%', targets: 0 },
-//				 
-//			]
-//			,
 			"columnDefs": [ 
 		        {
 		            "render": function ( data, type, row ) {
 		                return '<div class="">'+
 		                ' <a class="" href="#" onclick = "HtManage.editRow(\''+data+'\')" title＝"修改">修改 </a> '+
 		                '<a class="" href="#" title="删除" onclick = "HtManage.deleteRow(\''+data+'\')">删除</a>'+
-							' <a class="" href="#" title＝"查看" onclick = "HtManage.showModel(\''+data+'\')">查看订单</a> '+
-		                ' </div>';
+                            ' <a class="" href="#" title＝"上传报价单" onclick = "HtManage.showHtfj(\''+data+'\')">上传报价单</a> '+
+							' <a class="" href="#" title＝"查看" onclick = "HtManage.showModel(\''+data+'\',\'dd\')">查看订单</a> '+
+                            ' <a class="" href="#" title＝"查看" onclick = "HtManage.showModel(\''+data+'\',\'bjd\')">查看报价单</a> '+
+                            ' </div>';
 		            },
 		            "targets": 1
 		        },
-
-
-		        {
-	                "visible": false,
-	                "targets": [2 ]
-	            },
-
 				{
 					"render": function ( data, type, row ) {
 						if(data !=null  && data !="" ){
@@ -94,29 +113,22 @@
 							return data ;
 						}
 					},
-					"targets": 12
-				},
-
+					"targets": 9
+				}
 		    ],
 		    "columns": [
 		    	{"data":null},
-		    	{"data":'id'},
-
-		    	{ "data": "id" },
-		        { "data": "mc" },
-		        { "data": "htbh" },
-                { "data": "khmc" },
+		    	{"data":'id',"sWidth": "280px"},
+		        { "data": "htbh" ,"sWidth": "180px"},
+                { "data": "khmc" ,"sWidth": "250px" },
 		        { "data": "ywlx" },
 		        { "data": "htje" },
 		        { "data": "qssj" },
 		        { "data": "jssj" },
-		        { "data": "dqjd" },
 		        { "data": "fkztmc" },
 		        { "data": "jkbfb" },
 		        { "data": "jkje" },
 		        { "data": "jscb" },
-		        { "data": "hkzh" },
-		        { "data": "hkkhh" },
 		        { "data": "htmx" }
 		    ]
 		   
@@ -139,9 +151,9 @@
 		deleteRow = function(id){
 			 var url = "htInfo_deleteRow.action",successFun = function(resStr){
                  if (resStr == "SUCCESS") {
-	     			  	window.location.reload(); 
-	    			  	$("#sorting-advanced").dataTable().fnPageChange( 'previous', true );
-						alert("删除成功！");
+                    $('#htInfo').DataTable().ajax.reload(function(){},true);
+	    			$("#sorting-advanced").dataTable().fnPageChange( 'previous', true );
+                     Main.ShowSuccessMessage("删除成功！");
                  }
          } ;
          if(confirm("是否删除？")){
@@ -161,24 +173,43 @@
 		initHtInfo = function(flag){
 			
 		},
+        showHtfj = function(data){
+            selectRowId=data;
+            $('#import_excel').ssi_uploader({url:'../../ImageUploadServlet?type=excel',preview:false,dropZone:false,allowed:['xls'],ajaxOptions:{
+                success:function(file){
+                    $('#import_excel').attr("filepath",file);
+                    Main.ShowSuccessMessage("上传成功！");
+                }
+            }});
+            $('#myModalUpload').modal({
+                backdrop: false,
+                show: true
+            });
+        },
 		/**
 		 * 显示modal框
 		 */
-		showModel = function(data){
-			$('#myModal').modal({
-				backdrop:false,
-				show:true
-			});
-			//在modalbody 中家在iframe 内容为 工序编排的内容
-			$content = "<iframe src='../jsgl/ddManager.jsp?showModal=true&ssht="+data+"' class='modal_iframe'></iframe>" ;
-			$container = $('#modal-body');
-			$container.empty().append($content);
+		showModel = function(data,type) {
+
+            if (type === "dd") {
+                Main.swapIframUrl("scglxt/jsgl/ddManager.jsp?showModal=true&ssht=" + data);//跳转iframe页面
+            }else{
+                $('#myModal').modal({
+                    backdrop:false,
+                    show:true
+                });
+                //在modalbody 中家在iframe 内容为 工序编排的内容
+                $content = "<iframe src='../../resmgr/resView.html?tableId=0110&isFlag=list&queryColumn=ssht_id&queryKey="+data+"&temp="+Math.random()+"' class='modal_iframe'></iframe>" ;
+                $container = $('#modal-body');
+                $container.empty().append($content);
+            }
 		}
 		;
 		 return{
 			 init:init ,
 			 deleteRow:deleteRow,
 			 editRow:editRow,
+             showHtfj:showHtfj,
 			 showModel:showModel
 		 }
 	})();

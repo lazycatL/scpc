@@ -9,7 +9,9 @@ public class User {
     String rynl;
     String jsjb;
     String ssbz;
+    String bzmc;
     String password;
+    String ryzp;
 
     public String getId() {
         return id;
@@ -47,8 +49,16 @@ public class User {
         return ssbz;
     }
 
+    public String getBzmc() {
+        return bzmc;
+    }
+
     public void setSsbz(String ssbz) {
         this.ssbz = ssbz;
+    }
+
+    public void setBzmc(String bzmc) {
+        this.bzmc = bzmc;
     }
 
     public String getPassword() {
@@ -57,5 +67,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRyzp() {
+        return ryzp;
+    }
+
+    public void setRyzp(String ryzp) {
+        this.ryzp = ryzp;
     }
 }

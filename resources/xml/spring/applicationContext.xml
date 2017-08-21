@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+	<!-- 可以实现国际化，在类路径下查找以'ApplicationResources'开头的配置文件，并读取其中的信息 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>ApplicationResources</value>
+		</property>
+	</bean>
+	<!-- 使Bean在配置时可以引用外部属性文件，例如${jdbc.url}，${jdbc.username} -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:ApplicationResources.properties</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 多数据源配置 -->
+		<bean id="dataSourceA" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"> 
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<!--连接池中保留的最小连接数。-->
+		<property name="minPoolSize" value="5" />
+		<!--初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
+		<property name="initialPoolSize" value="3" />
+		<!--连接池中保留的最大连接数。Default: 15 -->
+		<property name="maxPoolSize" value="30" />
+		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+		<property name="acquireIncrement" value="1" />
+		<!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+		<property name="maxIdleTime" value="60" />
+		<!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
+		<property name="idleConnectionTestPeriod" value="60" />
+		<!--当连接池用完时客户端调用getConnection()后等待获取新连接的时间，超时后将抛出SQLException,如设为0则无限期等待。单位毫秒。Default: 0 -->
+		<property name="checkoutTimeout" value="6000"  />
+	</bean>
+	<bean id="dataSource" class="com.project.base.DynamicDataSource" >
+     <!-- 通过key-value的形式来关联数据源 -->
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry value-ref="dataSourceA" key="dataSourceA"></entry>
+<!--				<entry value-ref="dataSourceB" key="dataSourceB"></entry>-->
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="dataSourceA" >
+		</property>
+	</bean> 
+	<!-- 多数据源配置 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="lobHandler">
+			<ref bean="lobHandler" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					<!-- org.hibernate.dialect.Oracle10gDialect -->
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<!-- * create : 会根据你的model类来生成表,但是每次运行都会删除上一次的表,重新生成表,哪怕2次没有任何改变 * create-drop 
+					: 根据model类生成表,但是sessionFactory一关闭,表就自动删除 * update : 最常用的属性，也根据model类生成表,即使表结构改变了,表中的行仍然存在,不会删除以前的行 
+					* validate : 只会和数据库中的表进行比较,不会创建新表,但是会插入新值 -->
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+
+		<!-- 配置Hibernate映射文件路径 -->
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:com/project/**/bean</value>
+				<value>classpath:com/project/**/**/bean</value>
+				<value>classpath:com/project/**/entity</value>
+			</list>
+		</property>
+
+	</bean>
+	<!-- 事务拦截器，对所有业务模块的服务方法进行代理拦截 -->
+	<bean id="transactionIntercetorTemplate" abstract="true">
+		<property name="transactionAttributes">
+			<props>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="fetch*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="is*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="search*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="export*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="select*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="show*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="audit*">PROPAGATION_REQUIRED</prop>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="delete">PROPAGATION_REQUIRED</prop>
+				<prop key="pass*">PROPAGATION_REQUIRED</prop>
+				<prop key="submit*">PROPAGATION_REQUIRED</prop>
+				<prop key="modify*">PROPAGATION_REQUIRED</prop>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="remove*">PROPAGATION_REQUIRED</prop>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="import*">PROPAGATION_REQUIRED</prop>
+				<prop key="init*">PROPAGATION_REQUIRED</prop>
+				<prop key="synchroI*">PROPAGATION_REQUIRED</prop>
+				<prop key="post*">PROPAGATION_REQUIRED</prop>
+				<prop key="create*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- Hibernate Transaction Interceptor Definition -->
+	<bean id="hibernateTransactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor"
+		parent="transactionIntercetorTemplate">
+		<property name="transactionManager">
+			<bean id="hibernateTransactionManager"
+				class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<!-- Jdbc Transaction Interceptor Definition 可以去掉，Hibernate包括HibernateTransactionManager可以管理JDBC事务 -->
+	<bean id="jdbcTransactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor"
+		parent="transactionIntercetorTemplate">
+		<property name="transactionManager">
+			<bean id="dataSourceTransactionManager"
+				class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+				<property name="dataSource">
+					<ref bean="dataSource" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<!-- 自动代理 -->
+	<bean id="autoProxy"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>*Dao</value>
+				<value>*Service</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>hibernateTransactionInterceptor</value>
+				<value>jdbcTransactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 支持oracle大字段 -->
+	<bean id="nativeJdbcExtractor"
+		class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor"
+		lazy-init="true">
+	</bean>
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler"
+		lazy-init="true">
+		<property name="nativeJdbcExtractor" ref="nativeJdbcExtractor" />
+	</bean>
+</beans>

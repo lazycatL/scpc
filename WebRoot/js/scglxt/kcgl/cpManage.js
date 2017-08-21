@@ -115,7 +115,7 @@
                  if (resStr == "SUCCESS") {
 	     			  	window.location.reload(); 
 	    			  	$("#sorting-advanced").dataTable().fnPageChange( 'previous', true );
-						alert("SUCCESS！");
+                     Main.ShowSuccessMessage("删除成功！");
                  }
          } ;
          if(confirm("确定删除？")){
@@ -128,7 +128,6 @@
 		},
 		//跳转页面
 		editRow = function(id){
-			alert();
 			Main.swapIframUrl('scglxt/jsgl/editBomInfo.jsp?id='+id);//跳转iframe页面
 		},
 		/**

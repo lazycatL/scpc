@@ -3,6 +3,7 @@
  */
 package com.project.jsgl.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.project.util.Constants;
@@ -10,6 +11,7 @@ import com.project.util.StringUtil;
 import net.sf.json.JSONObject;
 
 import oracle.jdbc.driver.Const;
+import org.apache.commons.collections.map.ListOrderedMap;
 import org.apache.commons.logging.Log;
 
 import com.project.base.ActionEnum;
@@ -116,6 +118,72 @@ public class GxInfoManagerAction {
 			e.printStackTrace();
 		}
 	}
-	
+
+    /**
+     * 添加常用语到数据库
+     */
+    public void addCyyInfo()
+    {
+        String mc=Request.getParameter("mc");
+        String sql="SELECT  CONVERT(MAX(id)+1,SIGNED) id FROM scglxt_tyzd WHERE xh LIKE '90__';";
+        String id="";
+        String result="";
+        List list = this.selectDataService.queryForList(sql);
+        if (list.size() > 0) {
+            ListOrderedMap lod=(ListOrderedMap)list.get(0);
+            //if(!lod.get("id").toString().equals(""))
+            if(lod.get("id")!=null)
+            {
+                id=lod.get("id").toString();
+            }else{
+                id="9001";
+            }
+        }else{
+            id="9001";
+        }
+
+        String insertSql="insert into scglxt_tyzd(id,mc,xh) values('"+id+"','"+mc+"','"+id+"')";
+        log.info("插入常用语SQL:"+insertSql);
+        try {
+            selectDataService.execute(insertSql);
+            result="SUCCESS";
+        } catch (Exception e) {
+            result="ERROR";
+            e.printStackTrace();
+        }
+        Response.write(result);
+    }
+    /**
+     * 获取数据库中已存在的常用语列表
+     */
+    public void getCyyInfo()
+    {
+        String sql = " select  id ,mc from scglxt_tyzd where xh like '90__';";
+        List list = null ;
+        String json = null ;
+        try {
+            list = selectDataService.queryForList(sql);
+            json = JsonObjectUtil.list2Json(list);
+        } catch (Exception e) {
+            json = "[]";
+            e.printStackTrace();
+        }
+        Response.write(json);
+
+    }
+    public void deleteCyy()
+    {
+        String id=Request.getParameter("id");
+        String result="";
+        String sql="Delete from scglxt_tyzd where id='"+id+"'";
+        try {
+           selectDataService.execute(sql);
+            result="SUCCESS";
+        } catch (Exception e) {
+            result="ERROR";
+            e.printStackTrace();
+        }
+        Response.write(result);
+    }
 	
 }

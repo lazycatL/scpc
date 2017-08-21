@@ -88,10 +88,22 @@ function validata() {
     //数字验证
     $(".requiredDecimal").each(function () {
         reg = /([1-9]+[0-9]*|0)(\\.[\\d]+)?/;
-        if (!reg.test($(this).val()) && $(this).val() != "") {
-            tips = $(this).val() + " 数字格式不正确！";
-            $(this).next().html("数字格式不正确！");
-        }
+
+        $(this).focus(function(){
+            if (!reg.test($(this).val()) && $(this).val() != "") {
+                tips = $(this).val() + " 数字格式不正确！";
+                $(this).next().html("数字格式不正确！");
+                $(this).val("");
+            }
+        })
+         .blur(function(){
+//                if (!reg.test($(this).val()) && $(this).val() != "") {
+//                    tips = $(this).val() + " 数字格式不正确！";
+//                    $(this).next().html("数字格式不正确！");
+//                }else{
+//                    $(this).next().html("");
+//                }
+            })
 
     });
     //小数点后一位验证

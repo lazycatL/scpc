@@ -158,5 +158,47 @@ public class KhxxManagerAction {
 		String json = JsonObjectUtil.list2Json(list);
 		Response.write(json);
 	}
+
+    //添加联系人
+    public void addLxrInfo()
+    {
+        String JSON = Request.getParameter("JSON");
+        String randomId = WebUtils.getRandomId();
+        JSONObject json = JSONObject.fromObject(JSON);
+        String flag = json.getString("flag");
+        String id = json.getString("id");
+        String mc = json.getString("mc");
+        String sj = json.getString("sj");
+        String zj = json.getString("zj");
+        String yx =  json.getString("yx");
+        String zw =  json.getString("zw");
+        String sjkh =  json.getString("sjkh");
+        String sfxmlxr =  json.getString("sfxmlxr");
+        String remark =  json.getString("remark");
+
+
+        String msg = null;
+        String sql = "";
+        if(flag.equals("UPDATE")){
+//            sql = "update scglxt_t_kh  set mc = '"+mc+"' ,lx = '"+lx+"',dw = '"+dw+"',dz = '"+dz+"',gx = '"+gx+"'," +
+//                    "iscj = '"+iscj+"',remark = '"+remark+"',starttime='"+starttime+"' " +
+//                    "where id = '"+id+"'";
+        }else if(flag.equals("ADD")){
+            sql = "insert into scglxt_t_lxr(id,mc,sj,zj,yx,zw,sjkh,sfxmlxr,remark) " +
+                    "values("+randomId+",'"+mc+"','"+sj+"','"+zj+"','"+yx+"','"+zw+"','"+sjkh+"','"+sfxmlxr+"','"+remark+"')";
+        }
+        try {
+            selectDataService.execute(sql);
+            //	msg = ActionEnum.SUCCESS.toString();
+            msg = "SUCCESS";
+            log.info("insert "+sql);
+        } catch (Exception e) {
+            //		msg = ActionEnum.ERROR.toString();
+            msg = "ERROR";
+            log.info("错误的sql " +sql);
+            e.printStackTrace();
+        }
+        Response.write(msg);
+    }
 	
 }

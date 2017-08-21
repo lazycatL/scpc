@@ -293,6 +293,14 @@ $.extend($, {
         }
         return source;
     },
+    dateAddDays:function(dataStr,dayCount) {
+        var strdate=dataStr; //日期字符串
+        var isdate = new Date(strdate.replace(/-/g,"/"));  //把日期字符串转换成日期格式
+        isdate = new Date((isdate/1000+(86400*dayCount))*1000);  //日期加1天
+        var pdate = isdate.getFullYear()+"-"+(isdate.getMonth()+1)+"-"+(isdate.getDate());   //把日期格式转换成字符串
+
+        return pdate;
+    },
     //将2011-10-26 14:50;22这样的时间字符串转化成Date对象
     toDateTime: function (dateStr) { return new Date(Date.parse(dateStr.replace(/\-/g, "/"))); },
     toDateTimeString: function (date)
@@ -382,6 +390,15 @@ $.extend($, {
     version1: function ()
     {
         return "1.0.0.0";
+    },
+    DateDiff:function(sDate1,  sDate2){    //sDate1和sDate2是2006-12-18格式
+        var  aDate,  oDate1,  oDate2,  iDays
+        aDate  =  sDate1.split("-")
+        oDate1  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0]) //转换为12-18-2006格式
+        aDate  =  sDate2.split("-")
+        oDate2  =  new  Date(aDate[1]  +  '-'  +  aDate[2]  +  '-'  +  aDate[0])
+        iDays  =  parseInt(Math.abs(oDate1  -  oDate2)  /  1000  /  60  /  60  /24) //把相差的毫秒数转换为天数
+        return  iDays
     },
     decodeEmptyValue : function(value){
         if(value == null || value == undefined ) { // 等同于 value === undefined || value === null

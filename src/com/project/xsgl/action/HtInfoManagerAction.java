@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.project.util.Constants;
 import com.project.util.StringUtil;
 import net.sf.json.JSONObject;
@@ -44,7 +45,7 @@ public class HtInfoManagerAction {
     public void getTableData() {
         String khid = Request.getParameter("khid");
         String id = Request.getParameter("id");
-        String sql = "select t1.id ,t1.mc,t1.htbh , t4.mc ywlx ,t1.htje,date_format(qssj,'%Y-%m-%d') qssj,date_format(jssj,'%Y-%m-%d') jssj, t1.dqjd,t5.mc fkzt, t3.mc fkztmc,t1.jkbfb,jkje,jscb,t1.hkzh,t1.hkkhh,t1.remark ,t1.htmx, t2.id khid,t2.mc khmc from scglxt_t_ht  t1 left join scglxt_t_kh t2 on t1.khid = t2.id  left join  scglxt_tyzd t3 on t1.fkzt= t3.id left join scglxt_tyzd t4 on t4.id = t1.ywlx left join scglxt_tyzd t5 on t5.id = t1.fkzt  where 1=1 ";
+        String sql = "select t1.id ,t1.htbh , t4.mc ywlx ,t1.htje,date_format(qssj,'%Y-%m-%d') qssj,date_format(jssj,'%Y-%m-%d') jssj,t5.mc fkzt, t3.mc fkztmc,t1.jkbfb,jkje,jscb,t1.hkzh,t1.hkkhh,t1.remark ,t1.htmx, t2.id khid,t2.mc khmc from scglxt_t_ht  t1 left join scglxt_t_kh t2 on t1.khid = t2.id  left join  scglxt_tyzd t3 on t1.fkzt= t3.id left join scglxt_tyzd t4 on t4.id = t1.ywlx left join scglxt_tyzd t5 on t5.id = t1.fkzt  where 1=1 ";
         if (khid != null && !khid.equals("")) {
             sql += " and  t1.khid = '" + khid + "'";
         }else if(id != null  &&  !id.equals("")){
@@ -60,10 +61,9 @@ public class HtInfoManagerAction {
     public void getTableDataTest() {
         String limitStart = "";
         String limitEnd = "";
-//		String sql ="select id ,mc,htbh , ywlx ,htje,date_format(qssj,'%Y-%m-%d') qssj,dqjd,fkzt,jkbfb,jkje,jscb,hkzh,hkkhh,remark from xsgl_hetong_info ";
         String sql = "select id ,ssht, xmname , ddlevel,date_format(jhdate,'%Y-%m-%d') jhdate ,date_format(planstarttime,'%Y-%m-%d') planstarttime," +
                 " date_format(planendtime,'%Y-%m-%d') planendtime,date_format(realstarttime,'%Y-%m-%d') realstarttime,date_format(realendtime,'%Y-%m-%d') realendtime, " +
-                " zgs,dqjd,tz,remark,xmlxr,xmfzr,ckzt,date_format(ckdate,'%Y-%m-%d') ckdate from xsgl_ddgl_info  ";
+                " zgs,tz,remark,xmlxr,xmfzr,ckzt,date_format(ckdate,'%Y-%m-%d') ckdate from xsgl_ddgl_info  ";
         List list = this.selectDataService.queryForList(sql);
         String json = JsonObjectUtil.list2Json(list);
         json = "{\"data\":" + json + "}";
@@ -105,6 +105,25 @@ public class HtInfoManagerAction {
         String id = Request.getParameter("id");
         String sql = "delete from scglxt_t_ht where id = '" + id + "'";
         try {
+
+            //删除订单下所有BOM下所有工艺加工情况
+            String deljgglSql="delete from scglxt_t_jggl where gygcid in (select id from scglxt_t_gygc where bomid in (select id from scglxt_t_bom where ssdd in (select id from scglxt_t_dd where ssht='"+id+"')))";
+            selectDataService.execute(deljgglSql);
+
+            //删除订单下所有BOM下所有工艺
+            String delGygxSql="delete from scglxt_t_gygc where bomid in (select id from scglxt_t_bom where ssdd in (select id from scglxt_t_dd where ssht='"+id+"'))";
+            selectDataService.execute(delGygxSql);
+
+
+            //删除订单下所有BOM
+            String delBomSql="delete from scglxt_t_bom where ssdd in  (select id from scglxt_t_dd where ssht='"+id+"')";
+            selectDataService.execute(delBomSql);
+
+            //删除该合同下的所有订单
+            String delDdSql="delete from scglxt_t_dd where ssht='"+id+"'";
+            selectDataService.execute(delDdSql);
+
+
             selectDataService.execute(sql);
             Response.write("SUCCESS");
         } catch (Exception e) {
@@ -120,8 +139,8 @@ public class HtInfoManagerAction {
      */
     public void getDetailInfo() {
         String id = Request.getParameter("id");
-        String sql = " select id ,mc,htbh , ywlx ,htje,date_format(qssj,'%Y-%m-%d')  qssj,date_format(qssj,'%Y-%m-%d')  jssj," +
-                "dqjd,fkzt,jkbfb,jkje,jscb,hkzh,hkkhh,htmx,khid,remark from scglxt_t_ht where id = '" + id + "'";
+        String sql = " select id ,htbh , ywlx ,htje,date_format(qssj,'%Y-%m-%d')  qssj,date_format(jssj,'%Y-%m-%d')  jssj," +
+                "fkzt,jkbfb,jkje,jscb,hkzh,hkkhh,htmx,khid,htjc,jgsl,dj,remark,CONCAT(htjc,'-',LPAD((SELECT  (RIGHT(xmname, 5) + 1)  FROM  scglxt_t_dd  ORDER BY id DESC   LIMIT 1),5,'0')) xmname from scglxt_t_ht where id = '" + id + "'";
         List list = null;
         String json = null;
         try {
@@ -169,23 +188,23 @@ public class HtInfoManagerAction {
         String json = Request.getParameter("JSON");
         JSONObject JSON = JSONObject.fromObject(json);
 
-        String mc = JSON.getString("mc");
         String htbh = JSON.getString("htbh");
         String ywlx = JSON.getString("ywlx");
         String htje = JSON.getString("htje");
         String qssj = JSON.getString("qssj");
         String jssj = JSON.getString("jssj");
-        String dqjd = JSON.getString("dqjd");
         String fkzt = JSON.getString("fkzt");
         String jkbfb = JSON.getString("jkbfb");
+
+        String htjc = JSON.getString("htjc")==null?"":JSON.getString("htjc");
+
         String jkje = StringUtil.returnNotEmpty(JSON.getString("jkje"));
-        if(jkje != null  && htje != null ){
-        	 NumberFormat numberFormat = NumberFormat.getNumberInstance();
-             numberFormat.setMaximumFractionDigits(2);
-            jkbfb = String.valueOf(numberFormat.format(((double)Long.parseLong(jkje)/Long.parseLong(htje))*100));
-        }
-       
-        
+//        if(jkje != null  && htje != null ){
+//        	 NumberFormat numberFormat = NumberFormat.getNumberInstance();
+//             numberFormat.setMaximumFractionDigits(2);
+//            jkbfb = String.valueOf(numberFormat.format(((double)Long.parseLong(jkje)/Long.parseLong(htje))*100));
+//        }
+
         String jscb = JSON.getString("jscb");
         if(null==jscb||"".equals(jscb)){
         	
@@ -199,23 +218,33 @@ public class HtInfoManagerAction {
         String flag = JSON.getString("flag");
         String sql = null;
         String id = null;
+        String czr= ActionContext.getContext().getSession().get("userid").toString();
+
         if (flag != null && flag.equals("ADD")) {
             id = WebUtils.getRandomId();
-            sql = " insert into scglxt_t_ht (`id`, `mc`, `htbh`, `ywlx`, `htje`, `qssj`, `jssj`, `dqjd`, `fkzt`, `jkbfb`, `jkje`, `jscb`, `hkzh`, `hkkhh`,`remark`,`htmx`,`khid`) VALUES ('" + id + "', '" + mc + "', '" + htbh + "', '" + ywlx + "', '" + htje + "',  DATE_FORMAT( '"+qssj+"', '%Y-%m-%d') ,DATE_FORMAT( '"+jssj+"', '%Y-%m-%d') , '" + dqjd + "', '" + fkzt + "', '" + jkbfb + "',  '" + jkje + "', '" + jscb + "','" + hkzh + "','" + hkkhh + "','" + remark + "' ,'"+htmx+"','"+khid+"' );";
+            sql = " insert into scglxt_t_ht (`id`, `htbh`, `ywlx`, `htje`, `qssj`, `jssj`, `fkzt`, `jkbfb`, `jkje`, `jscb`, `hkzh`, `hkkhh`,`remark`,`htmx`,`khid`,htjc,sjcjry) VALUES ('" + id + "',  '" + htbh + "', '" + ywlx + "', '" + htje + "',  DATE_FORMAT( '"+qssj+"', '%Y-%m-%d') ,DATE_FORMAT( '"+jssj+"', '%Y-%m-%d') ,  '" + fkzt + "', '" + jkbfb + "',  '" + jkje + "', '" + jscb + "','" + hkzh + "','" + hkkhh + "','" + remark + "' ,'"+htmx+"','"+khid+"','"+htjc+"','"+czr+"');";
+
         } else if (flag.equals("UPDATE")) {
             id = JSON.getString("id");
-           /* sql = " update scglxt_t_ht set mc = '" + mc + "' , htbh = '" + htbh + "', ywlx = '" + ywlx + "' , htje = '" + htje + "',qssj = DATE_FORMAT('" + qssj + "','%Y-%m-%d'),jssj = DATE_FORMAT('"+jssj+"','%Y-%m-%d'),dqjd='" + dqjd + "', " +
-                    "fkzt = '" + fkzt + "' , jkbfb='" + jkbfb + "' ,jkje='" + jkje + "', jscb='" + jscb + "' ,hkzh='" + hkzh + "' , hkkhh='" + hkkhh + "', remark='" + remark + "' ,htmx = '"+htmx+"' " +
-                    "WHERE id = '" + id + "'";*/
-            sql = " update scglxt_t_ht set mc = '" + mc + "' ,khid = '" + khid + "' , htbh = '" + htbh + "', ywlx = '" + ywlx + "' , htje = '" + htje + "',qssj = DATE_FORMAT('" + qssj + "','%Y-%m-%d'),jssj = DATE_FORMAT('"+jssj+"','%Y-%m-%d'),dqjd='" + dqjd + "', " +
-                    "fkzt = '" + fkzt + "' , jkbfb='" + jkbfb + "' ,jkje='" + jkje + "',hkzh='" + hkzh + "' , hkkhh='" + hkkhh + "', remark='" + remark + "' ,htmx = '"+htmx+"' " +
+
+            sql = " update scglxt_t_ht set khid = '" + khid + "' , htbh = '" + htbh + "', ywlx = '" + ywlx + "' , htje = '" + htje + "',qssj = DATE_FORMAT('" + qssj + "','%Y-%m-%d'),jssj = DATE_FORMAT('"+jssj+"','%Y-%m-%d'), " +
+                    "fkzt = '" + fkzt + "' , jkbfb='" + jkbfb + "' ,jkje='" + jkje + "',hkzh='" + hkzh + "' , hkkhh='" + hkkhh + "', remark='" + remark + "' ,htmx = '"+htmx+"', " +
+                    "htjc='"+htjc+"'"+
                     "WHERE id = '" + id + "'";
             
         }
         try {
             selectDataService.execute(sql);
+            if (flag != null && flag.equals("ADD")) {//如果是新增合同，则直接增加订单信息
+                String nid = WebUtils.getRandomId();
+
+                sql = "INSERT INTO scglxt_t_dd (id, ssht, xmname,ddlevel,starttime,endtime,tz,xmlxr,xmfzr,sjcjry)" +
+                        " SELECT '"+nid+"' id,'"+id+"' ssht,CONCAT(htjc,'-',LPAD((SELECT  (RIGHT(xmname,5) + 1)  FROM scglxt_t_dd  ORDER BY id DESC  LIMIT 1),5,'0')) xmname,'0403' ddlevel,qssj,jssj,'"+nid+"','李勇' xmlxr,'李勇' xmfzr,sjcjry FROM scglxt_t_ht WHERE id='"+id+"'";
+                selectDataService.execute(sql);
+            }
             Response.write(Constants.UPDATE_SUCCESS);
         } catch (Exception e) {
+            selectDataService.execute("Delete from scglxt_t_ht where id='"+id+"'");
             Response.write(Constants.UPDATE_ERROR);
             e.printStackTrace();
         }
