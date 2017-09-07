@@ -327,6 +327,10 @@ public class DdInfoManagerAction  extends HttpServlet {
             String bomSql="SELECT  (@rownum := @rownum + 1) AS rownum, bom.id, zddmc,  t2.clmc, cldx, jgsl, gxnr, bmcl, '' AS bz, DATE_FORMAT(endtime, '%Y-%m-%d %h:%m') endtime \n" +
                     "FROM scglxt_t_bom bom  LEFT JOIN scglxt_t_cl t2   ON bom.zddcz = t2.id  WHERE ssdd = '"+ddid+"' ";
             List ddlist = this.selectDataService.queryForList(ddSql);
+            if(ddlist.size()<=0)
+            {
+                return;
+            }
             Map<String,Object> ddmap = (Map<String, Object>) ddlist.get(0);
 
             excelName=ddmap.get("xmname").toString();
@@ -504,15 +508,15 @@ public class DdInfoManagerAction  extends HttpServlet {
             HSSFCell cellKhbh = row1.createCell(0);
             row1.setHeightInPoints(15);
             cellKhbh.setCellStyle(style2);
-            HSSFRichTextString textKhbh = new HSSFRichTextString("组件");
+            HSSFRichTextString textKhbh = new HSSFRichTextString("客户编号");
             cellKhbh.setCellValue(textKhbh);
             row1.createCell(1).setCellStyle(style2);
             row1.createCell(3).setCellStyle(style2);
             row1.createCell(4).setCellStyle(style2);
             HSSFCell cellKhbhnr = row1.createCell(2);
             cellKhbhnr.setCellStyle(style3);
-          //  HSSFRichTextString textKhbhnr = new HSSFRichTextString(ddmap.get("htbh").toString());
-            cellKhbhnr.setCellValue("");
+            HSSFRichTextString textKhbhnr = new HSSFRichTextString(ddmap.get("htbh").toString());
+            cellKhbhnr.setCellValue(textKhbhnr);
 
             HSSFCell cellLlr = row1.createCell(5);
             cellLlr.setCellStyle(style2);

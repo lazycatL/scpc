@@ -49,8 +49,9 @@ public class HtInfoManagerAction {
         if (khid != null && !khid.equals("")) {
             sql += " and  t1.khid = '" + khid + "'";
         }else if(id != null  &&  !id.equals("")){
-            sql +=" and t1.id = '"+id+"'" ;
+            sql +=" and t1.id = '"+id+"' " ;
         }
+        sql+=" ORDER BY id DESC";
         List list = this.selectDataService.queryForList(sql);
         String json = JsonObjectUtil.list2Json(list);
         json = "{\"data\":" + json + "}";

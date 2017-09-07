@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>人员排产</title>
+    <link rel="stylesheet" href="../../js/plugin/jquery-easyui-1.4.3/themes/bootstrap/easyui.css" type="text/css"></link>
+    <link rel="stylesheet" href="../../js/plugin/jquery-easyui-1.4.3/ themes/icon.css">
+</head>
+<body>
+    <!--设备排产统计图-->
+    <div id="rypc" style="height:600px"></div>
+    <div id="pcglInfoWindow" title="排产信息" class="easyui-window" data-options="modal:true,closed:true,collapsible:false,maximizable:false,minimizable:false"  style="width:1200px;height:550px;padding:10px;">
+     <iframe id="pcglInfo" src="http://www.baidu.com" style="  height: 450px;  width: 100%;  overflow-x: hidden;  overflow-y: hidden;  border: none;"></iframe>
+    </div>
+     <!-- jquery 引入 -->
+   <script type="text/javascript" src="../../js/jquery/jquery.min.js"></script>
+    <!-- ECharts单文件引入 -->
+    <script src="../../js/plugin/echarts-2.2.4/echarts-all.js"></script>
+    <script type="text/javascript" src="../../js/plugin/jquery-easyui-1.4.3/jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+    
+    	
+        // 基于准备好的dom，初始化echarts图表
+        var myChart = echarts.init(document.getElementById('rypc')); 
+		var colorList = new Array();
+        var colorArray = [
+                         '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+                          '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+                          '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+                       ];
+        var key=new Array();;
+        var value=new Array();
+        var dataArray = null;
+       
+         var option = {
+        	    title: {
+		        	text: '人员排产图',
+			        subtext: '未完成工作'
+        	    },
+        	    tooltip: {
+        	        trigger: 'item'
+        	    },
+        	    toolbox: {
+        	        show: true,
+        	        feature: {
+        	            saveAsImage: {show: true}
+        	        }
+        	    },
+        	    calculable: true,
+        	    grid: {
+        	        borderWidth: 0,
+        	        y: 80,
+        	        y2: 60
+        	    },
+        	    // 柱形图默认参数
+        	    bar: {
+        	        itemStyle: {
+        	            normal: {
+        	                barBorderRadius: 5
+        	            },
+        	            emphasis: {
+        	                barBorderRadius: 5
+        	            }
+        	        }
+        	    },
+        	    xAxis: [
+        	        {
+        	            type: 'category',
+        	            name:'班组-人员',
+        	            show: true
+        	        }
+        	    ],
+        	    yAxis: [
+        	        {
+        	            type: 'value',
+        	            show: true,
+        	            min:5,
+        	            max:40
+        	         	            
+        	        }
+        	    ],
+        	    calculable:false,
+        	    series: [
+        	        {
+        	            name: '待完成天数',
+        	            type: 'bar',
+        	            barCategoryGap:'50%',
+        	            itemStyle: {
+        	                normal: {
+        	                    color:function(params) {
+
+	                       		 	return colorList[params.dataIndex]
+        	                    },
+        	                    label: {
+        	                        show: true,
+        	                        position: 'top',
+        	                        formatter: '{b}\n{c}天'
+        	                    },
+        	                    barBorderRadius: 5
+        	                }, 
+        	                emphasis: {
+            	                barBorderRadius: 5
+            	            }
+        	            }
+        	            
+        	        }
+        	    ]
+        	}
+        
+		$(function (){
+    		initCharts();
+    	});
+		function initCharts(){
+
+			$.ajax({
+				  type: "post",
+				  url: "pcgl_getPcRyTb.action",
+				  dataType: "json",
+				  data:{
+				  	"bzid":'',
+				  },
+				  success:function(dt){
+				  	
+				  	var currentc = null;
+				  	var ck = 0;
+				  	dataArray = dt;
+				  	for(var i = 0;i<dt.length;i++){
+				  		if(currentc!=dt[i].c){
+				  			ck++;
+				  			colorList.push(colorArray[ck]);
+				  			currentc = dt[i].c; 
+				  			
+				  		}else{
+				  			colorList.push(colorArray[ck]);
+				  		}
+				  		
+				  		key.push(dt[i].k);
+				  		value.push(dt[i].v);
+				  	
+				  	}
+				  	option.xAxis[0].data = key;
+        			option.series[0].data = value;
+        		
+       		 		myChart.setOption(option); 
+				  }	
+			}); 
+		}        
+       
+        myChart.on(echarts.config.EVENT.CLICK, function(param){
+
+			
+		//	alert(dataArray[param.dataIndex].id);
+			$('#pcglInfoWindow').window('open')
+      		$("#pcglInfo").attr("src","pcglInfoExtendsRy.html")
+       });
+    </script>
+</body>

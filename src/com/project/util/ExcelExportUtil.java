@@ -286,12 +286,12 @@ public class ExcelExportUtil extends HttpServlet {
         row1.createCell(2).setCellStyle(style2);
         HSSFCell cellKhbh = row1.createCell(3);
         cellKhbh.setCellStyle(style2);
-        HSSFRichTextString textKhbh = new HSSFRichTextString("客户编号");
+        HSSFRichTextString textKhbh = new HSSFRichTextString("组件");
         cellKhbh.setCellValue(textKhbh);
         HSSFCell cellKhbhnr = row1.createCell(4);
         cellKhbhnr.setCellStyle(style3);
-        HSSFRichTextString textKhbhnr = new HSSFRichTextString(bomMap.get("khbh").toString());
-        cellKhbhnr.setCellValue(textKhbhnr);
+       // HSSFRichTextString textKhbhnr = new HSSFRichTextString(bomMap.get("khbh").toString());
+        cellKhbhnr.setCellValue("");
 
         HSSFCell cellCz = row1.createCell(5);
         cellCz.setCellStyle(style2);

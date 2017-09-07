@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>资源新增</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <button id="form_return" class="btn btn-success btn-sm">
+                    <i class="icon-add"></i> 返回
+                </button>
+                <div class="title">
+                    <div class="icon-edit"></div>
+                    客户信息
+                </div>
+
+            </div>
+            <div class="box-content box-no-padding">
+                <form id="form_res" class='form form-horizontal ' method="post" style='margin-bottom: 0;'>
+
+                    <div class='form-group '>
+                        <div class="col-md-4 col-md-offset-8">
+                            <input id="btn_save" class="btn btn-primary" type="button" value="保存">
+
+                            <div id="btn_saving" class='btn btn-default' style="display:none;" type='button'>
+                                <i class="icon-1x icon-spinner icon-spin"></i>
+                                保存中...
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--引用默认JS，把所有基础样式和JS一并引入-->
+<script src="../js/resmgr/default.js"></script>
+<script src="../js/resmgr/resAdd.js"></script>
+</body>
+</html>

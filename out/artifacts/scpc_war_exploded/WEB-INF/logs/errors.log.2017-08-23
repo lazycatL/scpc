@@ -1,0 +1,760 @@
+[2017-08-23 10:44:03,823]-INFO  (ContextLoader.java:189)|Root WebApplicationContext: initialization started
+[2017-08-23 10:44:03,884]-INFO  (AbstractApplicationContext.java:412)|Refreshing org.springframework.web.context.support.XmlWebApplicationContext@38365fa2: display name [Root WebApplicationContext]; startup date [Wed Aug 23 10:44:03 CST 2017]; root of context hierarchy
+[2017-08-23 10:44:03,994]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext.xml]
+[2017-08-23 10:44:04,870]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_base.xml]
+[2017-08-23 10:44:04,939]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_login.xml]
+[2017-08-23 10:44:04,986]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_xsgl.xml]
+[2017-08-23 10:44:05,119]-INFO  (AbstractApplicationContext.java:427)|Bean factory for application context [org.springframework.web.context.support.XmlWebApplicationContext@38365fa2]: org.springframework.beans.factory.support.DefaultListableBeanFactory@ef31056
+[2017-08-23 10:44:05,326]-INFO  (PropertiesLoaderSupport.java:178)|Loading properties file from class path resource [ApplicationResources.properties]
+[2017-08-23 10:44:05,639]-INFO  (DefaultListableBeanFactory.java:414)|Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@ef31056: defining beans [messageSource,propertyConfigurer,dataSourceA,dataSource,sessionFactory,transactionIntercetorTemplate,hibernateTransactionInterceptor,jdbcTransactionInterceptor,autoProxy,nativeJdbcExtractor,lobHandler,baseDao,baseService,selectDataDao,selectDataService,loginAction,xsglAction,khxxManagerAction,ddInfoManagerAction,bomInfoManagerAction,gxInfoManagerAction,gyInfoManagerAction]; root of factory hierarchy
+[2017-08-23 10:44:05,683]-INFO  (MLog.java:80)|MLog clients using log4j logging.
+[2017-08-23 10:44:05,767]-INFO  (C3P0Registry.java:204)|Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+[2017-08-23 10:44:06,132]-INFO  (Environment.java:514)|Hibernate 3.2.5
+[2017-08-23 10:44:06,142]-INFO  (Environment.java:547)|hibernate.properties not found
+[2017-08-23 10:44:06,145]-INFO  (Environment.java:681)|Bytecode provider name : cglib
+[2017-08-23 10:44:06,148]-INFO  (Environment.java:598)|using JDK 1.4 java.sql.Timestamp handling
+[2017-08-23 10:44:06,238]-INFO  (LocalSessionFactoryBean.java:730)|Building new Hibernate SessionFactory
+[2017-08-23 10:44:06,246]-INFO  (ConnectionProviderFactory.java:72)|Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+[2017-08-23 10:44:06,584]-INFO  (AbstractPoolBackedDataSource.java:462)|Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 6000, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1099q3llwc41ffjr2l|66175d72, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1099q3llwc41ffjr2l|66175d72, idleConnectionTestPeriod -> 60, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://192.168.1.254:3306/scpc?useUnicode=true&characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 60, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 30, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+[2017-08-23 10:44:07,425]-INFO  (SettingsFactory.java:89)|RDBMS: MySQL, version: 5.6.24
+[2017-08-23 10:44:07,427]-INFO  (SettingsFactory.java:90)|JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.5 ( Revision: ${svn.Revision} )
+[2017-08-23 10:44:07,457]-INFO  (Dialect.java:152)|Using dialect: org.hibernate.dialect.MySQLDialect
+[2017-08-23 10:44:07,608]-INFO  (TransactionFactoryFactory.java:34)|Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+[2017-08-23 10:44:07,612]-INFO  (TransactionManagerLookupFactory.java:33)|No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+[2017-08-23 10:44:07,613]-INFO  (SettingsFactory.java:143)|Automatic flush during beforeCompletion(): disabled
+[2017-08-23 10:44:07,617]-INFO  (SettingsFactory.java:147)|Automatic session close at end of transaction: disabled
+[2017-08-23 10:44:07,618]-INFO  (SettingsFactory.java:154)|JDBC batch size: 15
+[2017-08-23 10:44:07,619]-INFO  (SettingsFactory.java:157)|JDBC batch updates for versioned data: disabled
+[2017-08-23 10:44:07,622]-INFO  (SettingsFactory.java:162)|Scrollable result sets: enabled
+[2017-08-23 10:44:07,623]-INFO  (SettingsFactory.java:170)|JDBC3 getGeneratedKeys(): enabled
+[2017-08-23 10:44:07,624]-INFO  (SettingsFactory.java:178)|Connection release mode: auto
+[2017-08-23 10:44:07,628]-INFO  (SettingsFactory.java:202)|Maximum outer join fetch depth: 2
+[2017-08-23 10:44:07,629]-INFO  (SettingsFactory.java:205)|Default batch fetch size: 1
+[2017-08-23 10:44:07,629]-INFO  (SettingsFactory.java:209)|Generate SQL with comments: disabled
+[2017-08-23 10:44:07,629]-INFO  (SettingsFactory.java:213)|Order SQL updates by primary key: disabled
+[2017-08-23 10:44:07,630]-INFO  (SettingsFactory.java:217)|Order SQL inserts for batching: disabled
+[2017-08-23 10:44:07,638]-INFO  (SettingsFactory.java:386)|Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+[2017-08-23 10:44:07,647]-INFO  (ASTQueryTranslatorFactory.java:24)|Using ASTQueryTranslatorFactory
+[2017-08-23 10:44:07,648]-INFO  (SettingsFactory.java:225)|Query language substitutions: {}
+[2017-08-23 10:44:07,648]-INFO  (SettingsFactory.java:230)|JPA-QL strict compliance: disabled
+[2017-08-23 10:44:07,654]-INFO  (SettingsFactory.java:235)|Second-level cache: enabled
+[2017-08-23 10:44:07,654]-INFO  (SettingsFactory.java:239)|Query cache: disabled
+[2017-08-23 10:44:07,655]-INFO  (SettingsFactory.java:373)|Cache provider: org.hibernate.cache.NoCacheProvider
+[2017-08-23 10:44:07,655]-INFO  (SettingsFactory.java:254)|Optimize cache for minimal puts: disabled
+[2017-08-23 10:44:07,656]-INFO  (SettingsFactory.java:263)|Structured second-level cache entries: disabled
+[2017-08-23 10:44:07,680]-INFO  (SettingsFactory.java:290)|Statistics: disabled
+[2017-08-23 10:44:07,680]-INFO  (SettingsFactory.java:294)|Deleted entity synthetic identifier rollback: disabled
+[2017-08-23 10:44:07,681]-INFO  (SettingsFactory.java:309)|Default entity-mode: pojo
+[2017-08-23 10:44:07,682]-INFO  (SettingsFactory.java:313)|Named query checking : enabled
+[2017-08-23 10:44:07,766]-INFO  (SessionFactoryImpl.java:161)|building session factory
+[2017-08-23 10:44:07,799]-INFO  (SessionFactoryObjectFactory.java:82)|Not binding factory to JNDI, no JNDI name configured
+[2017-08-23 10:44:07,860]-INFO  (HibernateTransactionManager.java:390)|Using DataSource [com.project.base.DynamicDataSource@4869a303] of Hibernate SessionFactory for HibernateTransactionManager
+[2017-08-23 10:44:08,268]-INFO  (ContextLoader.java:209)|Root WebApplicationContext: initialization completed in 4430 ms
+[2017-08-23 10:44:08,268]-INFO  (DefaultContextLoaderListener.java:27)|load WebApplicationContext into ContextHolder
+[2017-08-23 10:44:08,774]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-default.xml]
+[2017-08-23 10:44:09,060]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-plugin.xml]
+[2017-08-23 10:44:09,183]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts.xml]
+[2017-08-23 10:44:09,845]-INFO  (CommonsLogger.java:42)|Initializing Struts-Spring integration...
+[2017-08-23 10:44:09,846]-INFO  (CommonsLogger.java:42)|Setting autowire strategy to name
+[2017-08-23 10:44:09,846]-INFO  (CommonsLogger.java:42)|... initialized Struts-Spring integration successfully
+[2017-08-23 10:44:11,582]-WARN  (JavaUtils.java:1308)|Unable to find required classes (javax.activation.DataHandler and javax.mail.internet.MimeMultipart). Attachment support is disabled.
+[2017-08-23 10:44:29,880]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 10:51:41,832]-INFO  (PcglAction.java:605)|查询加工设备SELECT id,sbmc FROM scpc.scglxt_t_sb t
+[2017-08-23 10:51:52,385]-INFO  (BzglAction.java:27)|班组信息查询sqlselect id,bzmc,bzfzr from scglxt_t_bz
+[2017-08-23 10:51:52,396]-INFO  (PcglAction.java:538)|查询某工艺过程已经开始加工的人员:SELECT jgryid id,ry.rymc mc FROM scglxt_t_jggl,scglxt_t_ry ry WHERE gygcid = '20170816091019881'  AND jgjssj IS NULL and jgryid = ry.id 
+[2017-08-23 10:51:52,425]-INFO  (PcglAction.java:262)|根据班组获取该班组所有人员SELECT id,rymc mc,ssbz bz FROM scglxt_t_ry WHERE ssbz = '759007553955134000000'
+[2017-08-23 10:51:54,967]-INFO  (PcglAction.java:262)|根据班组获取该班组所有人员SELECT id,rymc mc,ssbz bz FROM scglxt_t_ry WHERE ssbz = '759007553955134000007'
+[2017-08-23 10:51:57,003]-INFO  (PcglAction.java:505)|加工人员开始加工：insert into scglxt_t_jggl (id,jgryid,jgkssj,gygcid) values ('F795283943933509684147362673157034359336','201609101108000039',now(),'20170816091019881')
+[2017-08-23 10:51:57,253]-INFO  (PcglAction.java:538)|查询某工艺过程已经开始加工的人员:SELECT jgryid id,ry.rymc mc FROM scglxt_t_jggl,scglxt_t_ry ry WHERE gygcid = '20170816091019881'  AND jgjssj IS NULL and jgryid = ry.id 
+[2017-08-23 10:52:00,648]-INFO  (PcglAction.java:538)|查询某工艺过程已经开始加工的人员:SELECT jgryid id,ry.rymc mc FROM scglxt_t_jggl,scglxt_t_ry ry WHERE gygcid = '20170816091019881'  AND jgjssj IS NULL and jgryid = ry.id 
+[2017-08-23 10:52:06,951]-INFO  (PcglAction.java:557)|加工人员结束加工某产品update scglxt_t_jggl set jgjssj = now(),jgjs = 40 ,sbid = '13082420160910100031' where jgryid = '201609101108000039' and gygcid = '20170816091019881'
+[2017-08-23 10:52:06,952]-INFO  (PcglAction.java:558)|加工人员结束加工更新工艺过程表update scglxt_t_gygc t set t.sjjs=sjjs+40 where id = '20170816091019881'
+[2017-08-23 10:52:20,185]-INFO  (PcglAction.java:419)|检验人员更新加工管理表update scglxt_t_jggl set jysj = now(),sfjy = '1',jyryid= '201609101108000000',bfjs=0,fgjs=0  where id = 'F795283943933509684147362673157034359336'
+[2017-08-23 10:52:20,330]-INFO  (PcglAction.java:421)|检验人员更新工艺过程表update scglxt_t_gygc a set yjgjs =  yjgjs+(select c.jgjs from scglxt_t_jggl c where c.id = 'F795283943933509684147362673157034359336') ,bfjs=0,sjjs=0 where id = (select gygcid from scglxt_t_jggl b where b.id = 'F795283943933509684147362673157034359336' and a.id = b.gygcid)
+[2017-08-23 10:52:20,373]-INFO  (PcglAction.java:404)|aaaaaaSELECT a.bomid,a.serial,a.yjgjs FROM  scglxt_t_gygc a WHERE id = (SELECT gygcid FROM  scglxt_t_jggl b  WHERE b.id = 'F795283943933509684147362673157034359336'  AND a.id = b.gygcid)
+[2017-08-23 10:52:20,836]-INFO  (PcglAction.java:454)|更新下一步可加工件数：UPDATE scglxt_t_bom  SET zddzt = '0503',endtime=now() WHERE `id` = '20170809113149914'
+[2017-08-23 10:52:36,483]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 10:54:24,501]-INFO  (PcglAction.java:605)|查询加工设备SELECT id,sbmc FROM scpc.scglxt_t_sb t
+[2017-08-23 11:05:45,611]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 11:06:27,007]-INFO  (PcglAction.java:605)|查询加工设备SELECT id,sbmc FROM scpc.scglxt_t_sb t
+[2017-08-23 11:09:10,605]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 11:09:53,683]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 11:10:01,344]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs = yjggs AND zgs<>0) order by endtime;
+[2017-08-23 11:10:20,045]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs = yjggs AND zgs<>0) order by endtime;
+[2017-08-23 11:10:29,266]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 11:11:59,537]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs = yjggs AND zgs<>0) order by endtime;
+[2017-08-23 11:14:59,612]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs = yjggs AND zgs<>0) order by endtime;
+[2017-08-23 11:16:25,787]-INFO  (PcglAction.java:605)|查询加工设备SELECT id,sbmc FROM scpc.scglxt_t_sb t
+[2017-08-23 11:18:36,869]-INFO  (PcglAction.java:605)|查询加工设备SELECT id,sbmc FROM scpc.scglxt_t_sb t
+[2017-08-23 11:19:51,589]-INFO  (PcglAction.java:605)|查询加工设备SELECT id,sbmc FROM scpc.scglxt_t_sb t
+[2017-08-23 11:29:58,444]-INFO  (PcglAction.java:605)|查询加工设备SELECT id,sbmc FROM scpc.scglxt_t_sb t
+[2017-08-23 11:30:09,843]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs = yjggs AND zgs<>0) order by endtime;
+[2017-08-23 11:30:26,426]-INFO  (PcglAction.java:605)|查询加工设备SELECT id,sbmc FROM scpc.scglxt_t_sb t
+[2017-08-23 11:31:01,108]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 11:32:08,804]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs = yjggs AND zgs<>0) order by endtime;
+[2017-08-23 11:37:05,659]-INFO  (PcglAction.java:605)|查询加工设备SELECT id,sbmc FROM scpc.scglxt_t_sb t
+[2017-08-23 11:40:16,937]-INFO  (PcglAction.java:605)|查询加工设备SELECT id,sbmc FROM scpc.scglxt_t_sb t
+[2017-08-23 11:40:31,542]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs = yjggs AND zgs<>0) order by endtime;
+[2017-08-23 11:40:46,570]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 11:55:13,409]-INFO  (AbstractApplicationContext.java:816)|Closing org.springframework.web.context.support.XmlWebApplicationContext@38365fa2: display name [Root WebApplicationContext]; startup date [Wed Aug 23 10:44:03 CST 2017]; root of context hierarchy
+[2017-08-23 11:55:13,410]-INFO  (DefaultSingletonBeanRegistry.java:396)|Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@ef31056: defining beans [messageSource,propertyConfigurer,dataSourceA,dataSource,sessionFactory,transactionIntercetorTemplate,hibernateTransactionInterceptor,jdbcTransactionInterceptor,autoProxy,nativeJdbcExtractor,lobHandler,baseDao,baseService,selectDataDao,selectDataService,loginAction,xsglAction,khxxManagerAction,ddInfoManagerAction,bomInfoManagerAction,gxInfoManagerAction,gyInfoManagerAction]; root of factory hierarchy
+[2017-08-23 11:55:13,411]-INFO  (AbstractSessionFactoryBean.java:246)|Closing Hibernate SessionFactory
+[2017-08-23 11:55:13,411]-INFO  (SessionFactoryImpl.java:769)|closing
+[2017-08-23 11:58:59,415]-INFO  (ContextLoader.java:189)|Root WebApplicationContext: initialization started
+[2017-08-23 11:58:59,507]-INFO  (AbstractApplicationContext.java:412)|Refreshing org.springframework.web.context.support.XmlWebApplicationContext@7cccbb9d: display name [Root WebApplicationContext]; startup date [Wed Aug 23 11:58:59 CST 2017]; root of context hierarchy
+[2017-08-23 11:58:59,809]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext.xml]
+[2017-08-23 11:59:00,291]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_base.xml]
+[2017-08-23 11:59:00,345]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_login.xml]
+[2017-08-23 11:59:00,391]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_xsgl.xml]
+[2017-08-23 11:59:00,550]-INFO  (AbstractApplicationContext.java:427)|Bean factory for application context [org.springframework.web.context.support.XmlWebApplicationContext@7cccbb9d]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6ec6e632
+[2017-08-23 11:59:00,680]-INFO  (PropertiesLoaderSupport.java:178)|Loading properties file from class path resource [ApplicationResources.properties]
+[2017-08-23 11:59:00,947]-INFO  (DefaultListableBeanFactory.java:414)|Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ec6e632: defining beans [messageSource,propertyConfigurer,dataSourceA,dataSource,sessionFactory,transactionIntercetorTemplate,hibernateTransactionInterceptor,jdbcTransactionInterceptor,autoProxy,nativeJdbcExtractor,lobHandler,baseDao,baseService,selectDataDao,selectDataService,loginAction,xsglAction,khxxManagerAction,ddInfoManagerAction,bomInfoManagerAction,gxInfoManagerAction,gyInfoManagerAction]; root of factory hierarchy
+[2017-08-23 11:59:00,982]-INFO  (MLog.java:80)|MLog clients using log4j logging.
+[2017-08-23 11:59:01,043]-INFO  (C3P0Registry.java:204)|Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+[2017-08-23 11:59:01,408]-INFO  (Environment.java:514)|Hibernate 3.2.5
+[2017-08-23 11:59:01,415]-INFO  (Environment.java:547)|hibernate.properties not found
+[2017-08-23 11:59:01,420]-INFO  (Environment.java:681)|Bytecode provider name : cglib
+[2017-08-23 11:59:01,425]-INFO  (Environment.java:598)|using JDK 1.4 java.sql.Timestamp handling
+[2017-08-23 11:59:01,538]-INFO  (LocalSessionFactoryBean.java:730)|Building new Hibernate SessionFactory
+[2017-08-23 11:59:01,559]-INFO  (ConnectionProviderFactory.java:72)|Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+[2017-08-23 11:59:02,101]-INFO  (AbstractPoolBackedDataSource.java:462)|Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 6000, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1099q3oa8wy1peq56v|5a325788, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1099q3oa8wy1peq56v|5a325788, idleConnectionTestPeriod -> 60, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://192.168.1.254:3306/scpc?useUnicode=true&characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 60, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 30, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+[2017-08-23 11:59:02,319]-INFO  (SettingsFactory.java:89)|RDBMS: MySQL, version: 5.6.24
+[2017-08-23 11:59:02,319]-INFO  (SettingsFactory.java:90)|JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.5 ( Revision: ${svn.Revision} )
+[2017-08-23 11:59:02,353]-INFO  (Dialect.java:152)|Using dialect: org.hibernate.dialect.MySQLDialect
+[2017-08-23 11:59:02,495]-INFO  (TransactionFactoryFactory.java:34)|Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+[2017-08-23 11:59:02,541]-INFO  (TransactionManagerLookupFactory.java:33)|No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+[2017-08-23 11:59:02,542]-INFO  (SettingsFactory.java:143)|Automatic flush during beforeCompletion(): disabled
+[2017-08-23 11:59:02,544]-INFO  (SettingsFactory.java:147)|Automatic session close at end of transaction: disabled
+[2017-08-23 11:59:02,545]-INFO  (SettingsFactory.java:154)|JDBC batch size: 15
+[2017-08-23 11:59:02,549]-INFO  (SettingsFactory.java:157)|JDBC batch updates for versioned data: disabled
+[2017-08-23 11:59:02,552]-INFO  (SettingsFactory.java:162)|Scrollable result sets: enabled
+[2017-08-23 11:59:02,553]-INFO  (SettingsFactory.java:170)|JDBC3 getGeneratedKeys(): enabled
+[2017-08-23 11:59:02,554]-INFO  (SettingsFactory.java:178)|Connection release mode: auto
+[2017-08-23 11:59:02,559]-INFO  (SettingsFactory.java:202)|Maximum outer join fetch depth: 2
+[2017-08-23 11:59:02,560]-INFO  (SettingsFactory.java:205)|Default batch fetch size: 1
+[2017-08-23 11:59:02,560]-INFO  (SettingsFactory.java:209)|Generate SQL with comments: disabled
+[2017-08-23 11:59:02,561]-INFO  (SettingsFactory.java:213)|Order SQL updates by primary key: disabled
+[2017-08-23 11:59:02,561]-INFO  (SettingsFactory.java:217)|Order SQL inserts for batching: disabled
+[2017-08-23 11:59:02,561]-INFO  (SettingsFactory.java:386)|Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+[2017-08-23 11:59:02,568]-INFO  (ASTQueryTranslatorFactory.java:24)|Using ASTQueryTranslatorFactory
+[2017-08-23 11:59:02,569]-INFO  (SettingsFactory.java:225)|Query language substitutions: {}
+[2017-08-23 11:59:02,569]-INFO  (SettingsFactory.java:230)|JPA-QL strict compliance: disabled
+[2017-08-23 11:59:02,577]-INFO  (SettingsFactory.java:235)|Second-level cache: enabled
+[2017-08-23 11:59:02,578]-INFO  (SettingsFactory.java:239)|Query cache: disabled
+[2017-08-23 11:59:02,578]-INFO  (SettingsFactory.java:373)|Cache provider: org.hibernate.cache.NoCacheProvider
+[2017-08-23 11:59:02,578]-INFO  (SettingsFactory.java:254)|Optimize cache for minimal puts: disabled
+[2017-08-23 11:59:02,578]-INFO  (SettingsFactory.java:263)|Structured second-level cache entries: disabled
+[2017-08-23 11:59:02,587]-INFO  (SettingsFactory.java:290)|Statistics: disabled
+[2017-08-23 11:59:02,588]-INFO  (SettingsFactory.java:294)|Deleted entity synthetic identifier rollback: disabled
+[2017-08-23 11:59:02,589]-INFO  (SettingsFactory.java:309)|Default entity-mode: pojo
+[2017-08-23 11:59:02,589]-INFO  (SettingsFactory.java:313)|Named query checking : enabled
+[2017-08-23 11:59:02,639]-INFO  (SessionFactoryImpl.java:161)|building session factory
+[2017-08-23 11:59:02,674]-INFO  (SessionFactoryObjectFactory.java:82)|Not binding factory to JNDI, no JNDI name configured
+[2017-08-23 11:59:02,795]-INFO  (HibernateTransactionManager.java:390)|Using DataSource [com.project.base.DynamicDataSource@63c0081e] of Hibernate SessionFactory for HibernateTransactionManager
+[2017-08-23 11:59:03,750]-INFO  (ContextLoader.java:209)|Root WebApplicationContext: initialization completed in 4322 ms
+[2017-08-23 11:59:03,751]-INFO  (DefaultContextLoaderListener.java:27)|load WebApplicationContext into ContextHolder
+[2017-08-23 11:59:04,317]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-default.xml]
+[2017-08-23 11:59:04,713]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-plugin.xml]
+[2017-08-23 11:59:04,814]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts.xml]
+[2017-08-23 11:59:04,974]-INFO  (CommonsLogger.java:42)|Initializing Struts-Spring integration...
+[2017-08-23 11:59:04,992]-INFO  (CommonsLogger.java:42)|Setting autowire strategy to name
+[2017-08-23 11:59:04,992]-INFO  (CommonsLogger.java:42)|... initialized Struts-Spring integration successfully
+[2017-08-23 11:59:06,741]-WARN  (JavaUtils.java:1308)|Unable to find required classes (javax.activation.DataHandler and javax.mail.internet.MimeMultipart). Attachment support is disabled.
+[2017-08-23 12:05:45,093]-INFO  (ContextLoader.java:189)|Root WebApplicationContext: initialization started
+[2017-08-23 12:05:45,146]-INFO  (AbstractApplicationContext.java:412)|Refreshing org.springframework.web.context.support.XmlWebApplicationContext@3facfdef: display name [Root WebApplicationContext]; startup date [Wed Aug 23 12:05:45 CST 2017]; root of context hierarchy
+[2017-08-23 12:05:45,221]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext.xml]
+[2017-08-23 12:05:45,835]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_base.xml]
+[2017-08-23 12:05:45,882]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_login.xml]
+[2017-08-23 12:05:45,931]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_xsgl.xml]
+[2017-08-23 12:05:46,064]-INFO  (AbstractApplicationContext.java:427)|Bean factory for application context [org.springframework.web.context.support.XmlWebApplicationContext@3facfdef]: org.springframework.beans.factory.support.DefaultListableBeanFactory@13ea8ea
+[2017-08-23 12:05:46,235]-INFO  (PropertiesLoaderSupport.java:178)|Loading properties file from class path resource [ApplicationResources.properties]
+[2017-08-23 12:05:46,514]-INFO  (DefaultListableBeanFactory.java:414)|Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@13ea8ea: defining beans [messageSource,propertyConfigurer,dataSourceA,dataSource,sessionFactory,transactionIntercetorTemplate,hibernateTransactionInterceptor,jdbcTransactionInterceptor,autoProxy,nativeJdbcExtractor,lobHandler,baseDao,baseService,selectDataDao,selectDataService,loginAction,xsglAction,khxxManagerAction,ddInfoManagerAction,bomInfoManagerAction,gxInfoManagerAction,gyInfoManagerAction]; root of factory hierarchy
+[2017-08-23 12:05:46,540]-INFO  (MLog.java:80)|MLog clients using log4j logging.
+[2017-08-23 12:05:46,717]-INFO  (C3P0Registry.java:204)|Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+[2017-08-23 12:05:47,109]-INFO  (Environment.java:514)|Hibernate 3.2.5
+[2017-08-23 12:05:47,115]-INFO  (Environment.java:547)|hibernate.properties not found
+[2017-08-23 12:05:47,117]-INFO  (Environment.java:681)|Bytecode provider name : cglib
+[2017-08-23 12:05:47,122]-INFO  (Environment.java:598)|using JDK 1.4 java.sql.Timestamp handling
+[2017-08-23 12:05:47,211]-INFO  (LocalSessionFactoryBean.java:730)|Building new Hibernate SessionFactory
+[2017-08-23 12:05:47,217]-INFO  (ConnectionProviderFactory.java:72)|Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+[2017-08-23 12:05:47,695]-INFO  (AbstractPoolBackedDataSource.java:462)|Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 6000, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1099q3oixui1pluqqq|496d4588, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1099q3oixui1pluqqq|496d4588, idleConnectionTestPeriod -> 60, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://192.168.1.254:3306/scpc?useUnicode=true&characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 60, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 30, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+[2017-08-23 12:05:48,535]-INFO  (SettingsFactory.java:89)|RDBMS: MySQL, version: 5.6.24
+[2017-08-23 12:05:48,537]-INFO  (SettingsFactory.java:90)|JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.5 ( Revision: ${svn.Revision} )
+[2017-08-23 12:05:48,554]-INFO  (Dialect.java:152)|Using dialect: org.hibernate.dialect.MySQLDialect
+[2017-08-23 12:05:48,610]-INFO  (TransactionFactoryFactory.java:34)|Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+[2017-08-23 12:05:48,613]-INFO  (TransactionManagerLookupFactory.java:33)|No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+[2017-08-23 12:05:48,614]-INFO  (SettingsFactory.java:143)|Automatic flush during beforeCompletion(): disabled
+[2017-08-23 12:05:48,617]-INFO  (SettingsFactory.java:147)|Automatic session close at end of transaction: disabled
+[2017-08-23 12:05:48,618]-INFO  (SettingsFactory.java:154)|JDBC batch size: 15
+[2017-08-23 12:05:48,622]-INFO  (SettingsFactory.java:157)|JDBC batch updates for versioned data: disabled
+[2017-08-23 12:05:48,624]-INFO  (SettingsFactory.java:162)|Scrollable result sets: enabled
+[2017-08-23 12:05:48,625]-INFO  (SettingsFactory.java:170)|JDBC3 getGeneratedKeys(): enabled
+[2017-08-23 12:05:48,626]-INFO  (SettingsFactory.java:178)|Connection release mode: auto
+[2017-08-23 12:05:48,628]-INFO  (SettingsFactory.java:202)|Maximum outer join fetch depth: 2
+[2017-08-23 12:05:48,629]-INFO  (SettingsFactory.java:205)|Default batch fetch size: 1
+[2017-08-23 12:05:48,629]-INFO  (SettingsFactory.java:209)|Generate SQL with comments: disabled
+[2017-08-23 12:05:48,630]-INFO  (SettingsFactory.java:213)|Order SQL updates by primary key: disabled
+[2017-08-23 12:05:48,631]-INFO  (SettingsFactory.java:217)|Order SQL inserts for batching: disabled
+[2017-08-23 12:05:48,632]-INFO  (SettingsFactory.java:386)|Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+[2017-08-23 12:05:48,635]-INFO  (ASTQueryTranslatorFactory.java:24)|Using ASTQueryTranslatorFactory
+[2017-08-23 12:05:48,635]-INFO  (SettingsFactory.java:225)|Query language substitutions: {}
+[2017-08-23 12:05:48,637]-INFO  (SettingsFactory.java:230)|JPA-QL strict compliance: disabled
+[2017-08-23 12:05:48,643]-INFO  (SettingsFactory.java:235)|Second-level cache: enabled
+[2017-08-23 12:05:48,644]-INFO  (SettingsFactory.java:239)|Query cache: disabled
+[2017-08-23 12:05:48,644]-INFO  (SettingsFactory.java:373)|Cache provider: org.hibernate.cache.NoCacheProvider
+[2017-08-23 12:05:48,645]-INFO  (SettingsFactory.java:254)|Optimize cache for minimal puts: disabled
+[2017-08-23 12:05:48,645]-INFO  (SettingsFactory.java:263)|Structured second-level cache entries: disabled
+[2017-08-23 12:05:48,659]-INFO  (SettingsFactory.java:290)|Statistics: disabled
+[2017-08-23 12:05:48,659]-INFO  (SettingsFactory.java:294)|Deleted entity synthetic identifier rollback: disabled
+[2017-08-23 12:05:48,661]-INFO  (SettingsFactory.java:309)|Default entity-mode: pojo
+[2017-08-23 12:05:48,662]-INFO  (SettingsFactory.java:313)|Named query checking : enabled
+[2017-08-23 12:05:48,718]-INFO  (SessionFactoryImpl.java:161)|building session factory
+[2017-08-23 12:05:48,764]-INFO  (SessionFactoryObjectFactory.java:82)|Not binding factory to JNDI, no JNDI name configured
+[2017-08-23 12:05:48,829]-INFO  (HibernateTransactionManager.java:390)|Using DataSource [com.project.base.DynamicDataSource@7c9ce7b0] of Hibernate SessionFactory for HibernateTransactionManager
+[2017-08-23 12:05:49,661]-INFO  (ContextLoader.java:209)|Root WebApplicationContext: initialization completed in 4565 ms
+[2017-08-23 12:05:49,661]-INFO  (DefaultContextLoaderListener.java:27)|load WebApplicationContext into ContextHolder
+[2017-08-23 12:05:50,207]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-default.xml]
+[2017-08-23 12:05:50,573]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-plugin.xml]
+[2017-08-23 12:05:50,676]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts.xml]
+[2017-08-23 12:05:50,849]-INFO  (CommonsLogger.java:42)|Initializing Struts-Spring integration...
+[2017-08-23 12:05:50,850]-INFO  (CommonsLogger.java:42)|Setting autowire strategy to name
+[2017-08-23 12:05:50,850]-INFO  (CommonsLogger.java:42)|... initialized Struts-Spring integration successfully
+[2017-08-23 12:05:52,427]-WARN  (JavaUtils.java:1308)|Unable to find required classes (javax.activation.DataHandler and javax.mail.internet.MimeMultipart). Attachment support is disabled.
+[2017-08-23 12:26:42,830]-INFO  (AbstractApplicationContext.java:816)|Closing org.springframework.web.context.support.XmlWebApplicationContext@3facfdef: display name [Root WebApplicationContext]; startup date [Wed Aug 23 12:05:45 CST 2017]; root of context hierarchy
+[2017-08-23 12:26:42,834]-INFO  (DefaultSingletonBeanRegistry.java:396)|Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@13ea8ea: defining beans [messageSource,propertyConfigurer,dataSourceA,dataSource,sessionFactory,transactionIntercetorTemplate,hibernateTransactionInterceptor,jdbcTransactionInterceptor,autoProxy,nativeJdbcExtractor,lobHandler,baseDao,baseService,selectDataDao,selectDataService,loginAction,xsglAction,khxxManagerAction,ddInfoManagerAction,bomInfoManagerAction,gxInfoManagerAction,gyInfoManagerAction]; root of factory hierarchy
+[2017-08-23 12:26:42,834]-INFO  (AbstractSessionFactoryBean.java:246)|Closing Hibernate SessionFactory
+[2017-08-23 12:26:42,834]-INFO  (SessionFactoryImpl.java:769)|closing
+[2017-08-23 12:27:23,744]-INFO  (ContextLoader.java:189)|Root WebApplicationContext: initialization started
+[2017-08-23 12:27:23,791]-INFO  (AbstractApplicationContext.java:412)|Refreshing org.springframework.web.context.support.XmlWebApplicationContext@6a6f7e47: display name [Root WebApplicationContext]; startup date [Wed Aug 23 12:27:23 CST 2017]; root of context hierarchy
+[2017-08-23 12:27:23,862]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext.xml]
+[2017-08-23 12:27:24,459]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_base.xml]
+[2017-08-23 12:27:24,505]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_login.xml]
+[2017-08-23 12:27:24,559]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_xsgl.xml]
+[2017-08-23 12:27:24,676]-INFO  (AbstractApplicationContext.java:427)|Bean factory for application context [org.springframework.web.context.support.XmlWebApplicationContext@6a6f7e47]: org.springframework.beans.factory.support.DefaultListableBeanFactory@631f80f
+[2017-08-23 12:27:24,835]-INFO  (PropertiesLoaderSupport.java:178)|Loading properties file from class path resource [ApplicationResources.properties]
+[2017-08-23 12:27:24,971]-INFO  (DefaultListableBeanFactory.java:414)|Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@631f80f: defining beans [messageSource,propertyConfigurer,dataSourceA,dataSource,sessionFactory,transactionIntercetorTemplate,hibernateTransactionInterceptor,jdbcTransactionInterceptor,autoProxy,nativeJdbcExtractor,lobHandler,baseDao,baseService,selectDataDao,selectDataService,loginAction,xsglAction,khxxManagerAction,ddInfoManagerAction,bomInfoManagerAction,gxInfoManagerAction,gyInfoManagerAction]; root of factory hierarchy
+[2017-08-23 12:27:25,117]-INFO  (MLog.java:80)|MLog clients using log4j logging.
+[2017-08-23 12:27:25,327]-INFO  (C3P0Registry.java:204)|Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+[2017-08-23 12:27:25,666]-INFO  (Environment.java:514)|Hibernate 3.2.5
+[2017-08-23 12:27:25,672]-INFO  (Environment.java:547)|hibernate.properties not found
+[2017-08-23 12:27:25,674]-INFO  (Environment.java:681)|Bytecode provider name : cglib
+[2017-08-23 12:27:25,681]-INFO  (Environment.java:598)|using JDK 1.4 java.sql.Timestamp handling
+[2017-08-23 12:27:25,832]-INFO  (LocalSessionFactoryBean.java:730)|Building new Hibernate SessionFactory
+[2017-08-23 12:27:25,856]-INFO  (ConnectionProviderFactory.java:72)|Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+[2017-08-23 12:27:26,086]-INFO  (AbstractPoolBackedDataSource.java:462)|Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 6000, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1099q3paryalc6tji|2d072c4, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1099q3paryalc6tji|2d072c4, idleConnectionTestPeriod -> 60, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://192.168.1.254:3306/scpc?useUnicode=true&characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 60, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 30, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+[2017-08-23 12:27:27,876]-INFO  (SettingsFactory.java:89)|RDBMS: MySQL, version: 5.6.24
+[2017-08-23 12:27:27,877]-INFO  (SettingsFactory.java:90)|JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.5 ( Revision: ${svn.Revision} )
+[2017-08-23 12:27:27,891]-INFO  (Dialect.java:152)|Using dialect: org.hibernate.dialect.MySQLDialect
+[2017-08-23 12:27:28,046]-INFO  (TransactionFactoryFactory.java:34)|Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+[2017-08-23 12:27:28,049]-INFO  (TransactionManagerLookupFactory.java:33)|No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+[2017-08-23 12:27:28,050]-INFO  (SettingsFactory.java:143)|Automatic flush during beforeCompletion(): disabled
+[2017-08-23 12:27:28,054]-INFO  (SettingsFactory.java:147)|Automatic session close at end of transaction: disabled
+[2017-08-23 12:27:28,055]-INFO  (SettingsFactory.java:154)|JDBC batch size: 15
+[2017-08-23 12:27:28,059]-INFO  (SettingsFactory.java:157)|JDBC batch updates for versioned data: disabled
+[2017-08-23 12:27:28,061]-INFO  (SettingsFactory.java:162)|Scrollable result sets: enabled
+[2017-08-23 12:27:28,063]-INFO  (SettingsFactory.java:170)|JDBC3 getGeneratedKeys(): enabled
+[2017-08-23 12:27:28,063]-INFO  (SettingsFactory.java:178)|Connection release mode: auto
+[2017-08-23 12:27:28,068]-INFO  (SettingsFactory.java:202)|Maximum outer join fetch depth: 2
+[2017-08-23 12:27:28,069]-INFO  (SettingsFactory.java:205)|Default batch fetch size: 1
+[2017-08-23 12:27:28,069]-INFO  (SettingsFactory.java:209)|Generate SQL with comments: disabled
+[2017-08-23 12:27:28,070]-INFO  (SettingsFactory.java:213)|Order SQL updates by primary key: disabled
+[2017-08-23 12:27:28,071]-INFO  (SettingsFactory.java:217)|Order SQL inserts for batching: disabled
+[2017-08-23 12:27:28,071]-INFO  (SettingsFactory.java:386)|Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+[2017-08-23 12:27:28,075]-INFO  (ASTQueryTranslatorFactory.java:24)|Using ASTQueryTranslatorFactory
+[2017-08-23 12:27:28,076]-INFO  (SettingsFactory.java:225)|Query language substitutions: {}
+[2017-08-23 12:27:28,076]-INFO  (SettingsFactory.java:230)|JPA-QL strict compliance: disabled
+[2017-08-23 12:27:28,099]-INFO  (SettingsFactory.java:235)|Second-level cache: enabled
+[2017-08-23 12:27:28,099]-INFO  (SettingsFactory.java:239)|Query cache: disabled
+[2017-08-23 12:27:28,100]-INFO  (SettingsFactory.java:373)|Cache provider: org.hibernate.cache.NoCacheProvider
+[2017-08-23 12:27:28,100]-INFO  (SettingsFactory.java:254)|Optimize cache for minimal puts: disabled
+[2017-08-23 12:27:28,100]-INFO  (SettingsFactory.java:263)|Structured second-level cache entries: disabled
+[2017-08-23 12:27:28,109]-INFO  (SettingsFactory.java:290)|Statistics: disabled
+[2017-08-23 12:27:28,112]-INFO  (SettingsFactory.java:294)|Deleted entity synthetic identifier rollback: disabled
+[2017-08-23 12:27:28,113]-INFO  (SettingsFactory.java:309)|Default entity-mode: pojo
+[2017-08-23 12:27:28,114]-INFO  (SettingsFactory.java:313)|Named query checking : enabled
+[2017-08-23 12:27:28,214]-INFO  (SessionFactoryImpl.java:161)|building session factory
+[2017-08-23 12:27:28,245]-INFO  (SessionFactoryObjectFactory.java:82)|Not binding factory to JNDI, no JNDI name configured
+[2017-08-23 12:27:28,360]-INFO  (HibernateTransactionManager.java:390)|Using DataSource [com.project.base.DynamicDataSource@7b9e4831] of Hibernate SessionFactory for HibernateTransactionManager
+[2017-08-23 12:27:30,626]-INFO  (ContextLoader.java:209)|Root WebApplicationContext: initialization completed in 6876 ms
+[2017-08-23 12:27:30,627]-INFO  (DefaultContextLoaderListener.java:27)|load WebApplicationContext into ContextHolder
+[2017-08-23 12:27:31,171]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-default.xml]
+[2017-08-23 12:27:31,532]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-plugin.xml]
+[2017-08-23 12:27:31,618]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts.xml]
+[2017-08-23 12:27:31,774]-INFO  (CommonsLogger.java:42)|Initializing Struts-Spring integration...
+[2017-08-23 12:27:31,785]-INFO  (CommonsLogger.java:42)|Setting autowire strategy to name
+[2017-08-23 12:27:31,786]-INFO  (CommonsLogger.java:42)|... initialized Struts-Spring integration successfully
+[2017-08-23 12:27:33,224]-WARN  (JavaUtils.java:1308)|Unable to find required classes (javax.activation.DataHandler and javax.mail.internet.MimeMultipart). Attachment support is disabled.
+[2017-08-23 12:54:23,706]-INFO  (AbstractApplicationContext.java:816)|Closing org.springframework.web.context.support.XmlWebApplicationContext@6a6f7e47: display name [Root WebApplicationContext]; startup date [Wed Aug 23 12:27:23 CST 2017]; root of context hierarchy
+[2017-08-23 12:54:23,711]-INFO  (DefaultSingletonBeanRegistry.java:396)|Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@631f80f: defining beans [messageSource,propertyConfigurer,dataSourceA,dataSource,sessionFactory,transactionIntercetorTemplate,hibernateTransactionInterceptor,jdbcTransactionInterceptor,autoProxy,nativeJdbcExtractor,lobHandler,baseDao,baseService,selectDataDao,selectDataService,loginAction,xsglAction,khxxManagerAction,ddInfoManagerAction,bomInfoManagerAction,gxInfoManagerAction,gyInfoManagerAction]; root of factory hierarchy
+[2017-08-23 12:54:23,711]-INFO  (AbstractSessionFactoryBean.java:246)|Closing Hibernate SessionFactory
+[2017-08-23 12:54:23,711]-INFO  (SessionFactoryImpl.java:769)|closing
+[2017-08-23 12:55:01,193]-INFO  (ContextLoader.java:189)|Root WebApplicationContext: initialization started
+[2017-08-23 12:55:01,257]-INFO  (AbstractApplicationContext.java:412)|Refreshing org.springframework.web.context.support.XmlWebApplicationContext@6b1ebe2b: display name [Root WebApplicationContext]; startup date [Wed Aug 23 12:55:01 CST 2017]; root of context hierarchy
+[2017-08-23 12:55:01,329]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext.xml]
+[2017-08-23 12:55:01,901]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_base.xml]
+[2017-08-23 12:55:01,950]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_login.xml]
+[2017-08-23 12:55:01,997]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_xsgl.xml]
+[2017-08-23 12:55:02,131]-INFO  (AbstractApplicationContext.java:427)|Bean factory for application context [org.springframework.web.context.support.XmlWebApplicationContext@6b1ebe2b]: org.springframework.beans.factory.support.DefaultListableBeanFactory@327c1a5d
+[2017-08-23 12:55:02,269]-INFO  (PropertiesLoaderSupport.java:178)|Loading properties file from class path resource [ApplicationResources.properties]
+[2017-08-23 12:55:02,396]-INFO  (DefaultListableBeanFactory.java:414)|Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@327c1a5d: defining beans [messageSource,propertyConfigurer,dataSourceA,dataSource,sessionFactory,transactionIntercetorTemplate,hibernateTransactionInterceptor,jdbcTransactionInterceptor,autoProxy,nativeJdbcExtractor,lobHandler,baseDao,baseService,selectDataDao,selectDataService,loginAction,xsglAction,khxxManagerAction,ddInfoManagerAction,bomInfoManagerAction,gxInfoManagerAction,gyInfoManagerAction]; root of factory hierarchy
+[2017-08-23 12:55:02,533]-INFO  (MLog.java:80)|MLog clients using log4j logging.
+[2017-08-23 12:55:02,596]-INFO  (C3P0Registry.java:204)|Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+[2017-08-23 12:55:02,891]-INFO  (Environment.java:514)|Hibernate 3.2.5
+[2017-08-23 12:55:02,899]-INFO  (Environment.java:547)|hibernate.properties not found
+[2017-08-23 12:55:02,933]-INFO  (Environment.java:681)|Bytecode provider name : cglib
+[2017-08-23 12:55:02,938]-INFO  (Environment.java:598)|using JDK 1.4 java.sql.Timestamp handling
+[2017-08-23 12:55:03,224]-INFO  (LocalSessionFactoryBean.java:730)|Building new Hibernate SessionFactory
+[2017-08-23 12:55:03,250]-INFO  (ConnectionProviderFactory.java:72)|Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+[2017-08-23 12:55:03,513]-INFO  (AbstractPoolBackedDataSource.java:462)|Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 6000, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1099q3qaapef535d2|7795c93b, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1099q3qaapef535d2|7795c93b, idleConnectionTestPeriod -> 60, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://192.168.1.254:3306/scpc?useUnicode=true&characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 60, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 30, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+[2017-08-23 12:55:04,495]-INFO  (SettingsFactory.java:89)|RDBMS: MySQL, version: 5.6.24
+[2017-08-23 12:55:04,498]-INFO  (SettingsFactory.java:90)|JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.5 ( Revision: ${svn.Revision} )
+[2017-08-23 12:55:04,539]-INFO  (Dialect.java:152)|Using dialect: org.hibernate.dialect.MySQLDialect
+[2017-08-23 12:55:04,687]-INFO  (TransactionFactoryFactory.java:34)|Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+[2017-08-23 12:55:04,701]-INFO  (TransactionManagerLookupFactory.java:33)|No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+[2017-08-23 12:55:04,717]-INFO  (SettingsFactory.java:143)|Automatic flush during beforeCompletion(): disabled
+[2017-08-23 12:55:04,717]-INFO  (SettingsFactory.java:147)|Automatic session close at end of transaction: disabled
+[2017-08-23 12:55:04,717]-INFO  (SettingsFactory.java:154)|JDBC batch size: 15
+[2017-08-23 12:55:04,717]-INFO  (SettingsFactory.java:157)|JDBC batch updates for versioned data: disabled
+[2017-08-23 12:55:04,717]-INFO  (SettingsFactory.java:162)|Scrollable result sets: enabled
+[2017-08-23 12:55:04,732]-INFO  (SettingsFactory.java:170)|JDBC3 getGeneratedKeys(): enabled
+[2017-08-23 12:55:04,732]-INFO  (SettingsFactory.java:178)|Connection release mode: auto
+[2017-08-23 12:55:04,732]-INFO  (SettingsFactory.java:202)|Maximum outer join fetch depth: 2
+[2017-08-23 12:55:04,732]-INFO  (SettingsFactory.java:205)|Default batch fetch size: 1
+[2017-08-23 12:55:04,732]-INFO  (SettingsFactory.java:209)|Generate SQL with comments: disabled
+[2017-08-23 12:55:04,732]-INFO  (SettingsFactory.java:213)|Order SQL updates by primary key: disabled
+[2017-08-23 12:55:04,732]-INFO  (SettingsFactory.java:217)|Order SQL inserts for batching: disabled
+[2017-08-23 12:55:04,732]-INFO  (SettingsFactory.java:386)|Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+[2017-08-23 12:55:04,732]-INFO  (ASTQueryTranslatorFactory.java:24)|Using ASTQueryTranslatorFactory
+[2017-08-23 12:55:04,732]-INFO  (SettingsFactory.java:225)|Query language substitutions: {}
+[2017-08-23 12:55:04,732]-INFO  (SettingsFactory.java:230)|JPA-QL strict compliance: disabled
+[2017-08-23 12:55:04,732]-INFO  (SettingsFactory.java:235)|Second-level cache: enabled
+[2017-08-23 12:55:04,732]-INFO  (SettingsFactory.java:239)|Query cache: disabled
+[2017-08-23 12:55:04,748]-INFO  (SettingsFactory.java:373)|Cache provider: org.hibernate.cache.NoCacheProvider
+[2017-08-23 12:55:04,748]-INFO  (SettingsFactory.java:254)|Optimize cache for minimal puts: disabled
+[2017-08-23 12:55:04,748]-INFO  (SettingsFactory.java:263)|Structured second-level cache entries: disabled
+[2017-08-23 12:55:04,748]-INFO  (SettingsFactory.java:290)|Statistics: disabled
+[2017-08-23 12:55:04,748]-INFO  (SettingsFactory.java:294)|Deleted entity synthetic identifier rollback: disabled
+[2017-08-23 12:55:04,748]-INFO  (SettingsFactory.java:309)|Default entity-mode: pojo
+[2017-08-23 12:55:04,748]-INFO  (SettingsFactory.java:313)|Named query checking : enabled
+[2017-08-23 12:55:04,842]-INFO  (SessionFactoryImpl.java:161)|building session factory
+[2017-08-23 12:55:04,873]-INFO  (SessionFactoryObjectFactory.java:82)|Not binding factory to JNDI, no JNDI name configured
+[2017-08-23 12:55:04,935]-INFO  (HibernateTransactionManager.java:390)|Using DataSource [com.project.base.DynamicDataSource@14508c01] of Hibernate SessionFactory for HibernateTransactionManager
+[2017-08-23 12:55:05,779]-INFO  (ContextLoader.java:209)|Root WebApplicationContext: initialization completed in 4580 ms
+[2017-08-23 12:55:05,779]-INFO  (DefaultContextLoaderListener.java:27)|load WebApplicationContext into ContextHolder
+[2017-08-23 12:55:06,242]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-default.xml]
+[2017-08-23 12:55:06,523]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-plugin.xml]
+[2017-08-23 12:55:06,940]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts.xml]
+[2017-08-23 12:55:07,182]-INFO  (CommonsLogger.java:42)|Initializing Struts-Spring integration...
+[2017-08-23 12:55:07,183]-INFO  (CommonsLogger.java:42)|Setting autowire strategy to name
+[2017-08-23 12:55:07,183]-INFO  (CommonsLogger.java:42)|... initialized Struts-Spring integration successfully
+[2017-08-23 12:55:09,189]-WARN  (JavaUtils.java:1308)|Unable to find required classes (javax.activation.DataHandler and javax.mail.internet.MimeMultipart). Attachment support is disabled.
+[2017-08-23 13:01:16,044]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 13:06:00,622]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 13:06:15,773]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 13:06:55,324]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+[2017-08-23 13:06:55,410]-INFO  (SQLErrorCodesFactory.java:128)|SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+[2017-08-23 13:14:28,066]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 13:14:30,466]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 13:18:16,254]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 13:18:28,034]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 13:30:35,930]-INFO  (KcglAction.java:75)|获取材料信息sql====  select * from scglxt_t_cl where id = '20160901104410800053' 
+[2017-08-23 13:30:50,611]-INFO  (KcglAction.java:75)|获取材料信息sql====  select * from scglxt_t_cl where id = '20160901104410800045' 
+[2017-08-23 13:47:18,856]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 13:50:42,276]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 13:51:22,614]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 14:39:36,625]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 14:39:38,335]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 14:44:01,032]-INFO  (AbstractApplicationContext.java:816)|Closing org.springframework.web.context.support.XmlWebApplicationContext@6b1ebe2b: display name [Root WebApplicationContext]; startup date [Wed Aug 23 12:55:01 CST 2017]; root of context hierarchy
+[2017-08-23 14:44:01,032]-INFO  (DefaultSingletonBeanRegistry.java:396)|Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@327c1a5d: defining beans [messageSource,propertyConfigurer,dataSourceA,dataSource,sessionFactory,transactionIntercetorTemplate,hibernateTransactionInterceptor,jdbcTransactionInterceptor,autoProxy,nativeJdbcExtractor,lobHandler,baseDao,baseService,selectDataDao,selectDataService,loginAction,xsglAction,khxxManagerAction,ddInfoManagerAction,bomInfoManagerAction,gxInfoManagerAction,gyInfoManagerAction]; root of factory hierarchy
+[2017-08-23 14:44:01,033]-INFO  (AbstractSessionFactoryBean.java:246)|Closing Hibernate SessionFactory
+[2017-08-23 14:44:01,033]-INFO  (SessionFactoryImpl.java:769)|closing
+[2017-08-23 14:44:42,057]-INFO  (ContextLoader.java:189)|Root WebApplicationContext: initialization started
+[2017-08-23 14:44:42,091]-INFO  (AbstractApplicationContext.java:412)|Refreshing org.springframework.web.context.support.XmlWebApplicationContext@7020f355: display name [Root WebApplicationContext]; startup date [Wed Aug 23 14:44:42 CST 2017]; root of context hierarchy
+[2017-08-23 14:44:42,178]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext.xml]
+[2017-08-23 14:44:42,933]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_base.xml]
+[2017-08-23 14:44:42,969]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_login.xml]
+[2017-08-23 14:44:43,024]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_xsgl.xml]
+[2017-08-23 14:44:43,167]-INFO  (AbstractApplicationContext.java:427)|Bean factory for application context [org.springframework.web.context.support.XmlWebApplicationContext@7020f355]: org.springframework.beans.factory.support.DefaultListableBeanFactory@60b9b3ee
+[2017-08-23 14:44:43,363]-INFO  (PropertiesLoaderSupport.java:178)|Loading properties file from class path resource [ApplicationResources.properties]
+[2017-08-23 14:44:43,639]-INFO  (DefaultListableBeanFactory.java:414)|Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@60b9b3ee: defining beans [messageSource,propertyConfigurer,dataSourceA,dataSource,sessionFactory,transactionIntercetorTemplate,hibernateTransactionInterceptor,jdbcTransactionInterceptor,autoProxy,nativeJdbcExtractor,lobHandler,baseDao,baseService,selectDataDao,selectDataService,loginAction,xsglAction,khxxManagerAction,ddInfoManagerAction,bomInfoManagerAction,gxInfoManagerAction,gyInfoManagerAction]; root of factory hierarchy
+[2017-08-23 14:44:43,718]-INFO  (MLog.java:80)|MLog clients using log4j logging.
+[2017-08-23 14:44:43,772]-INFO  (C3P0Registry.java:204)|Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+[2017-08-23 14:44:44,082]-INFO  (Environment.java:514)|Hibernate 3.2.5
+[2017-08-23 14:44:44,087]-INFO  (Environment.java:547)|hibernate.properties not found
+[2017-08-23 14:44:44,093]-INFO  (Environment.java:681)|Bytecode provider name : cglib
+[2017-08-23 14:44:44,097]-INFO  (Environment.java:598)|using JDK 1.4 java.sql.Timestamp handling
+[2017-08-23 14:44:44,208]-INFO  (LocalSessionFactoryBean.java:730)|Building new Hibernate SessionFactory
+[2017-08-23 14:44:44,219]-INFO  (ConnectionProviderFactory.java:72)|Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+[2017-08-23 14:44:44,814]-INFO  (AbstractPoolBackedDataSource.java:462)|Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 6000, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1099q3u7cs0ysxkcg|21d45601, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1099q3u7cs0ysxkcg|21d45601, idleConnectionTestPeriod -> 60, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://192.168.1.254:3306/scpc?useUnicode=true&characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 60, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 30, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+[2017-08-23 14:44:45,207]-INFO  (SettingsFactory.java:89)|RDBMS: MySQL, version: 5.6.24
+[2017-08-23 14:44:45,252]-INFO  (SettingsFactory.java:90)|JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.5 ( Revision: ${svn.Revision} )
+[2017-08-23 14:44:45,286]-INFO  (Dialect.java:152)|Using dialect: org.hibernate.dialect.MySQLDialect
+[2017-08-23 14:44:45,406]-INFO  (TransactionFactoryFactory.java:34)|Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+[2017-08-23 14:44:45,412]-INFO  (TransactionManagerLookupFactory.java:33)|No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+[2017-08-23 14:44:45,413]-INFO  (SettingsFactory.java:143)|Automatic flush during beforeCompletion(): disabled
+[2017-08-23 14:44:45,416]-INFO  (SettingsFactory.java:147)|Automatic session close at end of transaction: disabled
+[2017-08-23 14:44:45,417]-INFO  (SettingsFactory.java:154)|JDBC batch size: 15
+[2017-08-23 14:44:45,420]-INFO  (SettingsFactory.java:157)|JDBC batch updates for versioned data: disabled
+[2017-08-23 14:44:45,423]-INFO  (SettingsFactory.java:162)|Scrollable result sets: enabled
+[2017-08-23 14:44:45,424]-INFO  (SettingsFactory.java:170)|JDBC3 getGeneratedKeys(): enabled
+[2017-08-23 14:44:45,424]-INFO  (SettingsFactory.java:178)|Connection release mode: auto
+[2017-08-23 14:44:45,425]-INFO  (SettingsFactory.java:202)|Maximum outer join fetch depth: 2
+[2017-08-23 14:44:45,426]-INFO  (SettingsFactory.java:205)|Default batch fetch size: 1
+[2017-08-23 14:44:45,426]-INFO  (SettingsFactory.java:209)|Generate SQL with comments: disabled
+[2017-08-23 14:44:45,426]-INFO  (SettingsFactory.java:213)|Order SQL updates by primary key: disabled
+[2017-08-23 14:44:45,427]-INFO  (SettingsFactory.java:217)|Order SQL inserts for batching: disabled
+[2017-08-23 14:44:45,427]-INFO  (SettingsFactory.java:386)|Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+[2017-08-23 14:44:45,433]-INFO  (ASTQueryTranslatorFactory.java:24)|Using ASTQueryTranslatorFactory
+[2017-08-23 14:44:45,434]-INFO  (SettingsFactory.java:225)|Query language substitutions: {}
+[2017-08-23 14:44:45,440]-INFO  (SettingsFactory.java:230)|JPA-QL strict compliance: disabled
+[2017-08-23 14:44:45,441]-INFO  (SettingsFactory.java:235)|Second-level cache: enabled
+[2017-08-23 14:44:45,442]-INFO  (SettingsFactory.java:239)|Query cache: disabled
+[2017-08-23 14:44:45,442]-INFO  (SettingsFactory.java:373)|Cache provider: org.hibernate.cache.NoCacheProvider
+[2017-08-23 14:44:45,442]-INFO  (SettingsFactory.java:254)|Optimize cache for minimal puts: disabled
+[2017-08-23 14:44:45,443]-INFO  (SettingsFactory.java:263)|Structured second-level cache entries: disabled
+[2017-08-23 14:44:45,450]-INFO  (SettingsFactory.java:290)|Statistics: disabled
+[2017-08-23 14:44:45,451]-INFO  (SettingsFactory.java:294)|Deleted entity synthetic identifier rollback: disabled
+[2017-08-23 14:44:45,452]-INFO  (SettingsFactory.java:309)|Default entity-mode: pojo
+[2017-08-23 14:44:45,452]-INFO  (SettingsFactory.java:313)|Named query checking : enabled
+[2017-08-23 14:44:45,587]-INFO  (SessionFactoryImpl.java:161)|building session factory
+[2017-08-23 14:44:45,621]-INFO  (SessionFactoryObjectFactory.java:82)|Not binding factory to JNDI, no JNDI name configured
+[2017-08-23 14:44:45,665]-INFO  (HibernateTransactionManager.java:390)|Using DataSource [com.project.base.DynamicDataSource@65e8131a] of Hibernate SessionFactory for HibernateTransactionManager
+[2017-08-23 14:44:45,979]-INFO  (ContextLoader.java:209)|Root WebApplicationContext: initialization completed in 3917 ms
+[2017-08-23 14:44:45,979]-INFO  (DefaultContextLoaderListener.java:27)|load WebApplicationContext into ContextHolder
+[2017-08-23 14:44:47,202]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-default.xml]
+[2017-08-23 14:44:47,594]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-plugin.xml]
+[2017-08-23 14:44:47,670]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts.xml]
+[2017-08-23 14:44:47,792]-INFO  (CommonsLogger.java:42)|Initializing Struts-Spring integration...
+[2017-08-23 14:44:47,806]-INFO  (CommonsLogger.java:42)|Setting autowire strategy to name
+[2017-08-23 14:44:47,806]-INFO  (CommonsLogger.java:42)|... initialized Struts-Spring integration successfully
+[2017-08-23 14:44:49,375]-WARN  (JavaUtils.java:1308)|Unable to find required classes (javax.activation.DataHandler and javax.mail.internet.MimeMultipart). Attachment support is disabled.
+[2017-08-23 14:47:53,280]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 14:48:03,118]-INFO  (HtInfoManagerAction.java:57)|获取数据列表的sql===select t1.id ,t1.htbh , t4.mc ywlx ,t1.htje,date_format(qssj,'%Y-%m-%d') qssj,date_format(jssj,'%Y-%m-%d') jssj,t5.mc fkzt, t3.mc fkztmc,t1.jkbfb,jkje,jscb,t1.hkzh,t1.hkkhh,t1.remark ,t1.htmx, t2.id khid,t2.mc khmc from scglxt_t_ht  t1 left join scglxt_t_kh t2 on t1.khid = t2.id  left join  scglxt_tyzd t3 on t1.fkzt= t3.id left join scglxt_tyzd t4 on t4.id = t1.ywlx left join scglxt_tyzd t5 on t5.id = t1.fkzt  where 1=1 
+[2017-08-23 14:48:27,723]-INFO  (KhxxManagerAction.java:41)|客户信息表格sql  select t.id,t.mc,t.lx lxnm ,DATE_FORMAT(starttime,'%Y-%m-%d') starttime, t2.MC lx ,t.dw,t.dz,t.gx,  case  when t.iscj='1' then '是'   when t.iscj='0'  then '否'  end  as iscj ,  t.remark from scglxt_t_kh t , scglxt_tyzd t2  where t.lx = t2.id   and t2.id like '30%'
+[2017-08-23 14:48:31,630]-INFO  (HtInfoManagerAction.java:57)|获取数据列表的sql===select t1.id ,t1.htbh , t4.mc ywlx ,t1.htje,date_format(qssj,'%Y-%m-%d') qssj,date_format(jssj,'%Y-%m-%d') jssj,t5.mc fkzt, t3.mc fkztmc,t1.jkbfb,jkje,jscb,t1.hkzh,t1.hkkhh,t1.remark ,t1.htmx, t2.id khid,t2.mc khmc from scglxt_t_ht  t1 left join scglxt_t_kh t2 on t1.khid = t2.id  left join  scglxt_tyzd t3 on t1.fkzt= t3.id left join scglxt_tyzd t4 on t4.id = t1.ywlx left join scglxt_tyzd t5 on t5.id = t1.fkzt  where 1=1 
+[2017-08-23 14:50:53,702]-INFO  (HtInfoManagerAction.java:57)|获取数据列表的sql===select t1.id ,t1.htbh , t4.mc ywlx ,t1.htje,date_format(qssj,'%Y-%m-%d') qssj,date_format(jssj,'%Y-%m-%d') jssj,t5.mc fkzt, t3.mc fkztmc,t1.jkbfb,jkje,jscb,t1.hkzh,t1.hkkhh,t1.remark ,t1.htmx, t2.id khid,t2.mc khmc from scglxt_t_ht  t1 left join scglxt_t_kh t2 on t1.khid = t2.id  left join  scglxt_tyzd t3 on t1.fkzt= t3.id left join scglxt_tyzd t4 on t4.id = t1.ywlx left join scglxt_tyzd t5 on t5.id = t1.fkzt  where 1=1 
+[2017-08-23 14:50:57,721]-INFO  (AbstractApplicationContext.java:816)|Closing org.springframework.web.context.support.XmlWebApplicationContext@7020f355: display name [Root WebApplicationContext]; startup date [Wed Aug 23 14:44:42 CST 2017]; root of context hierarchy
+[2017-08-23 14:50:57,721]-INFO  (DefaultSingletonBeanRegistry.java:396)|Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@60b9b3ee: defining beans [messageSource,propertyConfigurer,dataSourceA,dataSource,sessionFactory,transactionIntercetorTemplate,hibernateTransactionInterceptor,jdbcTransactionInterceptor,autoProxy,nativeJdbcExtractor,lobHandler,baseDao,baseService,selectDataDao,selectDataService,loginAction,xsglAction,khxxManagerAction,ddInfoManagerAction,bomInfoManagerAction,gxInfoManagerAction,gyInfoManagerAction]; root of factory hierarchy
+[2017-08-23 14:50:57,726]-INFO  (AbstractSessionFactoryBean.java:246)|Closing Hibernate SessionFactory
+[2017-08-23 14:50:57,727]-INFO  (SessionFactoryImpl.java:769)|closing
+[2017-08-23 14:51:31,524]-INFO  (ContextLoader.java:189)|Root WebApplicationContext: initialization started
+[2017-08-23 14:51:31,580]-INFO  (AbstractApplicationContext.java:412)|Refreshing org.springframework.web.context.support.XmlWebApplicationContext@219e9d0f: display name [Root WebApplicationContext]; startup date [Wed Aug 23 14:51:31 CST 2017]; root of context hierarchy
+[2017-08-23 14:51:31,651]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext.xml]
+[2017-08-23 14:51:32,265]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_base.xml]
+[2017-08-23 14:51:32,326]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_login.xml]
+[2017-08-23 14:51:32,378]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from file [D:\workspace\scpc\out\artifacts\scpc_war_exploded\WEB-INF\classes\xml\spring\applicationContext_xsgl.xml]
+[2017-08-23 14:51:32,549]-INFO  (AbstractApplicationContext.java:427)|Bean factory for application context [org.springframework.web.context.support.XmlWebApplicationContext@219e9d0f]: org.springframework.beans.factory.support.DefaultListableBeanFactory@79018cdf
+[2017-08-23 14:51:32,696]-INFO  (PropertiesLoaderSupport.java:178)|Loading properties file from class path resource [ApplicationResources.properties]
+[2017-08-23 14:51:32,854]-INFO  (DefaultListableBeanFactory.java:414)|Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@79018cdf: defining beans [messageSource,propertyConfigurer,dataSourceA,dataSource,sessionFactory,transactionIntercetorTemplate,hibernateTransactionInterceptor,jdbcTransactionInterceptor,autoProxy,nativeJdbcExtractor,lobHandler,baseDao,baseService,selectDataDao,selectDataService,loginAction,xsglAction,khxxManagerAction,ddInfoManagerAction,bomInfoManagerAction,gxInfoManagerAction,gyInfoManagerAction]; root of factory hierarchy
+[2017-08-23 14:51:33,246]-INFO  (MLog.java:80)|MLog clients using log4j logging.
+[2017-08-23 14:51:33,367]-INFO  (C3P0Registry.java:204)|Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+[2017-08-23 14:51:34,119]-INFO  (Environment.java:514)|Hibernate 3.2.5
+[2017-08-23 14:51:34,124]-INFO  (Environment.java:547)|hibernate.properties not found
+[2017-08-23 14:51:34,126]-INFO  (Environment.java:681)|Bytecode provider name : cglib
+[2017-08-23 14:51:34,131]-INFO  (Environment.java:598)|using JDK 1.4 java.sql.Timestamp handling
+[2017-08-23 14:51:34,252]-INFO  (LocalSessionFactoryBean.java:730)|Building new Hibernate SessionFactory
+[2017-08-23 14:51:34,306]-INFO  (ConnectionProviderFactory.java:72)|Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+[2017-08-23 14:51:34,594]-INFO  (AbstractPoolBackedDataSource.java:462)|Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 1, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 6000, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge1099q3ug4t41iyhw1f|341546ee, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge1099q3ug4t41iyhw1f|341546ee, idleConnectionTestPeriod -> 60, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://192.168.1.254:3306/scpc?useUnicode=true&characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 60, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 30, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+[2017-08-23 14:51:36,207]-INFO  (SettingsFactory.java:89)|RDBMS: MySQL, version: 5.6.24
+[2017-08-23 14:51:36,208]-INFO  (SettingsFactory.java:90)|JDBC driver: MySQL-AB JDBC Driver, version: mysql-connector-java-5.1.5 ( Revision: ${svn.Revision} )
+[2017-08-23 14:51:36,226]-INFO  (Dialect.java:152)|Using dialect: org.hibernate.dialect.MySQLDialect
+[2017-08-23 14:51:36,407]-INFO  (TransactionFactoryFactory.java:34)|Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+[2017-08-23 14:51:36,446]-INFO  (TransactionManagerLookupFactory.java:33)|No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+[2017-08-23 14:51:36,448]-INFO  (SettingsFactory.java:143)|Automatic flush during beforeCompletion(): disabled
+[2017-08-23 14:51:36,451]-INFO  (SettingsFactory.java:147)|Automatic session close at end of transaction: disabled
+[2017-08-23 14:51:36,455]-INFO  (SettingsFactory.java:154)|JDBC batch size: 15
+[2017-08-23 14:51:36,458]-INFO  (SettingsFactory.java:157)|JDBC batch updates for versioned data: disabled
+[2017-08-23 14:51:36,460]-INFO  (SettingsFactory.java:162)|Scrollable result sets: enabled
+[2017-08-23 14:51:36,461]-INFO  (SettingsFactory.java:170)|JDBC3 getGeneratedKeys(): enabled
+[2017-08-23 14:51:36,462]-INFO  (SettingsFactory.java:178)|Connection release mode: auto
+[2017-08-23 14:51:36,463]-INFO  (SettingsFactory.java:202)|Maximum outer join fetch depth: 2
+[2017-08-23 14:51:36,464]-INFO  (SettingsFactory.java:205)|Default batch fetch size: 1
+[2017-08-23 14:51:36,464]-INFO  (SettingsFactory.java:209)|Generate SQL with comments: disabled
+[2017-08-23 14:51:36,465]-INFO  (SettingsFactory.java:213)|Order SQL updates by primary key: disabled
+[2017-08-23 14:51:36,465]-INFO  (SettingsFactory.java:217)|Order SQL inserts for batching: disabled
+[2017-08-23 14:51:36,466]-INFO  (SettingsFactory.java:386)|Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+[2017-08-23 14:51:36,469]-INFO  (ASTQueryTranslatorFactory.java:24)|Using ASTQueryTranslatorFactory
+[2017-08-23 14:51:36,469]-INFO  (SettingsFactory.java:225)|Query language substitutions: {}
+[2017-08-23 14:51:36,481]-INFO  (SettingsFactory.java:230)|JPA-QL strict compliance: disabled
+[2017-08-23 14:51:36,482]-INFO  (SettingsFactory.java:235)|Second-level cache: enabled
+[2017-08-23 14:51:36,482]-INFO  (SettingsFactory.java:239)|Query cache: disabled
+[2017-08-23 14:51:36,483]-INFO  (SettingsFactory.java:373)|Cache provider: org.hibernate.cache.NoCacheProvider
+[2017-08-23 14:51:36,483]-INFO  (SettingsFactory.java:254)|Optimize cache for minimal puts: disabled
+[2017-08-23 14:51:36,483]-INFO  (SettingsFactory.java:263)|Structured second-level cache entries: disabled
+[2017-08-23 14:51:36,494]-INFO  (SettingsFactory.java:290)|Statistics: disabled
+[2017-08-23 14:51:36,494]-INFO  (SettingsFactory.java:294)|Deleted entity synthetic identifier rollback: disabled
+[2017-08-23 14:51:36,496]-INFO  (SettingsFactory.java:309)|Default entity-mode: pojo
+[2017-08-23 14:51:36,496]-INFO  (SettingsFactory.java:313)|Named query checking : enabled
+[2017-08-23 14:51:36,546]-INFO  (SessionFactoryImpl.java:161)|building session factory
+[2017-08-23 14:51:36,601]-INFO  (SessionFactoryObjectFactory.java:82)|Not binding factory to JNDI, no JNDI name configured
+[2017-08-23 14:51:36,669]-INFO  (HibernateTransactionManager.java:390)|Using DataSource [com.project.base.DynamicDataSource@343a8b64] of Hibernate SessionFactory for HibernateTransactionManager
+[2017-08-23 14:51:37,694]-INFO  (ContextLoader.java:209)|Root WebApplicationContext: initialization completed in 6164 ms
+[2017-08-23 14:51:37,694]-INFO  (DefaultContextLoaderListener.java:27)|load WebApplicationContext into ContextHolder
+[2017-08-23 14:51:38,196]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-default.xml]
+[2017-08-23 14:51:38,503]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts-plugin.xml]
+[2017-08-23 14:51:38,603]-INFO  (CommonsLogger.java:42)|Parsing configuration file [struts.xml]
+[2017-08-23 14:51:38,843]-INFO  (CommonsLogger.java:42)|Initializing Struts-Spring integration...
+[2017-08-23 14:51:38,843]-INFO  (CommonsLogger.java:42)|Setting autowire strategy to name
+[2017-08-23 14:51:38,843]-INFO  (CommonsLogger.java:42)|... initialized Struts-Spring integration successfully
+[2017-08-23 14:51:40,407]-WARN  (JavaUtils.java:1308)|Unable to find required classes (javax.activation.DataHandler and javax.mail.internet.MimeMultipart). Attachment support is disabled.
+[2017-08-23 14:55:14,609]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 14:55:26,674]-INFO  (HtInfoManagerAction.java:58)|获取数据列表的sql===select t1.id ,t1.htbh , t4.mc ywlx ,t1.htje,date_format(qssj,'%Y-%m-%d') qssj,date_format(jssj,'%Y-%m-%d') jssj,t5.mc fkzt, t3.mc fkztmc,t1.jkbfb,jkje,jscb,t1.hkzh,t1.hkkhh,t1.remark ,t1.htmx, t2.id khid,t2.mc khmc from scglxt_t_ht  t1 left join scglxt_t_kh t2 on t1.khid = t2.id  left join  scglxt_tyzd t3 on t1.fkzt= t3.id left join scglxt_tyzd t4 on t4.id = t1.ywlx left join scglxt_tyzd t5 on t5.id = t1.fkzt  where 1=1  ORDER BY id DESC
+[2017-08-23 15:23:04,279]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 17:48:07,998]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 17:48:08,728]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 17:49:00,446]-INFO  (BomInfoManagerAction.java:329)|insert into scglxt_t_gygc (bomid,id,sbid,gynr,edgs,bzgs,serial,zysx) values ('2017082315105100020','20170823174900718','','',45,40,'0','精铣外形成型注意尺寸，注意角尺尺寸一致，去毛刺') 
+[2017-08-23 17:49:01,687]-INFO  (BomInfoManagerAction.java:329)|insert into scglxt_t_gygc (bomid,id,sbid,gynr,edgs,bzgs,serial,zysx) values ('2017082315105100020','20170823174901669','','',25,20,'1','磨厚度到尺寸8MM，正负0.05，') 
+[2017-08-23 17:49:02,077]-INFO  (BomInfoManagerAction.java:329)|insert into scglxt_t_gygc (bomid,id,sbid,gynr,edgs,bzgs,serial,zysx) values ('2017082315105100020','20170823174902594','','',160,120,'2','压厚度精铣外形成型，注意倒角圆滑，压平面垫板做定位精铣所有台阶及孔成型，注意尺寸。注意销钉孔公差，6.5MM挂台成型。其余点孔翻面精加工成型，注意导轨台阶深度注意0.5MM台阶深度，') 
+[2017-08-23 17:49:02,443]-INFO  (BomInfoManagerAction.java:329)|insert into scglxt_t_gygc (bomid,id,sbid,gynr,edgs,bzgs,serial,zysx) values ('2017082315105100020','20170823174902027','','',120,80,'3','做孔成型，注意尺寸去毛刺，保护表面') 
+[2017-08-23 18:19:39,447]-INFO  (DdInfoManagerAction.java:83)|获得订单信息SELECT t.*,CAST(TRUNCATE((yjggs / zgs) * 100, 2) AS CHAR) bfb FROM (SELECT  dd.id, ssht, xmname, ddlevel, zd.mc ddlevelmc, DATE_FORMAT(dd.starttime, '%Y-%m-%d') starttime, DATE_FORMAT(dd.endtime, '%Y-%m-%d') endtime,
+  (SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs,
+  '0' bfb,dqjd, tz,remark,xmlxr,xmfzr,ckzt,DATE_FORMAT(ckdate, '%Y-%m-%d') ckdate 
+FROM scglxt_t_dd dd LEFT JOIN scglxt_tyzd zd ON dd.`ddlevel` = zd.`ID`) t where 1=1  AND (zgs <> yjggs OR yjggs=0) order by endtime;
+[2017-08-23 20:34:54,621]-INFO  (XmlBeanDefinitionReader.java:323)|Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+[2017-08-23 20:34:54,758]-INFO  (SQLErrorCodesFactory.java:128)|SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+[2017-08-23 20:35:00,824]-WARN  (SQLErrorCodesFactory.java:230)|Error while extracting database product name - falling back to empty error codes
+org.springframework.jdbc.support.MetaDataAccessException: Could not get Connection for extracting meta data; nested exception is org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is java.sql.SQLException: An attempt by a client to checkout a Connection has timed out.
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:287)
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:314)
+	at org.springframework.jdbc.support.SQLErrorCodesFactory.getErrorCodes(SQLErrorCodesFactory.java:216)
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.setDataSource(SQLErrorCodeSQLExceptionTranslator.java:147)
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.<init>(SQLErrorCodeSQLExceptionTranslator.java:110)
+	at org.springframework.jdbc.support.JdbcAccessor.getExceptionTranslator(JdbcAccessor.java:99)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:407)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:458)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:466)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForList(JdbcTemplate.java:497)
+	at com.project.base.dao.impl.SelectDataDaoImpl.queryForList(SelectDataDaoImpl.java:37)
+	at sun.reflect.GeneratedMethodAccessor50.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:310)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:182)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:149)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:106)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:171)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:106)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:171)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
+	at com.sun.proxy.$Proxy5.queryForList(Unknown Source)
+	at com.project.base.service.impl.SelectDataServiceImpl.queryForList(SelectDataServiceImpl.java:37)
+	at sun.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:310)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:182)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:149)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:106)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:171)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:106)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:171)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:204)
+	at com.sun.proxy.$Proxy6.queryForList(Unknown Source)
+	at com.project.common.action.CommonAction.getDbsxInfo(CommonAction.java:212)
+	at sun.reflect.GeneratedMethodAccessor60.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invokeAction(DefaultActionInvocation.java:452)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invokeActionOnly(DefaultActionInvocation.java:291)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:254)
+	at com.opensymphony.xwork2.interceptor.DefaultWorkflowInterceptor.doIntercept(DefaultWorkflowInterceptor.java:176)
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at com.opensymphony.xwork2.validator.ValidationInterceptor.doIntercept(ValidationInterceptor.java:263)
+	at org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor.doIntercept(AnnotationValidationInterceptor.java:68)
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at com.opensymphony.xwork2.interceptor.ConversionErrorInterceptor.intercept(ConversionErrorInterceptor.java:133)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:207)
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:207)
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at com.opensymphony.xwork2.interceptor.StaticParametersInterceptor.intercept(StaticParametersInterceptor.java:190)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at org.apache.struts2.interceptor.MultiselectInterceptor.intercept(MultiselectInterceptor.java:75)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at org.apache.struts2.interceptor.CheckboxInterceptor.intercept(CheckboxInterceptor.java:94)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:243)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:100)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:141)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at org.apache.struts2.interceptor.debugging.DebuggingInterceptor.intercept(DebuggingInterceptor.java:267)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:142)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:166)
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at com.opensymphony.xwork2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:176)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:164)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:190)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:187)
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:248)
+	at org.apache.struts2.impl.StrutsActionProxy.execute(StrutsActionProxy.java:52)
+	at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:485)
+	at org.apache.struts2.dispatcher.ng.ExecuteOperations.executeAction(ExecuteOperations.java:77)
+	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.doFilter(StrutsPrepareAndExecuteFilter.java:91)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.project.commonModel.util.myCORSFilter.doFilter(myCORSFilter.java:34)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.orm.hibernate3.support.OpenSessionInViewFilter.doFilterInternal(OpenSessionInViewFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:219)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:142)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:617)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:518)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1091)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:668)
+	at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.doRun(AprEndpoint.java:2463)
+	at org.apache.tomcat.util.net.AprEndpoint$SocketProcessor.run(AprEndpoint.java:2452)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is java.sql.SQLException: An attempt by a client to checkout a Connection has timed out.
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:82)
+	at org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(JdbcUtils.java:274)
+	... 116 more
+Caused by: java.sql.SQLException: An attempt by a client to checkout a Connection has timed out.
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:106)
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:65)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:527)
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:128)
+	at org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource.getConnection(AbstractRoutingDataSource.java:133)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:113)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:79)
+	... 117 more
+Caused by: com.mchange.v2.resourcepool.TimeoutException: A client timed out while waiting to acquire a resource from com.mchange.v2.resourcepool.BasicResourcePool@5a44a0c -- timeout at awaitAvailable()
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1317)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:557)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:590)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:590)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:590)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:590)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:590)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:590)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:590)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:590)
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:477)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:525)
+	... 121 more
+[2017-08-23 20:35:01,326]-INFO  (AbstractApplicationContext.java:816)|Closing org.springframework.web.context.support.XmlWebApplicationContext@219e9d0f: display name [Root WebApplicationContext]; startup date [Wed Aug 23 14:51:31 CST 2017]; root of context hierarchy
+[2017-08-23 20:35:01,334]-INFO  (DefaultSingletonBeanRegistry.java:396)|Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@79018cdf: defining beans [messageSource,propertyConfigurer,dataSourceA,dataSource,sessionFactory,transactionIntercetorTemplate,hibernateTransactionInterceptor,jdbcTransactionInterceptor,autoProxy,nativeJdbcExtractor,lobHandler,baseDao,baseService,selectDataDao,selectDataService,loginAction,xsglAction,khxxManagerAction,ddInfoManagerAction,bomInfoManagerAction,gxInfoManagerAction,gyInfoManagerAction]; root of factory hierarchy
+[2017-08-23 20:35:01,334]-INFO  (AbstractSessionFactoryBean.java:246)|Closing Hibernate SessionFactory
+[2017-08-23 20:35:01,335]-INFO  (SessionFactoryImpl.java:769)|closing

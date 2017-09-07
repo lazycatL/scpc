@@ -63,7 +63,7 @@ public class PcglAction
   public void getPcInfo()
   {
       String type = Request.getParameter("type");
-      String sql="SELECT (@rownum := @rownum + 1) AS rownum,id,xmname name,CAST(starttime AS CHAR) start,CAST(endtime AS CHAR) end ,color FROM scglxt_t_dd,(SELECT   @rownum:=-1)   AS   it ";
+      String sql="select * from (SELECT (@rownum := @rownum + 1) AS rownum,id,xmname name,CAST(starttime AS CHAR) start,CAST(endtime AS CHAR) end ,'#13bcd5'color,(SELECT zgs FROM v_scglxt_zgs_dd ddgs WHERE ddgs.ddid=dd.id) zgs,fun_yjggs(dd.id) yjggs FROM scglxt_t_dd dd,(SELECT   @rownum:=-1)   AS   it) t  WHERE (zgs <> yjggs OR yjggs=0) ";
       if(type.equals("bom"))
       {
           String ddid=Request.getParameter("ssdd");
@@ -233,7 +233,7 @@ public class PcglAction
   public void getBomGygcJg()
   {
       //
-      String sql = "SELECT gygc.id,bom.id bomid,dd.xmname ddmc,tz.tzlx,tz.url tzurl, bom.zddmc,bom.zddjb,cl.clmc,zd.mc zddjbmc,bom.bmcl,dd.id ddid,bom.ddtz,bom.jgsl,DATE_FORMAT(dd.endtime, '%Y-%m-%d') ddjssj,gygc.edgs gs,jggy.gymc,gygc.kjgjs,gygc.yjgjs,gygc.bfjs,gygc.kjgjs-gygc.yjgjs-gygc.bfjs-gygc.sjjs djgjs,gygc.sjjs,"+
+      String sql = "SELECT gygc.id,bom.id bomid,dd.xmname ddmc,tz.tzlx,tz.url tzurl, bom.zddmc,bom.zddjb,bom.cldx,cl.clmc,zd.mc zddjbmc,bom.bmcl,dd.id ddid,bom.ddtz,bom.jgsl,DATE_FORMAT(dd.endtime, '%Y-%m-%d') ddjssj,gygc.edgs gs,jggy.gymc,gygc.kjgjs,gygc.yjgjs,gygc.bfjs,gygc.kjgjs-gygc.yjgjs-gygc.bfjs-gygc.sjjs djgjs,gygc.sjjs,"+
               "(SELECT COUNT(*) FROM scglxt_t_jggl WHERE gygc.id=gygcid) yjgcount FROM scglxt_t_gygc gygc,scglxt_t_bom bom LEFT JOIN scglxt_t_dd_tz tz ON bom.ddtz LIKE tz.tzmc LEFT JOIN scglxt_t_cl cl  ON bom.zddcz =cl.id,scglxt_t_jggy jggy,scglxt_t_dd dd,scglxt_tyzd zd where bom.ssdd=dd.id AND bom.zddjb=zd.id AND zd.id LIKE '06%' and gygc.bomid = bom.id and jggy.id = gygc.gynr and ((gygc.bfjs + gygc.yjgjs + gygc.sjjs < gygc.kjgjs) OR gygc.kjgjs='0') ";
       String ssbz=ActionContext.getContext().getSession().get("userssbz").toString();
       String username=ActionContext.getContext().getSession().get("username").toString();

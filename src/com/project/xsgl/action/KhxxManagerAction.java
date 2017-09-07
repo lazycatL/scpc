@@ -32,7 +32,7 @@ public class KhxxManagerAction {
 	 */
 	public void getKhxxData(){
 		String sql ="  select t.id,t.mc,t.lx lxnm ,DATE_FORMAT(starttime,'%Y-%m-%d') starttime, t2.MC lx ,t.dw,t.dz,t.gx, " +
-					" case  when t.iscj='1' then '是'   when t.iscj='0'  then '否'  end  as iscj , "+
+					" case  when t.iscj='1' then '是'   when t.iscj='0'  then '否'  end  as iscj , t.lxr,t.lxdh,"+
 					" t.remark from scglxt_t_kh t , scglxt_tyzd t2 "+ 
 					" where t.lx = t2.id   and t2.id like '30%'";
 		List list = this.selectDataService.queryForList(sql);
@@ -58,16 +58,18 @@ public class KhxxManagerAction {
 		String starttime = json.getString("starttime");
 		String iscj = json.getString("iscj");
 		String remark = json.getString("remark");
+        String lxr=json.getString("lxr");
+        String lxdh=json.getString("lxdh");
 		String flag = json.getString("flag");
 		String msg = null;
 		String sql = "";
 		if(flag.equals("UPDATE")){
 			sql = "update scglxt_t_kh  set mc = '"+mc+"' ,lx = '"+lx+"',dw = '"+dw+"',dz = '"+dz+"',gx = '"+gx+"'," +
-					"iscj = '"+iscj+"',remark = '"+remark+"',starttime='"+starttime+"' " +
+					"iscj = '"+iscj+"',remark = '"+remark+"',lxr='"+lxr+"',lxdh='"+lxdh+"',starttime='"+starttime+"' " +
 					"where id = '"+id+"'";
 		}else if(flag.equals("ADD")){
-			sql = "insert into scglxt_t_kh(id,mc,lx,dw,dz,gx,iscj,remark,starttime) " +
-					"values("+randomId+",'"+mc+"','"+lx+"','"+dw+"','"+dz+"','"+gx+"','"+iscj+"','"+remark+"','"+starttime+"')";
+			sql = "insert into scglxt_t_kh(id,mc,lx,dw,dz,gx,iscj,remark,starttime,lxr,lxdh) " +
+					"values("+randomId+",'"+mc+"','"+lx+"','"+dw+"','"+dz+"','"+gx+"','"+iscj+"','"+remark+"','"+starttime+"','"+lxr+"','"+lxdh+"')";
 		}
 		try {
 			selectDataService.execute(sql);

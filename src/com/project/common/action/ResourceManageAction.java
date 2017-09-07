@@ -72,7 +72,7 @@ public class ResourceManageAction extends ActionSupport {
 		String sqlColumnStr = "";
 		String sqlFromTableStr = "";
 		String sqlWhere = "";
-        String getColumnMsgSql = "SELECT table_name,resource_name,LOWER(column_name) column_name,COLUMNLENGTH,column_cname,data_type,PROPERTY_TYPE,TYPESQL FROM resource_table t,resource_table_column c WHERE t.`TABLE_ID`=c.`TABLE_ID`  AND islist=1 AND c.table_id='"+tableId+"' ORDER BY LIST_ORDER";
+        String getColumnMsgSql = "SELECT table_name,resource_name,where_sql,LOWER(column_name) column_name,COLUMNLENGTH,column_cname,data_type,PROPERTY_TYPE,TYPESQL FROM resource_table t,resource_table_column c WHERE t.`TABLE_ID`=c.`TABLE_ID`  AND islist=1 AND c.table_id='"+tableId+"' ORDER BY LIST_ORDER";
         List columnMsgList = this.selectDataService.queryForList(getColumnMsgSql);
         String getPKSql="Select * from resource_table_column where ISUNIQUE='1' and table_id='"+tableId+"'";
 
@@ -81,7 +81,11 @@ public class ResourceManageAction extends ActionSupport {
         Map<String, String> mapName = (Map<String, String>)columnMsgList.get(0);
         tableName = tableName==null?mapName.get("TABLE_NAME").toString():tableName;//资源表名
         String resourceName=mapName.get("RESOURCE_NAME")==null?"":mapName.get("RESOURCE_NAME").toString();//资源中文名
+        String resourceWhere = mapName.get("WHERE_SQL") == null ? "" : mapName.get("WHERE_SQL").toString();//资源过滤条件
         String[] headers = new String[columnMsgList.size()];
+        if (resourceWhere != null && resourceWhere != "") {
+            sqlWhere = " and " + resourceWhere;
+        }
         if(columnMsgList.size()>0){
             for(int i=0;i<columnMsgList.size();i++){
                 Map<String, String> map = (Map<String, String>)columnMsgList.get(i);
@@ -128,7 +132,7 @@ public class ResourceManageAction extends ActionSupport {
         }else{
             sql = " select  t.* from "+tableName+" t where 1=1 ";
         }
-        sql = "select * from ("+sql+") s where 1=1 "+sqlWhere;
+        sql = "select * from ("+sql+sqlWhere+") s where 1=1 ";
         System.out.println(sql);
 		List<ListOrderedMap> list = this.selectDataService.queryForList(sql);
 
@@ -332,5 +336,45 @@ public class ResourceManageAction extends ActionSupport {
         }else{
             System.out.println("数据库中没有该表的配置信息"+tableId);
         }
+    }
+
+    /**
+     * 获取树状结构列表
+     */
+    public void getTreeTableData()
+    {
+        String tableId = Request.getParameter("tableId");//表格ID
+        StringBuilder json=new StringBuilder();
+
+        String sql="";
+        //010404BOM采购单
+        if(tableId.equals("010404")){
+            sql="SELECT DISTINCT ssdd ddid,'0' parentId,(SELECT NAME FROM (SELECT id,xmname NAME FROM scglxt_t_dd) tras WHERE tras.id=ssdd) ssdd FROM SCGLXT_T_BOM t WHERE (clzt IS NULL OR clzt=0) AND cldx!=''";
+            List<ListOrderedMap> list = this.selectDataService.queryForList(sql);
+            if(list.size()>0)
+            {
+                json.append("[");
+
+                for(int i=0;i<list.size();i++)
+                {
+                    ListOrderedMap lom = (ListOrderedMap)list.get(i);
+                    json.append("{");
+                    json.append("\"id\":\""+lom.get("ddid").toString()+"\",");
+                    json.append("\"ssdd\":\""+lom.get("ssdd").toString()+"\"");
+                    String childrenSql="SELECT  t.id,(SELECT NAME FROM (SELECT id,xmname NAME FROM scglxt_t_dd) tras WHERE tras.id=ssdd) ssdd,t.ssdd parentId,t.zddmc,t.clzt,t.zddjb,(SELECT NAME FROM (SELECT id,clmc NAME FROM scglxt_t_cl) tras WHERE tras.id=zddcz) zddcz,t.cldx,t.bljs,t.jgsl,t.clje,t.clzl,t.cltj FROM SCGLXT_T_BOM t WHERE 1=1  AND (clzt IS NULL OR clzt=0) AND cldx!='' AND ssdd='"+lom.get("ddid").toString()+"'" ;
+                    List<ListOrderedMap> childlist = this.selectDataService.queryForList(childrenSql);
+                    if(childlist.size()>0)
+                    {
+                        json.append(",\"children\":"+ JsonObjectUtil.list2Json(childlist)+"},");
+                    }else{
+                        json.append("},");
+                    }
+                }
+                json.delete(json.length()-1,json.length());
+                json.append("]");
+            }
+        }
+        System.out.println(json.toString());
+        Response.write(json.toString());
     }
 }

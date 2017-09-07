@@ -1,0 +1,55 @@
+
+media="all"
+.main-nav-opened #main-nav-bg {
+	width : 201px;
+}
+#main-nav-bg {
+	width : 201px;
+}
+
+#main-nav {
+	width: 200px;
+}
+
+#content {
+	margin-left: 201px;
+}
+
+.main-nav-opened #main-nav-bg {
+	width: 201px;
+}
+.main-nav-opened #main-nav {
+	width: 200px;
+}
+.main-nav-opened #content {
+	margin-left: 201px;
+}
+#content{
+	top: 40px;
+	right: 0px;
+	left:0px;
+	bottom: 0px;
+}
+body{
+	overflow:hidden;
+}
+.dataTables_wrapper .datatables-top, .dataTables_wrapper .datatables-bottom {
+	padding: 0px;
+}
+#mainTable_length{
+	margin:2px;
+}
+#form_add{
+	margin-top:-5px;
+	position:absolute;
+}
+.tableGrid  tr th{
+	width:100px;
+}
+.tableGrid .serial{
+	min-width:60px;
+}
+.tableGrid .operate{
+	min-width:100px;
+	width:100px;
+}
